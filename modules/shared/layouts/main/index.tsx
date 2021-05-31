@@ -6,8 +6,8 @@ import { Wrapper } from './views';
 
 const MainLayout: React.FC = ({ children }) => (
   <Wrapper>
-      <Header />
-      {children}
+    <Header />
+    {children}
   </Wrapper>
 );
 

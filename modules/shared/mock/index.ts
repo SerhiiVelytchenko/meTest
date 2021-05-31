@@ -84,7 +84,7 @@ export const appliances: Appliance[] = [
   {
     name: 'Стиральная машина WHIRLPOOL',
     id: '1',
-    image: 'https://content1.rozetka.com.ua/goods/images/big_tile/27232070.jpg',
+    image: 'https://content1.rozetka.com.ua/goods/images/big/11585287.jpg',
     price: 8800,
     info: {
       guarantee: '12 місяців',

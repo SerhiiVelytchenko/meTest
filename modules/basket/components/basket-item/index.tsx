@@ -1,7 +1,7 @@
+import React, { useCallback } from 'react';
 import { Count } from '../count';
 import { Appliance } from '@md-modules/shared/mock';
 import { BasketBLContext } from '@md-modules/basket/layers/business';
-import React, { useCallback } from 'react';
 import {
   CardPrice,
   ViewButton,

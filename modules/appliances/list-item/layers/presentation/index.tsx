@@ -1,3 +1,4 @@
+import React, { useCallback } from 'react';
 import { PersonAPIContext } from '../api/person/index';
 import { PersonBLContext } from '../business/index';
 // view components
@@ -14,7 +15,6 @@ import {
   ViewButton
 } from './views';
 import { BasketBLContext } from '@md-modules/basket/layers/business';
-import React, { useCallback } from 'react';
 
 const PersonPresentation = () => {
   const { isLoading } = React.useContext(PersonAPIContext);
@@ -25,21 +25,27 @@ const PersonPresentation = () => {
     addToBasket(personInfo);
   }, [personInfo, addToBasket]);
 
+  const value = {
+    image: personInfo === undefined ? '' : personInfo?.image,
+    name: personInfo === undefined ? '' : personInfo?.name,
+    id: personInfo === undefined ? '' : personInfo?.id
+  };
+
   return (
     <ContentWrapper>
       <Wrapper>
         <ContentLoader isLoading={isLoading}>
           <PersonImgContainer>
-            <img src={personInfo.image} alt={personInfo?.name} />
+            <img src={value.image} alt={value.name} />
           </PersonImgContainer>
           <PersonDetailsContainer>
-            <PersonName>{personInfo.name}</PersonName>
+            <PersonName>{value.name}</PersonName>
             <PersonInfoContainer>
               {personInfoOdj.map((i, idI) => (
                 <PersonInfo key={idI} {...i} />
               ))}
             </PersonInfoContainer>
-            <ViewButton name={personInfo?.id} onClick={handleAddToBasket}>
+            <ViewButton name={value.id} onClick={handleAddToBasket}>
               Add to card
             </ViewButton>
           </PersonDetailsContainer>
