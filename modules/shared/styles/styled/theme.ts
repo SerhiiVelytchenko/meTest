@@ -1,6 +1,26 @@
 import { DefaultTheme, css } from 'styled-components';
 
-export const colors = {
+export interface Colors {
+  // blue
+  blue400: string;
+  // green
+  green300: string;
+  green200: string;
+  // gray
+  gray300: string;
+  gray400: string;
+  gray500: string;
+  gray600: string;
+  // red
+  red200: string;
+  red300: string;
+  red400: string;
+  // other
+  white: string;
+  black: string;
+}
+
+export const colors: Colors = {
   // blue
   blue400: '#0070f3',
   // green

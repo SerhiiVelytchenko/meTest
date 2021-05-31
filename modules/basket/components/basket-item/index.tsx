@@ -3,8 +3,15 @@ import { Appliance } from '@md-modules/shared/mock';
 import { BasketBLContext } from '@md-modules/basket/layers/business';
 import React, { useCallback } from 'react';
 import {
-  CardPrice, ViewButton, CardWrapper, CardImg,
-  WrapperImg, CardName, CardCounter, WrapperInfoBlock, WrapperPriceAndButton
+  CardPrice,
+  ViewButton,
+  CardWrapper,
+  CardImg,
+  WrapperImg,
+  CardName,
+  CardCounter,
+  WrapperInfoBlock,
+  WrapperPriceAndButton
 } from './views';
 export interface ApplianceBasketItem {
   count: number;
@@ -19,25 +26,27 @@ const BasketItem: React.FC<ApplianceBasketItem> = ({ count, appliance }) => {
   }, [appliance, removeFromBasket]);
 
   return (
-<CardWrapper>
-  <WrapperImg>
-    <CardImg src={appliance.image} alt={appliance.name}/>
-  </WrapperImg>
+    <CardWrapper>
+      <WrapperImg>
+        <CardImg src={appliance.image} alt={appliance.name} />
+      </WrapperImg>
 
-  <WrapperInfoBlock>
-    <CardName>{appliance.name}</CardName>
-    <CardCounter><Count count={count} appliance={appliance}/></CardCounter>
-  </WrapperInfoBlock>
+      <WrapperInfoBlock>
+        <CardName>{appliance.name}</CardName>
+        <CardCounter>
+          <Count count={count} appliance={appliance} />
+        </CardCounter>
+      </WrapperInfoBlock>
 
-  <WrapperPriceAndButton>
-    <CardPrice>{count}x{appliance.price}</CardPrice>
-    <ViewButton id={appliance.id} onClick={ handleRemoveFromBasket }>
-    Remove
-    </ViewButton>
-  </WrapperPriceAndButton>
-
-</CardWrapper>
-
+      <WrapperPriceAndButton>
+        <CardPrice>
+          {count}x{appliance.price}
+        </CardPrice>
+        <ViewButton id={appliance.id} onClick={handleRemoveFromBasket}>
+          Remove
+        </ViewButton>
+      </WrapperPriceAndButton>
+    </CardWrapper>
   );
 };
 

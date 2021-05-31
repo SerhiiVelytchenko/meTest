@@ -77,7 +77,7 @@ export interface Appliance {
     weight: string;
     productColor: string;
     feature: string;
-  }
+  };
 }
 
 export const appliances: Appliance[] = [
@@ -164,7 +164,8 @@ export const appliances: Appliance[] = [
       productColor: 'white',
       feature: 'grease collection tray'
     }
-  }, {
+  },
+  {
     name: 'Пылесос без мешка SAMSUNG VC05K41H0HG/UK',
     id: '7',
     image: 'https://content2.rozetka.com.ua/goods/images/big/32899890.jpg',
@@ -177,7 +178,8 @@ export const appliances: Appliance[] = [
       productColor: 'white',
       feature: 'foam control'
     }
-  }, {
+  },
+  {
     name: 'Вытяжка BOSCH DWK065G60R',
     id: '8',
     image: 'https://content2.rozetka.com.ua/goods/images/big/23607842.jpg',
@@ -190,7 +192,8 @@ export const appliances: Appliance[] = [
       productColor: 'white',
       feature: 'foam control'
     }
-  }, {
+  },
+  {
     name: 'Электрическая поверхность ELECTROLUX EHF96547XK',
     id: '9',
     image: 'https://content1.rozetka.com.ua/goods/images/big/10622174.jpg',
@@ -203,7 +206,8 @@ export const appliances: Appliance[] = [
       productColor: 'white',
       feature: 'foam control'
     }
-  }, {
+  },
+  {
     name: 'Варочная поверхность газовая WHIRLPOOL GOS 6415/NB',
     id: '10',
     image: 'https://content.rozetka.com.ua/goods/images/big/10707638.jpg',

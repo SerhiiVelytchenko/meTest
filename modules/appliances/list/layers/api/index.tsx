@@ -3,8 +3,8 @@ import { useQuery } from '@md-utils/mock/query';
 import { appliances, Appliance } from '@md-modules/shared/mock';
 
 interface Context {
-  appliance: Appliance[],
-  loading: boolean
+  appliance: Appliance[];
+  loading: boolean;
 }
 
 const AppliancesListAPIContext = React.createContext<Context>({

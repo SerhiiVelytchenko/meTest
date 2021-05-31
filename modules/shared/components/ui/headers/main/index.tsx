@@ -6,7 +6,7 @@ import { Logo } from '@md-ui/logos/main';
 import { menuItems } from './constants';
 // views
 import { Wrapper, IWrapper, LWrapper, RWrapper } from './views';
-import { BasketPresentation } from '@md-modules/basket/layers'
+import { BasketPresentation } from '@md-modules/basket/layers';
 
 const Header = () => {
   return (

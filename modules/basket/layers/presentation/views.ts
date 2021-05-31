@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const CardImg = styled.img`
-
-margin: 0;
-height: 30px;
-
+  margin: 0;
+  height: 30px;
 `;
 
 export const ViewButton = styled.button`
@@ -24,15 +22,14 @@ export const ViewButton = styled.button`
 `;
 
 export const ProductBasket = styled.div<{ item?: string }>`
-font-weight: bold;
-line-height: 1.28;
-font-size: 15px;
-color: black;
+  font-weight: bold;
+  line-height: 1.28;
+  font-size: 15px;
+  color: black;
   /* color: ${({ theme }) => theme.colors.white}; */
-border-radius: 10px;
-margin: -20px 0px 0px 40px;
-width: 20px;
-height: 20px;
-background-color: ${props => props.item ?? 0};
-
+  border-radius: 10px;
+  margin: -20px 0px 0px 40px;
+  width: 20px;
+  height: 20px;
+  background-color: ${(props) => props.item ?? 0};
 `;
