@@ -1,5 +1,4 @@
-import * as React from 'react';
-// components
+import React from 'react';
 import Link from 'next/link';
 import { Item } from '@md-appliances/list/components/applianceCard/person-link/views';
 interface Props {

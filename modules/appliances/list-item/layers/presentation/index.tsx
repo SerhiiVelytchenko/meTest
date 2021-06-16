@@ -1,10 +1,9 @@
 import React, { useCallback } from 'react';
-import { PersonAPIContext } from '../api/person/index';
-import { PersonBLContext } from '../business/index';
-// view components
+import { PersonAPIContext } from '@md-appliances/list-item/layers/api/person/index';
+import { PersonBLContext } from '@md-appliances/list-item/layers/business/index';
 import { ContentLoader } from '@md-ui/loaders/content-loader';
-import { PersonInfo } from '../../components/person-info/index';
-// views
+import { PersonInfo } from '@md-appliances/list-item/components/person-info/index';
+import { BasketBLContext } from '@md-modules/basket/layers/business';
 import {
   ContentWrapper,
   PersonDetailsContainer,
@@ -14,7 +13,6 @@ import {
   Wrapper,
   ViewButton
 } from './views';
-import { BasketBLContext } from '@md-modules/basket/layers/business';
 
 const PersonPresentation = () => {
   const { isLoading } = React.useContext(PersonAPIContext);

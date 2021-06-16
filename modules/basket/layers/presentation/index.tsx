@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { BasketBLContext } from '@md-modules/basket/layers/business';
-import { ViewButton, CardImg, ProductBasket } from './views';
 import { BasketContainer } from '@md-modules/basket/components/presentation';
+import { ViewButton, CardImg, ProductBasket } from './views';
 
 const BasketPresentation = () => {
   const { items, active, setActive } = React.useContext(BasketBLContext);

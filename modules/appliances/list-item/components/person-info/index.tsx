@@ -1,5 +1,4 @@
-import * as React from 'react';
-// views
+import React from 'react';
 import { InfoName, InfoValue, InfoWrapper } from './views';
 
 interface Props {

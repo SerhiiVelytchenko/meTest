@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { PersonAPIContext } from '../api/person/index';
+import React from 'react';
+import { PersonAPIContext } from '@md-appliances/list-item/layers/api/person/index';
 import { Appliance } from '@md-modules/shared/mock';
 
 interface Context {

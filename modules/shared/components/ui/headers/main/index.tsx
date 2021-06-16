@@ -1,12 +1,9 @@
 import * as React from 'react';
-// view components
 import { MenuItem } from '@md-ui/menu-items/main';
 import { Logo } from '@md-ui/logos/main';
-// constants
 import { menuItems } from './constants';
-// views
-import { Wrapper, IWrapper, LWrapper, RWrapper } from './views';
 import { BasketPresentation } from '@md-modules/basket/layers';
+import { Wrapper, IWrapper, LWrapper, RWrapper } from './views';
 
 const Header = () => {
   return (
