@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { Count } from '../count';
+import React from 'react';
+import { Count } from '@md-modules/basket/components/count/index';
 import { Appliance } from '@md-modules/shared/mock';
 import { BasketBLContext } from '@md-modules/basket/layers/business';
 import { CardPrice, ViewButton, Wrapper, CardImg, WrapperImg, CardName, CardCounter, WrapperInfoBlock } from './views';
@@ -11,9 +11,9 @@ export interface ApplianceBasketItem {
 const BasketItem: React.FC<ApplianceBasketItem> = ({ count, appliance }) => {
   const { removeFromBasket } = React.useContext(BasketBLContext);
 
-  const handleRemoveFromBasket = useCallback(() => {
+  const handleRemoveFromBasket = () => {
     removeFromBasket(appliance);
-  }, [appliance, removeFromBasket]);
+  };
 
   return (
     <Wrapper>

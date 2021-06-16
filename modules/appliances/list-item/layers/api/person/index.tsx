@@ -1,9 +1,6 @@
-import * as React from 'react';
-// libs
+import React from 'react';
 import { useRouter } from 'next/router';
-// utils
 import { useQuery } from '@md-utils/mock/query';
-// mock
 import { appliances, Appliance } from '@md-modules/shared/mock';
 
 interface Context {

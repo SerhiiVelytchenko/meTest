@@ -33,14 +33,12 @@ const BasketBLContextProvider: React.FC = ({ children }) => {
     (item) =>
       setItems((items) => {
         const currentItem = items.find(({ appliance }) => appliance.id === item.id);
-
         if (!currentItem) {
           return items.concat({
             appliance: item,
             count: 1
           });
         }
-
         const currentIndex = items.indexOf(currentItem);
 
         return items
@@ -91,7 +89,6 @@ const BasketBLContextProvider: React.FC = ({ children }) => {
         const currentItem = items.find(({ appliance }) => appliance.id === itemId);
         if (!currentItem) return items;
         const currentIndex = items.indexOf(currentItem);
-
         if (currentItem.count === 1) return items.slice(0, currentIndex).concat(items.slice(currentIndex + 1));
 
         return items

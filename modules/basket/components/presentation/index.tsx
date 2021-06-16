@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { Modal, ModalContent, CardFooter, CardBlok } from './views';
+import React from 'react';
 import { BasketBLContext } from '@md-modules/basket/layers/business';
-import { BasketItem } from '../basket-item';
+import { BasketItem } from '@md-modules/basket/components/basket-item/index';
+import { Modal, ModalContent, CardFooter, CardBlok } from './views';
 
 const BasketContainer: React.FC = () => {
   const { active, setActive, items } = React.useContext(BasketBLContext);

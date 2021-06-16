@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ContentLoader } from '@md-ui/loaders/content-loader';
 import { AppliancesListAPIContext } from '@md-appliances/list/layers/api';
 import { ApplianceCard } from '@md-appliances/list/components/applianceCard';

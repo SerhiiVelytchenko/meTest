@@ -1,7 +1,5 @@
 import * as React from 'react';
-// libs
 import styled from 'styled-components';
-// view components
 import { Loader } from '../loader';
 
 interface Props {
