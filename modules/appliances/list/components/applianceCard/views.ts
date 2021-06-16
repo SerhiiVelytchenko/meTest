@@ -1,45 +1,46 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { colors } from '@md-modules/shared/styles/styled/theme';
 import styled from 'styled-components';
 
 export const Card = styled.div`
   display: flex;
   flex-flow: column;
-  height: 400px;
+  height: 300px;
   border-radius: 12px;
+  border: 2px solid ${({ theme }) => theme.colors.gray300};
   background-color: ${({ theme }) => theme.colors.gray500};
   overflow: hidden;
+  padding: 5px;
 `;
 
 export const ImageWrapper = styled.div`
   overflow: hidden;
   display: flex;
   justify-content: center;
-  img {
-    height: 100%;
-  }
+  height: 200px;
 `;
 
 export const ContentWrapper = styled.div`
-  flex: 0 0 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
+  padding: 10px;
+  height: 100px;
+`;
+
+export const Title = styled.h2`
+  font-size: 19px;
+  text-transform: capitalize;
+  color: ${({ theme }) => theme.colors.white};
+  padding: 0 0 0 5px;
 `;
 
 export const Actions = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  flex: 1 0;
+  padding: 0px 5px;
   white-space: nowrap;
-  > * {
-    margin-right: 10px;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
 `;
 
 export const Currency = styled.span`
@@ -48,15 +49,10 @@ export const Currency = styled.span`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-export const Title = styled.h2`
-  font-size: 19px;
-  text-transform: capitalize;
-  color: ${({ theme }) => theme.colors.white};
-`;
-
 export const ViewButton = styled.button`
   text-transform: capitalize;
-  padding: 5px 10px;
+  padding: 3px 10px;
+  width: 110px;
   background-color: transparent;
   border-radius: 3px;
   border: 1px solid ${({ theme }) => theme.colors.green200};
@@ -64,7 +60,6 @@ export const ViewButton = styled.button`
   outline: none;
   transition: background-color 0.2s linear;
   cursor: pointer;
-
   &:hover {
     background-color: rgba(135, 204, 67, 0.8);
   }
@@ -72,7 +67,7 @@ export const ViewButton = styled.button`
 
 export const WrapperCount = styled.div<{ backgroundColorCount: keyof typeof colors }>`
   position: static;
-  margin: 0px 0px -30px -20px;
+  margin: -10px -102px 0px 0px;
   bottom: -15px;
   font-weight: bold;
   line-height: 1.28;
@@ -86,19 +81,4 @@ export const WrapperCount = styled.div<{ backgroundColorCount: keyof typeof colo
   width: 20px;
   height: 20px;
   border-radius: 10px;
-`;
-
-export const Modal = styled.div<{ opacity?: number; pointerEvents?: string }>`
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.4);
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: end;
-  justify-content: flex-end;
-  transition: 0.5s;
-  opacity: ${(props) => props.opacity ?? 0};
-  pointer-events: ${(props) => props.pointerEvents ?? 'none'};
 `;

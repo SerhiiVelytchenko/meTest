@@ -20,7 +20,6 @@ export const colors = {
   black: '#000',
   // undefined
   undefined: undefined
-
 };
 
 export const templates = {
@@ -43,7 +42,8 @@ export const templates = {
 };
 
 export const dimensions = {
-  pageMaxWidth: 1071
+  pageMaxWidth: 1071,
+  pageMinWidth: 320
 };
 
 export const theme: DefaultTheme = {

@@ -1,18 +1,5 @@
 import styled from 'styled-components';
 
-export const CardBlok = styled.div``;
-
-export const CardFooterTitle = styled.div`
-  border-top: 2px solid ${({ theme }) => theme.colors.gray400};
-  font-weight: bold;
-  line-height: 1.28;
-  font-size: 20px;
-  text-align: right;
-  color: ${({ theme }) => theme.colors.black};
-  margin: 0px;
-  padding: 0px 15px 0px 10px;
-`;
-
 export const Modal = styled.div<{ opacity?: number; pointerEvents?: string }>`
   height: 100vh;
   width: 100vw;
@@ -35,7 +22,21 @@ export const ModalContent = styled.div<{ transform?: string }>`
   background-color: white;
   transition: 0.4s all;
   width: 30vw;
+  min-width: 300px;
   transform: ${(props) => props.transform ?? 'scale(0.5)'};
   max-height: 90%;
   overflow: auto;
+`;
+
+export const CardBlok = styled.div``;
+
+export const CardFooter = styled.div`
+  border-top: 2px solid ${({ theme }) => theme.colors.gray400};
+  font-weight: bold;
+  line-height: 1.28;
+  font-size: 20px;
+  text-align: right;
+  color: ${({ theme }) => theme.colors.black};
+  margin: 0px;
+  padding: 0px 15px 0px 10px;
 `;

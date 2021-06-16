@@ -15,11 +15,18 @@ const MenuI = styled.div`
   a {
     text-decoration: none;
     transition: opacity 0.3s ease-in-out;
-
     color: ${({ theme }) => theme.colors.white};
-
     &:hover {
       opacity: 0.8;
+    }
+    @media (max-width: 500px) {
+      font-size: 14px;
+    }
+    @media (max-width: 420px) {
+      font-size: 12px;
+    }
+    @media (max-width: 390px) {
+      font-size: 10px;
     }
   }
 `;
