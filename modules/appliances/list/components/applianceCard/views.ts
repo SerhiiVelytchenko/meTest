@@ -1,4 +1,5 @@
-import { Colors } from '@md-modules/shared/styles/styled/theme';
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { colors } from '@md-modules/shared/styles/styled/theme';
 import styled from 'styled-components';
 
 export const Card = styled.div`
@@ -69,7 +70,7 @@ export const ViewButton = styled.button`
   }
 `;
 
-export const WrapperCount = styled.div<{ backgroundColorCount: keyof Colors }>`
+export const WrapperCount = styled.div<{ backgroundColorCount: keyof typeof colors }>`
   position: static;
   margin: 0px 0px -30px -20px;
   bottom: -15px;

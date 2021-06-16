@@ -7,12 +7,20 @@ export default function useLocalStorage<T = any>(key: string, defaultValue: T) {
     const itemsValue = window.localStorage.getItem(key);
 
     if (itemsValue !== null) {
-      setValue(JSON.parse(itemsValue));
+      try {
+        setValue(JSON.parse(itemsValue));
+      } catch (e) {
+        console.error('внешний блок catch', e.message);
+      }
     }
   }, [key]);
 
   React.useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value));
+    try {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+      console.error('внешний блок catch', e.message);
+    }
   }, [key, value]);
 
   return [value, setValue] as const;

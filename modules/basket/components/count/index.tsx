@@ -1,6 +1,6 @@
+import React, { useCallback } from 'react';
 import { Wrapper, ViewButton, CardItem } from './views';
 import { BasketBLContext } from '@md-modules/basket/layers/business';
-import React, { useCallback } from 'react';
 import { ApplianceBasketItem } from '../basket-item';
 
 const Count: React.FC<ApplianceBasketItem> = ({ count, appliance }) => {

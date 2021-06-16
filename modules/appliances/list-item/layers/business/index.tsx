@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { PersonAPIContext } from '../api/person/index';
-import { Appliance } from './../../../../shared/mock/index';
+import { Appliance } from '@md-modules/shared/mock';
 
 interface Context {
-  personInfo: Appliance | [];
+  personInfo: Appliance | undefined;
   personInfoOdj: Array<{ label: string; value: string | number }>;
 }
 
 const PersonBLContext = React.createContext<Context>({
-  personInfo: [],
+  personInfo: undefined,
   personInfoOdj: []
 });
 
@@ -16,16 +16,17 @@ const PersonBLContextProvider: React.FC = ({ children }) => {
   // add business logic here
   const { person } = React.useContext(PersonAPIContext);
 
-  const personInfo = React.useMemo<Appliance | []>(
+  const personInfo = React.useMemo(
     () => {
       if (!person) {
-        return [];
+        return undefined;
       }
       return person;
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [typeof person === 'undefined']
   );
+
   const personInfoOdj = React.useMemo(
     () => {
       if (!person) {

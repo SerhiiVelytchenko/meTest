@@ -40,7 +40,7 @@ const ApplianceCard: React.FC<ApplianceCardProps> = ({ data, onAddToBasket, item
         <Actions>
           <Currency>${data.price}</Currency>
           <ViewButton onClick={handleAddToCard}>Add to card</ViewButton>
-          <WrapperCount backgroundColorCount={count > 0 ? 'green300' : ' '}>{item?.count}</WrapperCount>
+          <WrapperCount backgroundColorCount={count > 0 ? 'green300' : 'undefined'}>{item?.count}</WrapperCount>
           <PersonLink pId={data.id}>
             <ViewButton>Details</ViewButton>
           </PersonLink>

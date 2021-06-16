@@ -1,5 +1,5 @@
-import { Appliance } from '@md-modules/shared/mock';
 import React, { useCallback, useMemo, useState } from 'react';
+import { Appliance } from '@md-modules/shared/mock';
 import useLocalStorage from '../../../shared/hooks/useLocalStorage/index';
 
 interface Context {
@@ -7,7 +7,7 @@ interface Context {
     count: number;
     appliance: Appliance;
   }>;
-  addToBasket: (item: Appliance | []) => void;
+  addToBasket: (item: Appliance | undefined) => void;
   removeFromBasket: (item: Appliance | number) => void;
   incrementItemCount: (item: Appliance | number) => void;
   decrementItemCount: (item: Appliance | number) => void;
