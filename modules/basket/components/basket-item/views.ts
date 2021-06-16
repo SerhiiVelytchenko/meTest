@@ -10,46 +10,44 @@ export const CardWrapper = styled.div`
 `;
 
 export const WrapperImg = styled.div`
-height: 100px;
-min-width: 170px;
+  height: 100px;
+  min-width: 170px;
 `;
 
 export const WrapperInfoBlock = styled.div`
-display:flex;
-flex-direction: column;
-justify-content: space-around;
-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 200px;
 `;
 
 export const WrapperPriceAndButton = styled.div`
-display:flex;
-flex-direction: column;
-justify-content: space-around;
-margin: 0px 5px 0px 0px;
-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0px 5px 0px 0px;
+  width: 100px;
 `;
 
 export const CardImg = styled.img`
-padding: 5px 5px 5px 10px;
-height:100px;
+  padding: 5px 5px 5px 10px;
+  height: 100px;
 `;
 
-export const CardName = styled.div`
-`;
+export const CardName = styled.div``;
 
-export const CardCounter = styled.div`
-`;
+export const CardCounter = styled.div``;
 
 export const CardFooter = styled.div`
-display:flex;
-flex-direction: column;
-justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
 
 export const CardFooterBlok = styled.div`
-display: flex;
-justify-content: space-around;
-width: 350px;
+  display: flex;
+  justify-content: space-around;
+  width: 350px;
 `;
 
 export const CardPrice = styled.div`

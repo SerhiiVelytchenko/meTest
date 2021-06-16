@@ -13,7 +13,7 @@ export const CardFooterTitle = styled.div`
   padding: 0px 15px 0px 10px;
 `;
 
-export const Modal = styled.div<{ opacity?: number, pointerEvents?: string }>`
+export const Modal = styled.div<{ opacity?: number; pointerEvents?: string }>`
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.4);
@@ -24,8 +24,8 @@ export const Modal = styled.div<{ opacity?: number, pointerEvents?: string }>`
   align-items: end;
   justify-content: flex-end;
   transition: 0.5s;
-  opacity: ${props => props.opacity ?? 0};
-  pointer-events: ${props => props.pointerEvents ?? 'none'}
+  opacity: ${(props) => props.opacity ?? 0};
+  pointer-events: ${(props) => props.pointerEvents ?? 'none'};
 `;
 
 export const ModalContent = styled.div<{ transform?: string }>`
@@ -35,7 +35,7 @@ export const ModalContent = styled.div<{ transform?: string }>`
   background-color: white;
   transition: 0.4s all;
   width: 30vw;
-  transform: ${props => props.transform ?? 'scale(0.5)'};
+  transform: ${(props) => props.transform ?? 'scale(0.5)'};
   max-height: 90%;
   overflow: auto;
 `;

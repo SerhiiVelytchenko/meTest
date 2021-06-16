@@ -30,19 +30,18 @@ const PersonPresentation = () => {
       <Wrapper>
         <ContentLoader isLoading={isLoading}>
           <PersonImgContainer>
-            <img src={personInfo?.image} alt={personInfo?.name} />
+            <img src={personInfo.image} alt={personInfo?.name} />
           </PersonImgContainer>
           <PersonDetailsContainer>
-            <PersonName>{personInfo?.name}</PersonName>
+            <PersonName>{personInfo.name}</PersonName>
             <PersonInfoContainer>
               {personInfoOdj.map((i, idI) => (
                 <PersonInfo key={idI} {...i} />
               ))}
             </PersonInfoContainer>
-            <ViewButton name = {personInfo?.id} onClick={ handleAddToBasket }>
-            Add to card
+            <ViewButton name={personInfo?.id} onClick={handleAddToBasket}>
+              Add to card
             </ViewButton>
-
           </PersonDetailsContainer>
         </ContentLoader>
       </Wrapper>

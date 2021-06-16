@@ -3,12 +3,12 @@ import { PersonAPIContext } from '../api/person/index';
 import { Appliance } from './../../../../shared/mock/index';
 
 interface Context {
-  personInfo: Appliance | undefined;
-  personInfoOdj: Array<{label: string, value: string | number}>;
+  personInfo: Appliance | [];
+  personInfoOdj: Array<{ label: string; value: string | number }>;
 }
 
 const PersonBLContext = React.createContext<Context>({
-  personInfo: undefined,
+  personInfo: [],
   personInfoOdj: []
 });
 
@@ -16,10 +16,10 @@ const PersonBLContextProvider: React.FC = ({ children }) => {
   // add business logic here
   const { person } = React.useContext(PersonAPIContext);
 
-  const personInfo = React.useMemo(
+  const personInfo = React.useMemo<Appliance | []>(
     () => {
       if (!person) {
-        return undefined;
+        return [];
       }
       return person;
     },

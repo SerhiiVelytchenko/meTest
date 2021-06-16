@@ -36,11 +36,10 @@ export const PersonName = styled.h2`
 `;
 
 export const PersonInfoContainer = styled.div`
-width: 500px;
+  width: 500px;
 `;
 
 export const ViewButton = styled.button`
-
   margin: 5px 0px 5px 250px;
   padding: 5px 10px;
   background-color: transparent;
@@ -53,5 +52,5 @@ export const ViewButton = styled.button`
 
   &:hover {
     background-color: rgba(135, 204, 67, 0.8);
-}
+  }
 `;

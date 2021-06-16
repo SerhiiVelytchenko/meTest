@@ -1,43 +1,41 @@
 import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
-  display:flex;
+  display: flex;
   border-radius: 5px;
   border: 2px solid ${({ theme }) => theme.colors.gray300};
   margin: 0px 0px 5px 0px;
 `;
 
 export const Wrapper = styled.div`
-display:flex;
+  display: flex;
 `;
 
 export const CardImgWrapper = styled.div`
-height:100px;
-width: 80px;
+  height: 100px;
+  width: 80px;
 `;
 
 export const CardImg = styled.img`
-padding: 5px 5px 5px 10px;
-height:100px;
+  padding: 5px 5px 5px 10px;
+  height: 100px;
 `;
 
-export const CardName = styled.div`
-`;
+export const CardName = styled.div``;
 
-export const CardCounter = styled.div`
-`;
+export const CardCounter = styled.div``;
 
 export const CardFooter = styled.div`
-display:flex;
-flex-direction: column;
-justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
 
 export const CardFooterBlok = styled.div`
-display: flex;
+  display: flex;
 
-justify-content: space-around;
-width: 350px;
+  justify-content: space-around;
+  width: 350px;
 `;
 
 export const CardPrice = styled.div`

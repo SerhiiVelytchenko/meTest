@@ -13,15 +13,12 @@ const BasketPresentation = () => {
   return (
     <>
       <ViewButton onClick={() => setActive(true)}>
-        <CardImg src="https://pngicon.ru/file/uploads/telejka.png" alt="Basket-Logo"/>
-        <ProductBasket item={items.length ? '#82DE59' : ''}>
-          {items.length ? items.length : ''}
-        </ProductBasket>
+        <CardImg src='https://pngicon.ru/file/uploads/telejka.png' alt='Basket-Logo' />
+        <ProductBasket item={items.length ? '#82DE59' : ''}>{items.length ? items.length : ''}</ProductBasket>
       </ViewButton>
       {active ? <BasketContainer /> : null}
     </>
   );
 };
 
-export
-{ BasketPresentation };
+export { BasketPresentation };

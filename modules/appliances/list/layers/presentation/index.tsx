@@ -12,7 +12,9 @@ const AppliancesListPresentation = () => {
   return (
     <ContentLoader isLoading={loading}>
       <CardsWrapper>
-        {appliance.map(appliance => <ApplianceCard data={appliance} key={appliance.id} onAddToBasket={addToBasket} items={items}/>)}
+        {appliance.map((appliance) => (
+          <ApplianceCard data={appliance} key={appliance.id} onAddToBasket={addToBasket} items={items} />
+        ))}
       </CardsWrapper>
     </ContentLoader>
   );
