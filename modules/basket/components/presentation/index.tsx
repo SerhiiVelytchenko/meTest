@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Modal, ModalContent, CardFooterTitle, CardBlok } from './views';
+import { Modal, ModalContent, CardFooter, CardBlok } from './views';
 import { BasketBLContext } from '@md-modules/basket/layers/business';
 import { BasketItem } from '../basket-item';
 
@@ -14,11 +14,11 @@ const BasketContainer: React.FC = () => {
             <BasketItem key={item.appliance.id} {...item} />
           ))}
         </CardBlok>
-        <CardFooterTitle>
+        <CardFooter>
           {items.length
             ? `Sum: ${items.reduce((ac, item) => ac + item.appliance.price * item.count, 0)}`
-            : 'Ви не вибрали жодного товару'}
-        </CardFooterTitle>
+            : 'No product'}
+        </CardFooter>
       </ModalContent>
     </Modal>
   );

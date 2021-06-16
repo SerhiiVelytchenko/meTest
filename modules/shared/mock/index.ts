@@ -166,7 +166,7 @@ export const appliances: Appliance[] = [
     }
   },
   {
-    name: 'Пылесос без мешка SAMSUNG VC05K41H0HG/UK',
+    name: 'Пылесос SAMSUNG VC05K41H0HG/UK',
     id: '7',
     image: 'https://content2.rozetka.com.ua/goods/images/big/32899890.jpg',
     price: 4600,
@@ -208,7 +208,7 @@ export const appliances: Appliance[] = [
     }
   },
   {
-    name: 'Варочная поверхность газовая WHIRLPOOL GOS 6415/NB',
+    name: 'Варочная поверхность газовая WHIRLPOOL',
     id: '10',
     image: 'https://content.rozetka.com.ua/goods/images/big/10707638.jpg',
     price: 9300,
