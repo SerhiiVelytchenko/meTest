@@ -6,13 +6,10 @@ export const ViewButton = styled.button`
   background-color: transparent;
   border-radius: 3px;
   border: 1px solid transparent;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.white};
   outline: none;
   transition: background-color 0.2s linear;
   cursor: pointer;
-  &:hover {
-    background-color: rgba(135, 204, 67, 0.8);
-  }
   @media (max-width: 500px) {
     margin: 0px 0px 0px -10px;
   }

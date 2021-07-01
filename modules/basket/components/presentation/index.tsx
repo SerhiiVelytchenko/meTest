@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BasketBLContext } from '@md-modules/basket/layers/business';
 import { BasketItem } from '@md-modules/basket/components/basket-item/index';
 import { Modal, ModalContent, CardFooter, CardBlok } from './views';
 
 const BasketContainer: React.FC = () => {
   const { active, setActive, items } = React.useContext(BasketBLContext);
+
+  useEffect(() => {
+    if (items.length === 0) {
+      setTimeout(() => setActive(false), 600);
+    }
+  });
 
   return (
     <Modal opacity={active ? 1 : undefined} pointerEvents={active ? 'all' : undefined} onClick={() => setActive(false)}>
