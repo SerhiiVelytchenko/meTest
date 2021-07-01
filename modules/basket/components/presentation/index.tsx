@@ -10,7 +10,7 @@ const BasketContainer: React.FC = () => {
     if (items.length === 0) {
       setTimeout(() => setActive(false), 600);
     }
-  });
+  }, [items.length === 0]);
 
   return (
     <Modal opacity={active ? 1 : undefined} pointerEvents={active ? 'all' : undefined} onClick={() => setActive(false)}>
