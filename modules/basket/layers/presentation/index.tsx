@@ -6,13 +6,13 @@ import { ViewButton, CardImg, ProductBasket } from './views';
 const BasketPresentation = () => {
   const { items, active, setActive } = React.useContext(BasketBLContext);
 
-  if (items.length === 0) {
-    setTimeout(() => setActive(false), 600);
-  }
+  const handleClick = () => {
+    setActive(true);
+  };
 
   return (
     <>
-      <ViewButton onClick={() => setActive(true)}>
+      <ViewButton onClick={handleClick}>
         <CardImg src='https://pngicon.ru/file/uploads/telejka.png' alt='Basket-Logo' />
         <ProductBasket item={items.length ? '#82DE59' : ''}>{items.length ? items.length : ''}</ProductBasket>
       </ViewButton>
