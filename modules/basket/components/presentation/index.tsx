@@ -8,7 +8,8 @@ const BasketContainer: React.FC = () => {
 
   useEffect(() => {
     if (items.length === 0) {
-      setTimeout(() => setActive(false), 600);
+      const timerId = setTimeout(() => setActive(false), 600);
+      return () => clearTimeout(timerId);
     }
   }, [items.length === 0]);
 

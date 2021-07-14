@@ -21,8 +21,10 @@
       "@md-sw-people/*": ["./modules/star-wars/people/*"],
       "@md-sw-person/*": ["./modules/star-wars/person/*"],
       "@md-appliances/*": ["./modules/appliances/*"],
+      "@md-vehicles/*": ["./modules/vehicles/*"],
       "@md-ui/*": ["./modules/shared/components/ui/*"],
-      "@md-utils/*": ["./modules/shared/utils/*"]
+      "@md-utils/*": ["./modules/shared/utils/*"],
+      "@md-form/*": ["./modules/form/*"],
     },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
