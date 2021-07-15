@@ -7,76 +7,127 @@ import FormInput from '@md-modules/form/components/input/index';
 export interface FillingFormType {
   label: string;
   name: string;
+  type: string;
 }
 
 interface Context {
-  setConditionsNumber: (conditionsNumber: boolean) => void;
-  setConditionsLetter: (conditionsLetter: boolean) => void;
+  state: any;
+  setState: (state: any) => void;
 }
 
 const FormContext = React.createContext<Context>({
-  setConditionsNumber: () => {},
-  setConditionsLetter: () => {}
+  state: [],
+  setState: () => {}
 });
 
 const fillingForm: FillingFormType[] = [
   {
     label: 'First Name',
-    name: 'firstName'
+    name: 'firstName',
+    type: 'text'
   },
   {
     label: 'Last Name',
-    name: 'lastName'
+    name: 'lastName',
+    type: 'text'
   },
   {
     label: 'Email',
-    name: 'email'
+    name: 'email',
+    type: 'email'
   },
   {
     label: 'PhoneNumber',
-    name: 'phoneNumber'
+    name: 'phoneNumber',
+    type: 'text'
   },
   {
     label: 'Password',
-    name: 'password'
+    name: 'password',
+    type: 'password'
+  }
+];
+
+const StateDefolt = [
+  {
+    name: 'firstName',
+    isError: false,
+    isFocus: false,
+    isBlur: false,
+    value: '',
+    errorMessage: '',
+    condition: {
+      symbolMin: 5,
+      symbolMax: 50
+    }
+  },
+  {
+    name: 'lastName',
+    isError: false,
+    isFocus: false,
+    isBlur: false,
+    value: '',
+    errorMessage: '',
+    condition: {
+      symbolMin: 5,
+      symbolMax: 50
+    }
+  },
+  {
+    name: 'email',
+    isError: false,
+    isFocus: false,
+    isBlur: false,
+    value: '',
+    errorMessage: ''
+  },
+  {
+    name: 'phoneNumber',
+    isError: false,
+    isFocus: false,
+    isBlur: false,
+    value: '',
+    errorMessage: '',
+    condition: {
+      symbolMax: 10,
+      valueSymbol: 'number'
+    }
+  },
+  {
+    name: 'password',
+    isError: false,
+    isFocus: false,
+    isBlur: false,
+    value: '',
+    errorMessage: '',
+    condition: {
+      numberMin: 1,
+      BigletterMin: 1
+    }
   }
 ];
 
 const FormPage = () => {
-  const [conditionsNumber, setConditionsNumber] = useState(false);
-  const [conditionsLetter, setConditionsLetter] = useState(false);
-
+  const [state, setState] = useState(StateDefolt);
   const HandleSubmit = (event: { preventDefault: () => void; currentTarget: any }) => {
     event?.preventDefault();
-    const input = event.currentTarget;
 
-    if (input[0].value.length < 5) {
-      console.log(`error ${input[0].name}`);
-    }
-
-    if (input[1].value.length < 5) {
-      console.log(`error ${input[1].name}`);
-    }
-
-    if ((conditionsNumber && conditionsLetter) === false) {
-      console.log(`error ${input[4].name}`);
-    }
     return undefined;
   };
   return (
     <FormContext.Provider
       value={useMemo(
         () => ({
-          setConditionsNumber,
-          setConditionsLetter
+          state,
+          setState
         }),
-        []
+        [state]
       )}
     >
       <Wrapper>
         <Form onSubmit={HandleSubmit}>
           {fillingForm.map((elem) => (
-            <FormInput key={elem.label} label={elem.label} name={elem.name} />
+            <FormInput key={elem.label} label={elem.label} name={elem.name} type={elem.type} />
           ))}
           <ButtonWrapper>
             <Button type='submit' />
