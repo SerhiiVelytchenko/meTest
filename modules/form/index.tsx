@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 // views
 import { Wrapper, ButtonWrapper, Form, Button } from './views';
 import FormInput from '@md-modules/form/components/input/index';
-// import Button from './components/button';
 
 export interface FillingFormType {
   label: string;
@@ -10,13 +9,13 @@ export interface FillingFormType {
 }
 
 interface Context {
-  setConditionsNumber: (conditionsNumber: boolean) => void;
-  setConditionsLetter: (conditionsLetter: boolean) => void;
+  state: any;
+  setState: (state: any) => void;
 }
 
 const FormContext = React.createContext<Context>({
-  setConditionsNumber: () => {},
-  setConditionsLetter: () => {}
+  state: [],
+  setState: () => {}
 });
 
 const fillingForm: FillingFormType[] = [
@@ -42,39 +41,106 @@ const fillingForm: FillingFormType[] = [
   }
 ];
 
+export const StateDefolt = [
+  {
+    name: 'firstName',
+    isError: false,
+    isFocus: false,
+    value: '',
+    errorMessage: 'the firstName is entered incorrectly or includes too few characters',
+    condition: {
+      symbolMin: 5,
+      symbolMax: 50
+    }
+  },
+  {
+    name: 'lastName',
+    isError: false,
+    isFocus: false,
+    value: '',
+    errorMessage: 'the lastName is entered incorrectly or includes too few characters',
+    condition: {
+      symbolMin: 5,
+      symbolMax: 50
+    }
+  },
+  {
+    name: 'email',
+    isError: false,
+    isFocus: false,
+    value: '',
+    errorMessage: 'the email is entered incorrectly or includes too few characters'
+  },
+  {
+    name: 'phoneNumber',
+    isError: false,
+    isFocus: false,
+    value: '',
+    errorMessage: 'the phoneNumber is entered incorrectly or includes too few characters',
+    condition: {
+      symbolMax: 10
+    }
+  },
+  {
+    name: 'password',
+    isError: false,
+    isFocus: false,
+    value: '',
+    errorMessage: 'the password is entered incorrectly or includes too few characters',
+    condition: {
+      numberMinOne: false,
+      bigletterMinOne: false
+    }
+  }
+];
+
 const FormPage = () => {
-  const [conditionsNumber, setConditionsNumber] = useState(false);
-  const [conditionsLetter, setConditionsLetter] = useState(false);
+  const [state, setState] = useState(StateDefolt);
 
-  const HandleSubmit = (event: { preventDefault: () => void; currentTarget: any }) => {
+  const handleSubmit = (event: any) => {
     event?.preventDefault();
-    const input = event.currentTarget;
 
-    if (input[0].value.length < 5) {
-      console.log(`error ${input[0].name}`);
-    }
+    // const isErrorInput = state.map((item) => item.isError);
+    // const isErrorInput = state.filter((item) => item.value.length === 0);
+    const q = [...state];
 
-    if (input[1].value.length < 5) {
-      console.log(`error ${input[1].name}`);
-    }
+    // setState([...isErrorInput]);
 
-    if ((conditionsNumber && conditionsLetter) === false) {
-      console.log(`error ${input[4].name}`);
-    }
-    return undefined;
+    
+
+    q.forEach((item, index) => {
+      if (item.value.length === 0) {
+        return setState(
+          state
+            .slice(0, index)
+            .concat({ ...item, isError: true })
+            .concat(state.slice(index + 1))
+        );
+      }
+    });
+    setState(q);
+
+    // const data = {
+    //   firstName: firstName.value,
+    //   lastName: lastName.value,
+    //   email: email.value,
+    //   phoneNumber: phoneNumber.value,
+    //   password: password.value
+    // };
+    return console.log(q);
   };
   return (
     <FormContext.Provider
       value={useMemo(
         () => ({
-          setConditionsNumber,
-          setConditionsLetter
+          state,
+          setState
         }),
-        []
+        [state]
       )}
     >
       <Wrapper>
-        <Form onSubmit={HandleSubmit}>
+        <Form onSubmit={handleSubmit}>
           {fillingForm.map((elem) => (
             <FormInput key={elem.label} label={elem.label} name={elem.name} />
           ))}
@@ -86,7 +152,5 @@ const FormPage = () => {
     </FormContext.Provider>
   );
 };
-
-// onSubmit={handleSubmit()}
 
 export { FormPage, FormContext };
