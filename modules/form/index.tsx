@@ -2,12 +2,10 @@ import React, { useState, useMemo } from 'react';
 // views
 import { Wrapper, ButtonWrapper, Form, Button } from './views';
 import FormInput from '@md-modules/form/components/input/index';
-// import Button from './components/button';
 
 export interface FillingFormType {
   label: string;
   name: string;
-  type: string;
 }
 
 interface Context {
@@ -23,39 +21,33 @@ const FormContext = React.createContext<Context>({
 const fillingForm: FillingFormType[] = [
   {
     label: 'First Name',
-    name: 'firstName',
-    type: 'text'
+    name: 'firstName'
   },
   {
     label: 'Last Name',
-    name: 'lastName',
-    type: 'text'
+    name: 'lastName'
   },
   {
     label: 'Email',
-    name: 'email',
-    type: 'email'
+    name: 'email'
   },
   {
     label: 'PhoneNumber',
-    name: 'phoneNumber',
-    type: 'text'
+    name: 'phoneNumber'
   },
   {
     label: 'Password',
-    name: 'password',
-    type: 'password'
+    name: 'password'
   }
 ];
 
-const StateDefolt = [
+export const StateDefolt = [
   {
     name: 'firstName',
     isError: false,
     isFocus: false,
-    isBlur: false,
     value: '',
-    errorMessage: '',
+    errorMessage: 'the firstName is entered incorrectly or includes too few characters',
     condition: {
       symbolMin: 5,
       symbolMax: 50
@@ -65,9 +57,8 @@ const StateDefolt = [
     name: 'lastName',
     isError: false,
     isFocus: false,
-    isBlur: false,
     value: '',
-    errorMessage: '',
+    errorMessage: 'the lastName is entered incorrectly or includes too few characters',
     condition: {
       symbolMin: 5,
       symbolMax: 50
@@ -77,42 +68,66 @@ const StateDefolt = [
     name: 'email',
     isError: false,
     isFocus: false,
-    isBlur: false,
     value: '',
-    errorMessage: ''
+    errorMessage: 'the email is entered incorrectly or includes too few characters'
   },
   {
     name: 'phoneNumber',
     isError: false,
     isFocus: false,
-    isBlur: false,
     value: '',
-    errorMessage: '',
+    errorMessage: 'the phoneNumber is entered incorrectly or includes too few characters',
     condition: {
-      symbolMax: 10,
-      valueSymbol: 'number'
+      symbolMax: 10
     }
   },
   {
     name: 'password',
     isError: false,
     isFocus: false,
-    isBlur: false,
     value: '',
-    errorMessage: '',
+    errorMessage: 'the password is entered incorrectly or includes too few characters',
     condition: {
-      numberMin: 1,
-      BigletterMin: 1
+      numberMinOne: false,
+      bigletterMinOne: false
     }
   }
 ];
 
 const FormPage = () => {
   const [state, setState] = useState(StateDefolt);
-  const HandleSubmit = (event: { preventDefault: () => void; currentTarget: any }) => {
+
+  const handleSubmit = (event: any) => {
     event?.preventDefault();
 
-    return undefined;
+    // const isErrorInput = state.map((item) => item.isError);
+    // const isErrorInput = state.filter((item) => item.value.length === 0);
+    const q = [...state];
+
+    // setState([...isErrorInput]);
+
+    
+
+    q.forEach((item, index) => {
+      if (item.value.length === 0) {
+        return setState(
+          state
+            .slice(0, index)
+            .concat({ ...item, isError: true })
+            .concat(state.slice(index + 1))
+        );
+      }
+    });
+    setState(q);
+
+    // const data = {
+    //   firstName: firstName.value,
+    //   lastName: lastName.value,
+    //   email: email.value,
+    //   phoneNumber: phoneNumber.value,
+    //   password: password.value
+    // };
+    return console.log(q);
   };
   return (
     <FormContext.Provider
@@ -125,9 +140,9 @@ const FormPage = () => {
       )}
     >
       <Wrapper>
-        <Form onSubmit={HandleSubmit}>
+        <Form onSubmit={handleSubmit}>
           {fillingForm.map((elem) => (
-            <FormInput key={elem.label} label={elem.label} name={elem.name} type={elem.type} />
+            <FormInput key={elem.label} label={elem.label} name={elem.name} />
           ))}
           <ButtonWrapper>
             <Button type='submit' />
@@ -137,7 +152,5 @@ const FormPage = () => {
     </FormContext.Provider>
   );
 };
-
-// onSubmit={handleSubmit()}
 
 export { FormPage, FormContext };
