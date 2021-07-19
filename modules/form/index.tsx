@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 // views
-import { Wrapper, ButtonWrapper, Form, Button } from './views';
+import { Wrapper, InputWrapper, Form, Input } from './views';
 import FormInput from '@md-modules/form/components/input/index';
 
 export interface FillingFormType {
@@ -8,9 +8,27 @@ export interface FillingFormType {
   name: string;
 }
 
-interface Context {
-  state: any;
-  setState: (state: any) => void;
+export interface StateDefoltType {
+  name: string;
+  isError: boolean;
+  isFocus: boolean;
+  value: string;
+  errorMessage: string;
+  condition?: any;
+}
+
+export interface Context {
+  state: StateDefoltType[];
+  setState: {
+    (state: StateDefoltType[]): void;
+    (arg0: {
+      (state: StateDefoltType[]): StateDefoltType[];
+      (state: StateDefoltType[]): StateDefoltType[];
+      (state: StateDefoltType[]): StateDefoltType[];
+      (state: StateDefoltType[]): StateDefoltType[];
+      (state: StateDefoltType[]): StateDefoltType[];
+    }): void;
+  };
 }
 
 const FormContext = React.createContext<Context>({
@@ -41,13 +59,13 @@ const fillingForm: FillingFormType[] = [
   }
 ];
 
-export const StateDefolt = [
+const stateDefolt: StateDefoltType[] = [
   {
     name: 'firstName',
     isError: false,
     isFocus: false,
     value: '',
-    errorMessage: 'the firstName is entered incorrectly or includes too few characters',
+    errorMessage: '',
     condition: {
       symbolMin: 5,
       symbolMax: 50
@@ -58,7 +76,7 @@ export const StateDefolt = [
     isError: false,
     isFocus: false,
     value: '',
-    errorMessage: 'the lastName is entered incorrectly or includes too few characters',
+    errorMessage: '',
     condition: {
       symbolMin: 5,
       symbolMax: 50
@@ -69,14 +87,14 @@ export const StateDefolt = [
     isError: false,
     isFocus: false,
     value: '',
-    errorMessage: 'the email is entered incorrectly or includes too few characters'
+    errorMessage: ''
   },
   {
     name: 'phoneNumber',
     isError: false,
     isFocus: false,
     value: '',
-    errorMessage: 'the phoneNumber is entered incorrectly or includes too few characters',
+    errorMessage: '',
     condition: {
       symbolMax: 10
     }
@@ -86,7 +104,7 @@ export const StateDefolt = [
     isError: false,
     isFocus: false,
     value: '',
-    errorMessage: 'the password is entered incorrectly or includes too few characters',
+    errorMessage: '',
     condition: {
       numberMinOne: false,
       bigletterMinOne: false
@@ -95,39 +113,25 @@ export const StateDefolt = [
 ];
 
 const FormPage = () => {
-  const [state, setState] = useState(StateDefolt);
+  const [state, setState] = useState(stateDefolt);
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: { preventDefault: () => void }) => {
     event?.preventDefault();
 
-    // const isErrorInput = state.map((item) => item.isError);
-    // const isErrorInput = state.filter((item) => item.value.length === 0);
-    const q = [...state];
-
-    // setState([...isErrorInput]);
-
-    
-
-    q.forEach((item, index) => {
-      if (item.value.length === 0) {
-        return setState(
-          state
-            .slice(0, index)
-            .concat({ ...item, isError: true })
-            .concat(state.slice(index + 1))
-        );
-      }
+    setState((state) => {
+      const newState: StateDefoltType[] = [];
+      state.forEach((item) => {
+        if (item.value.length === 0) {
+          return newState.push({ ...item, isError: true, errorMessage: 'field must be filled' });
+        }
+        return newState.push(item);
+      });
+      return newState;
     });
-    setState(q);
 
-    // const data = {
-    //   firstName: firstName.value,
-    //   lastName: lastName.value,
-    //   email: email.value,
-    //   phoneNumber: phoneNumber.value,
-    //   password: password.value
-    // };
-    return console.log(q);
+    const data = state.map((item) => `${item.name}: ${item.value}`);
+
+    return console.log(data);
   };
   return (
     <FormContext.Provider
@@ -144,9 +148,9 @@ const FormPage = () => {
           {fillingForm.map((elem) => (
             <FormInput key={elem.label} label={elem.label} name={elem.name} />
           ))}
-          <ButtonWrapper>
-            <Button type='submit' />
-          </ButtonWrapper>
+          <InputWrapper>
+            <Input type='submit' />
+          </InputWrapper>
         </Form>
       </Wrapper>
     </FormContext.Provider>
