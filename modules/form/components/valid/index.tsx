@@ -12,6 +12,9 @@ const stateDefolt = {
   }
 };
 
+// reuse import and export types
+// event type should be correct
+
 export const ValidChange = (
   event: { currentTarget: { value: string; name: string } },
   state: StateDefoltType[],
@@ -26,6 +29,7 @@ export const ValidChange = (
     }): void;
   }
 ) => {
+  // should be separation for each type of validation
   const value = event.currentTarget.value;
   const name = event.currentTarget.name;
   const currentItem = state.find((el: { name: string }) => el.name === name) || stateDefolt;
@@ -34,6 +38,7 @@ export const ValidChange = (
   const arrValue = value.split('').filter((el: string) => isNaN(+el));
   const isNumberInPhoneNumber = !(arrValue.length >= 1);
 
+  // should be find
   const isNumberArr: string[] = [];
   value.split('').forEach((el: string) => {
     if (!isNaN(+el)) {
@@ -42,6 +47,7 @@ export const ValidChange = (
   });
   const isNumber = isNumberArr.length >= 1;
 
+  // should be find
   const isBigLetterArr: string[] = [];
   value.split('').forEach((el: string) => {
     if (isNaN(+el) && el.toUpperCase() === el) {
@@ -110,6 +116,8 @@ export const ValidChange = (
     case 'password':
       setState((state: StateDefoltType[]) => {
         if (value.length >= 1 && isLetter && isNumber) {
+          // code duplicate
+          // use reduce
           return state
             .slice(0, currentIndex)
             .concat({

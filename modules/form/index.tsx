@@ -120,19 +120,30 @@ const FormPage = () => {
 
     setState((state) => {
       const newState: StateDefoltType[] = [];
+
+      // use map here instead of forEach
+
       state.forEach((item) => {
+        // !value
         if (item.value.length === 0) {
           return newState.push({ ...item, isError: true, errorMessage: 'field must be filled' });
         }
+
+        // ternary operator
+
         return newState.push(item);
       });
+
       return newState;
     });
 
     const data = state.map((item) => `${item.name}: ${item.value}`);
-
+    // why return ?
     return console.log(data);
   };
+
+  // setState should be wrapped and have it's own handlers
+
   return (
     <FormContext.Provider
       value={useMemo(

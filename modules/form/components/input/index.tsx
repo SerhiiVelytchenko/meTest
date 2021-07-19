@@ -20,6 +20,7 @@ const FormInput: React.FC<FillingFormType> = ({ label, name }) => {
   // Hooks
   const { state, setState } = React.useContext<Context>(FormContext);
 
+  // what if here will be more types
   const type = name === 'password' ? 'password' : 'text';
   const currentItem = state.find((el: { name: string }) => el.name === name) || stateDefolt;
   const currentIndex = state.indexOf(currentItem);
@@ -27,6 +28,7 @@ const FormInput: React.FC<FillingFormType> = ({ label, name }) => {
   const isError = currentItem?.isError;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // correct names and you shouldn't pass setState, you need to return correct state and use it here in setState
     ValidChange(event, state, setState);
   };
 
