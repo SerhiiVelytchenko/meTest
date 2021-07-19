@@ -5,17 +5,18 @@ export const Wrapper = styled.div``;
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  
   margin: 0 auto;
   width: 50%;
-  
+  @media (max-width: 768px) {
+    width: 95%;
+  }
 `;
 
-export const ButtonWrapper = styled.div`
+export const InputWrapper = styled.div`
   margin: 0 auto;
 `;
 
-export const Button = styled.input`
+export const Input = styled.input`
   margin: 5px 0px 5px 0px;
   padding: 5px 10px;
   background-color: transparent;
@@ -27,6 +28,6 @@ export const Button = styled.input`
   cursor: pointer;
   width: 130px;
   &:hover {
-    background-color: rgba(135, 204, 67, 0.8);
+    background-color: ${({ theme }) => theme.colors.green200};
   }
 `;
