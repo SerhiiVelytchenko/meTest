@@ -25,7 +25,10 @@
       "@md-ui/*": ["./modules/shared/components/ui/*"],
       "@md-utils/*": ["./modules/shared/utils/*"],
       "@md-form/*": ["./modules/form/*"],
-    },
+      "@md-queries/*": ["./modules/shared/queries/*"],
+      "@md-utils": ["./modules/shared/utils"],
+      "@md-starships/*": ["./modules/starships/*"],
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
