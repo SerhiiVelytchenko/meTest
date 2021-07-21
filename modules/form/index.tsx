@@ -1,66 +1,19 @@
 import React, { useState, useMemo } from 'react';
+// type
+import { StateFormType, Context, HandleStateFormType } from '@md-form/components/type';
 // views
 import { Wrapper, InputWrapper, Form, Input } from './views';
 import FormInput from '@md-modules/form/components/input/index';
 
-export interface FillingFormType {
-  label: string;
-  name: string;
-}
-
-export interface StateDefoltType {
-  name: string;
-  isError: boolean;
-  isFocus: boolean;
-  value: string;
-  errorMessage: string;
-  condition?: any;
-}
-
-export interface Context {
-  state: StateDefoltType[];
-  setState: {
-    (state: StateDefoltType[]): void;
-    (arg0: {
-      (state: StateDefoltType[]): StateDefoltType[];
-      (state: StateDefoltType[]): StateDefoltType[];
-      (state: StateDefoltType[]): StateDefoltType[];
-      (state: StateDefoltType[]): StateDefoltType[];
-      (state: StateDefoltType[]): StateDefoltType[];
-    }): void;
-  };
-}
-
-const FormContext = React.createContext<Context>({
-  state: [],
-  setState: () => {}
+export const FormContext = React.createContext<Context>({
+  stateForm: [],
+  handleStateForm: () => {}
 });
 
-const fillingForm: FillingFormType[] = [
+const stateFormDefolt: StateFormType[] = [
   {
     label: 'First Name',
-    name: 'firstName'
-  },
-  {
-    label: 'Last Name',
-    name: 'lastName'
-  },
-  {
-    label: 'Email',
-    name: 'email'
-  },
-  {
-    label: 'PhoneNumber',
-    name: 'phoneNumber'
-  },
-  {
-    label: 'Password',
-    name: 'password'
-  }
-];
-
-const stateDefolt: StateDefoltType[] = [
-  {
+    type: 'text',
     name: 'firstName',
     isError: false,
     isFocus: false,
@@ -72,6 +25,8 @@ const stateDefolt: StateDefoltType[] = [
     }
   },
   {
+    label: 'Last Name',
+    type: 'text',
     name: 'lastName',
     isError: false,
     isFocus: false,
@@ -83,6 +38,8 @@ const stateDefolt: StateDefoltType[] = [
     }
   },
   {
+    label: 'Email',
+    type: 'text',
     name: 'email',
     isError: false,
     isFocus: false,
@@ -90,6 +47,8 @@ const stateDefolt: StateDefoltType[] = [
     errorMessage: ''
   },
   {
+    label: 'PhoneNumber',
+    type: 'text',
     name: 'phoneNumber',
     isError: false,
     isFocus: false,
@@ -100,6 +59,8 @@ const stateDefolt: StateDefoltType[] = [
     }
   },
   {
+    label: 'Password',
+    type: 'password',
     name: 'password',
     isError: false,
     isFocus: false,
@@ -112,41 +73,50 @@ const stateDefolt: StateDefoltType[] = [
   }
 ];
 
-const FormPage = () => {
-  const [state, setState] = useState(stateDefolt);
+export const FormPage = () => {
+  const [stateForm, setStateForm] = useState(stateFormDefolt);
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event?.preventDefault();
 
-    setState((state) => {
-      const newState: StateDefoltType[] = [];
-      state.forEach((item) => {
-        if (item.value.length === 0) {
-          return newState.push({ ...item, isError: true, errorMessage: 'field must be filled' });
-        }
-        return newState.push(item);
+    setStateForm((stateForm) => {
+      return stateForm.map((item) => {
+        return item.value.length === 0 ? { ...item, isError: true, errorMessage: 'field must be filled' } : { ...item };
       });
-      return newState;
     });
 
-    const data = state.map((item) => `${item.name}: ${item.value}`);
-
-    return console.log(data);
+    console.log(stateForm.map((item) => `${item.name}: ${item.value}`));
   };
+
+  const handleStateForm = (currentIndex: number, currentItem: StateFormType, data: HandleStateFormType) => {
+    return setStateForm(
+      stateForm
+        .slice(0, currentIndex)
+        .concat({ ...currentItem, ...data })
+        .concat(stateForm.slice(currentIndex + 1))
+    );
+  };
+
   return (
     <FormContext.Provider
       value={useMemo(
         () => ({
-          state,
-          setState
+          stateForm,
+          handleStateForm
         }),
-        [state]
+        [stateForm]
       )}
     >
       <Wrapper>
         <Form onSubmit={handleSubmit}>
-          {fillingForm.map((elem) => (
-            <FormInput key={elem.label} label={elem.label} name={elem.name} />
+          {stateForm.map((elem) => (
+            <FormInput
+              key={elem.label}
+              label={elem.label}
+              name={elem.name}
+              type={elem.type}
+              value={elem.value}
+            />
           ))}
           <InputWrapper>
             <Input type='submit' />
@@ -156,5 +126,3 @@ const FormPage = () => {
     </FormContext.Provider>
   );
 };
-
-export { FormPage, FormContext };

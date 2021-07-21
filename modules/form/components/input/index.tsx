@@ -1,10 +1,12 @@
 import React from 'react';
-import { StateDefoltType, Context } from '@md-form/index';
-import { FormContext, FillingFormType } from '@md-modules/form';
+import { Context, StateFormType } from '@md-form/components/type';
+import { FormContext } from '@md-modules/form';
 import { Input, TextError } from './views';
-import { ValidChange, ValidBlur } from '@md-form/components/valid/index';
+import { ValidationChange, ValidationBlur } from '@md-modules/form/components/validation/index';
 
-const stateDefolt = {
+const stateFormDefolt = {
+  label: '',
+  type: '',
   name: 'firstName',
   isError: false,
   isFocus: false,
@@ -16,44 +18,42 @@ const stateDefolt = {
   }
 };
 
-const FormInput: React.FC<FillingFormType> = ({ label, name }) => {
+const FormInput: React.FC<StateFormType> = ({ label, name, type, value }) => {
   // Hooks
-  const { state, setState } = React.useContext<Context>(FormContext);
+  const { stateForm, handleStateForm } = React.useContext<Context>(FormContext);
 
-  const type = name === 'password' ? 'password' : 'text';
-  const currentItem = state.find((el: { name: string }) => el.name === name) || stateDefolt;
-  const currentIndex = state.indexOf(currentItem);
+  const currentItem = stateForm.find((el: { name: string }) => el.name === name) || stateFormDefolt;
+  const currentIndex = stateForm.indexOf(currentItem);
 
   const isError = currentItem?.isError;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    ValidChange(event, state, setState);
+    const value = event.currentTarget.value;
+    const name = event.currentTarget.name;
+    ValidationChange(value, name, currentItem, currentIndex, handleStateForm);
   };
 
   const handleFocus = () => {
-    setState((state: StateDefoltType[]) => {
-      return state
-        .slice(0, currentIndex)
-        .concat({ ...currentItem, isError: false })
-        .concat(state.slice(currentIndex + 1));
-    });
+    handleStateForm(currentIndex, currentItem, { isError: false });
   };
 
   const handleBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
-    ValidBlur(event, state, setState);
+    const value = event.currentTarget.value;
+    const name = event.currentTarget.name;
+    ValidationBlur(value, name, currentItem, currentIndex, handleStateForm);
   };
 
   return (
     <>
       <Input
-        border={isError ? 'red300' : 'undefined'}
-        type={type}
+        value={value}
         name={name}
+        type={type}
         placeholder={label}
+        border={isError ? 'red300' : 'undefined'}
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        value={state[currentIndex].value}
       />
       <TextError>{isError ? <TextError>{currentItem?.errorMessage}</TextError> : ''}</TextError>
     </>
