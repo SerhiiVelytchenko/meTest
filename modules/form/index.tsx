@@ -10,6 +10,8 @@ export const FormContext = React.createContext<Context>({
   handleStateForm: () => {}
 });
 
+// should be outside the component
+
 const stateFormDefolt: StateFormType[] = [
   {
     label: 'First Name',
@@ -79,6 +81,8 @@ export const FormPage = () => {
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event?.preventDefault();
 
+    // not necessary to use return, you can simplify the function
+
     setStateForm((stateForm) => {
       return stateForm.map((item) => {
         return item.value.length === 0 ? { ...item, isError: true, errorMessage: 'field must be filled' } : { ...item };
@@ -97,6 +101,9 @@ export const FormPage = () => {
     );
   };
 
+  // handle change should be handled here and value validated
+  // context not needed in this case
+
   return (
     <FormContext.Provider
       value={useMemo(
@@ -110,13 +117,7 @@ export const FormPage = () => {
       <Wrapper>
         <Form onSubmit={handleSubmit}>
           {stateForm.map((elem) => (
-            <FormInput
-              key={elem.label}
-              label={elem.label}
-              name={elem.name}
-              type={elem.type}
-              value={elem.value}
-            />
+            <FormInput key={elem.label} label={elem.label} name={elem.name} type={elem.type} value={elem.value} />
           ))}
           <InputWrapper>
             <Input type='submit' />
