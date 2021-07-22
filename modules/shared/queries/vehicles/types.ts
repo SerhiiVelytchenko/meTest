@@ -1,4 +1,4 @@
-import * as V from 'modules/shared/types/vehicle/index';
+import * as V from '@md-modules/starships/types/vehicle/index';
 
 export type Vehicle = Pick<V.Vehicle, 'id' | 'name'>;
 export type Vehicles = Vehicle[];

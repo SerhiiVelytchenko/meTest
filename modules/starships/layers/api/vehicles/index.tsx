@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 // utils
 import * as U from '@md-utils';
 // types
-import { GetVehiclesResponse, GetVehiclesVariables, Vehicles } from '@md-queries/vehicles/types';
+import { GetVehiclesVariables, Vehicles } from '@md-queries/vehicles/types';
 import { ClientError } from '@md-utils/errors/custom';
 // queries
 import { GET_VEHICLES_QUERY } from '@md-queries/vehicles';
@@ -25,8 +25,8 @@ const VehiclesAPIContext = React.createContext<Context>({
 
 const VehiclesAPIContextProvider: React.FC = ({ children }) => {
   // make api call here
-  const { data, loading, refetch, error } = useQuery<GetVehiclesResponse, GetVehiclesVariables>(GET_VEHICLES_QUERY, {
-    variables: { first: 5 }
+  const { data, loading, error, refetch, fetchMore } = useQuery(GET_VEHICLES_QUERY, {
+    variables: { after: null }
   });
 
   const refetchVehicles = async (variables?: Partial<GetVehiclesVariables>) => {
@@ -39,6 +39,24 @@ const VehiclesAPIContextProvider: React.FC = ({ children }) => {
     }
   };
 
+  const y = () => {
+    const { endCursor } = data.allStarships.pageInfo;
+
+    fetchMore({
+      variables: {
+        after: endCursor
+      },
+      updateQuery: (prevResult, { fetchMoreResult }) => {
+        fetchMoreResult.allStarships.starships = [
+          ...prevResult.allStarships.starships,
+          ...fetchMoreResult.allStarships.starships
+        ];
+        return fetchMoreResult;
+      }
+    });
+  };
+
+  // setTimeout(y, 1200);
   return (
     <VehiclesAPIContext.Provider
       value={{
