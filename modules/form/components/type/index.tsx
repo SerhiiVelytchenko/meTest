@@ -1,15 +1,18 @@
+import React from 'react';
 export interface StateFormType {
-  label: string;
-  type: string;
-  name: string;
+  label?: string;
+  type?: string;
+  name?: string;
   isError?: boolean;
   isFocus?: boolean;
-  value: string;
+  value?: string;
   errorMessage?: string;
   condition?: any;
+  handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFocus?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-
-export interface HandleStateFormType {
+export interface HandleStateFormType extends StateFormType {
   isError?: boolean;
   value?: string;
   errorMessage?: string;
@@ -17,9 +20,4 @@ export interface HandleStateFormType {
     numberMinOne?: boolean;
     bigletterMinOne?: boolean;
   };
-}
-
-export interface Context {
-  stateForm: StateFormType[];
-  handleStateForm: (currentIndex: number, currentItem: StateFormType, data: HandleStateFormType) => void;
 }
