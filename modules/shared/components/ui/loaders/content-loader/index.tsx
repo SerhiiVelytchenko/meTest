@@ -1,8 +1,11 @@
 import * as React from 'react';
+// libs
 import styled from 'styled-components';
-import { Loader } from '../loader';
-import { ErrorWrapper } from 'modules/shared/components/ui/content/index';
+// types
 import { ClientError } from '@md-utils/errors/custom';
+// view components
+import { Loader } from '../loader';
+import { ErrorWrapper } from '../../errors/content';
 
 interface Props {
   isLoading: boolean;

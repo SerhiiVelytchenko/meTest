@@ -15,15 +15,13 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 const Button: React.FC<ButtonProps> = ({ preset = 'default', children, isLoading = false, ...rest }) => (
   <Wrapper preset={preset} isLoading={isLoading} {...rest}>
     <InnerWrapper>
-      {isLoading
-        ? (
+      {isLoading ? (
         <LoaderWrapper>
           <Loader />
         </LoaderWrapper>
-          )
-        : (
-            children
-          )}
+      ) : (
+        children
+      )}
     </InnerWrapper>
   </Wrapper>
 );

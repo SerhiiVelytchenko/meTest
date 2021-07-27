@@ -24,6 +24,7 @@
     "@typescript-eslint/no-use-before-define": ["error"],
     "semi": ["error", "always"],
     "react/react-in-jsx-scope": 0,
+    "multiline-ternary": 0,
     "react/display-name": 0,
     "react/prop-types": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
@@ -44,19 +45,14 @@
         "argsIgnorePattern": "^_"
       }
     ],
-    "no-console": "off",
-    "no-restricted-syntax": [
-      "error",
-        {
-          "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
-          "message": "Unexpected property on console object was called"
-        }
+    "no-console": [
+      2,
+      {
+        "allow": ["warn", "error"]
+      }
     ]
-    // "no-console": [
-    //   2,
-    //   {
-    //     "allow": ["warn", "error"]
-    //   }
-    // ]
+  },
+  "globals": {
+    "localStorage": true
   }
 }

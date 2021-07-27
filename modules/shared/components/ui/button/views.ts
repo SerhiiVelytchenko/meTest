@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 // local
-import { Margin } from '@md-modules/starships/types/css/index';
+import { Margin } from '@md-shared/types/css';
 import { ButtonPresets, buttonPresets } from './presets';
-import { getMarginStyle } from '@md-modules/starships/types/helpers/styled';
+import { getMarginStyle } from '@md-shared/helpers/styled';
 
 export interface WrapperStyle {
   height?: string;

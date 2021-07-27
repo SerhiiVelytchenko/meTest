@@ -1,11 +1,13 @@
 import { DefaultTheme, css } from 'styled-components';
 
 export const colors = {
+  // yellow
+  yellow400: '#e3ce0e',
   // blue
   blue400: '#0070f3',
   // green
-  green300: '#2ab736',
   green200: '#87cc43',
+  green300: '#2ab736',
   // gray
   gray300: '#C5D0E6',
   gray400: '#272d3d',
@@ -15,6 +17,7 @@ export const colors = {
   red200: '#FFCBDB',
   red300: '#B03F35',
   red400: '#AB274F',
+  red500: '#ff294b',
   // other
   white: '#fff',
   black: '#000',
@@ -46,8 +49,14 @@ export const dimensions = {
   pageMinWidth: 320
 };
 
+export const medias = {
+  phone: 'max-width: 480px',
+  tablet: 'max-width: 768px'
+};
+
 export const theme: DefaultTheme = {
   colors,
   templates,
-  dimensions
+  dimensions,
+  medias
 };
