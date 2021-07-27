@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 // constants
-import { AUTH_TOKEN_FIELD, API_PREFIX } from 'constants/common';
+import { AUTH_TOKEN_FIELD, API_PREFIX } from '@md-constants/common';
 
 let apolloClient: ApolloClient<Record<string, unknown>>;
 
@@ -17,7 +17,19 @@ function createApolloClient(token?: string) {
         ...(Boolean(token) && { [AUTH_TOKEN_FIELD]: token })
       }
     }),
-    cache: new InMemoryCache({})
+    cache: new InMemoryCache({
+      typePolicies: {
+        Root: {
+          fields: {
+            starships: {
+              merge(existing, incoming) {
+                return { ...existing, ...incoming };
+              }
+            }
+          }
+        }
+      }
+    })
   });
 }
 

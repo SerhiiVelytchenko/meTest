@@ -1,21 +1,29 @@
 import * as React from 'react';
+// components
 import Head from 'next/head';
+// providers
+import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import { ApolloProvider } from '@apollo/client';
+// types
 import { AppProps } from 'next/app';
 // local
 import { theme } from '@md-styles/styled/theme';
 import { GlobalStyles } from '@md-styles/styled/global';
+// hooks
+import { useStore } from '@md-shared/hooks/use-store';
+import { useApollo } from '../lib/apolloClient';
+// utils
+import { cookiesManager } from '@md-managers/cookies';
 // global css
 import 'normalize.css/normalize.css';
-import { BasketProvider } from '@md-modules/basket/layers';
-import { ApolloProvider } from '@apollo/client';
-import { useApollo } from '../lib/apolloClient';
-import { cookiesManager } from 'modules/shared/cookies/index';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const { getToken } = cookiesManager();
   const token: string | undefined = pageProps.serverToken ?? getToken();
   const apolloClient = useApollo(pageProps.initialApolloState, token);
+  const store = useStore(pageProps.initialReduxState);
+
   return (
     <>
       <Head>
@@ -24,13 +32,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1' />
         <meta charSet='utf-8' />
       </Head>
-      <ApolloProvider client={apolloClient}>
-        <BasketProvider>
-          <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <ApolloProvider client={apolloClient}>
+          <Provider store={store}>
             <Component {...pageProps} />
-          </ThemeProvider>
-        </BasketProvider>
-      </ApolloProvider>
+          </Provider>
+        </ApolloProvider>
+      </ThemeProvider>
       <GlobalStyles />
     </>
   );

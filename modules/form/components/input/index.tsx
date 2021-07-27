@@ -30,8 +30,6 @@ const FormInput: React.FC<StateFormType> = ({ label, name, type, value }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     const name = event.currentTarget.name;
-
-    // small letter, don't pass the function, use received value
     ValidationChange(value, name, currentItem, currentIndex, handleStateForm);
   };
 

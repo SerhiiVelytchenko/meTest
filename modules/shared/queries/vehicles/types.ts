@@ -1,11 +1,11 @@
-import * as V from '@md-modules/starships/types/vehicle/index';
+import * as V from '@md-shared/types/vehicle';
 
 export type Vehicle = Pick<V.Vehicle, 'id' | 'name'>;
 export type Vehicles = Vehicle[];
 
 export interface GetVehiclesResponse {
-  allStarships: {
-    starships: Vehicles;
+  allVehicles: {
+    vehicles: Vehicles;
     totalCount: number;
   };
 }

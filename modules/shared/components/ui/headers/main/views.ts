@@ -4,7 +4,8 @@ export const Wrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;  
+  right: 0;
+  z-index: 100;
   background-color: ${({ theme }) => theme.colors.gray500};
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray600};
 `;
@@ -12,9 +13,9 @@ export const Wrapper = styled.div`
 export const IWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 5px 15px;
   margin: 0 auto;
-  max-width: ${({ theme }) => theme.dimensions.pageMaxWidth}px;
+  height: 60px;
 `;
 
 export const LWrapper = styled.div`
@@ -30,5 +31,11 @@ export const LWrapper = styled.div`
 export const RWrapper = styled.div`
   flex: 2;
   justify-content: flex-end;
+  color: white;
   ${({ theme }) => theme.templates.centerItems};
+`;
+
+export const Icon = styled.img`
+  height: 20px;
+  width: 20px;
 `;

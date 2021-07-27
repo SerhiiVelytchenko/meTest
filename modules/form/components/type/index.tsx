@@ -6,7 +6,7 @@ export interface StateFormType {
   isFocus?: boolean;
   value: string;
   errorMessage?: string;
-  condition?: any
+  condition?: any;
 }
 
 export interface HandleStateFormType {
