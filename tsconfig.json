@@ -17,7 +17,7 @@
     "paths": {
       "@md-modules/*": ["./modules/*"],
       "@md-sw/*": ["./modules/star-wars/*"],
-      "@md-form*": ["./modules/form/*"],
+      "@md-form/*": ["./modules/form/*"],
       "@md-sw-people/*": ["./modules/star-wars/graphql/people/*"],
       "@md-sw-person/*": ["./modules/star-wars/graphql/person/*"],
       "@md-sw-starships/*": ["./modules/star-wars/graphql/starships/*"],

@@ -1,95 +1,33 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 // type
-import { StateFormType, Context, HandleStateFormType } from '@md-form/components/type';
+import { HandleStateFormType } from '@md-form/components/type';
+// components
+import FormInput from '@md-form/components/input/index';
+import { StateFormDefolt } from '@md-form/constants/index';
+import { validationChange, validationBlur } from '@md-form/components/validation/index';
 // views
-import { Wrapper, InputWrapper, Form, Input } from './views';
-import FormInput from '@md-modules/form/components/input/index';
-
-export const FormContext = React.createContext<Context>({
-  stateForm: [],
-  handleStateForm: () => {}
-});
-
-const stateFormDefolt: StateFormType[] = [
-  {
-    label: 'First Name',
-    type: 'text',
-    name: 'firstName',
-    isError: false,
-    isFocus: false,
-    value: '',
-    errorMessage: '',
-    condition: {
-      symbolMin: 5,
-      symbolMax: 50
-    }
-  },
-  {
-    label: 'Last Name',
-    type: 'text',
-    name: 'lastName',
-    isError: false,
-    isFocus: false,
-    value: '',
-    errorMessage: '',
-    condition: {
-      symbolMin: 5,
-      symbolMax: 50
-    }
-  },
-  {
-    label: 'Email',
-    type: 'text',
-    name: 'email',
-    isError: false,
-    isFocus: false,
-    value: '',
-    errorMessage: ''
-  },
-  {
-    label: 'PhoneNumber',
-    type: 'text',
-    name: 'phoneNumber',
-    isError: false,
-    isFocus: false,
-    value: '',
-    errorMessage: '',
-    condition: {
-      symbolMax: 10
-    }
-  },
-  {
-    label: 'Password',
-    type: 'password',
-    name: 'password',
-    isError: false,
-    isFocus: false,
-    value: '',
-    errorMessage: '',
-    condition: {
-      numberMinOne: false,
-      bigletterMinOne: false
-    }
-  }
-];
+import { Wrapper, InputWrapper, Form, InputButton } from './views';
 
 export const FormPage = () => {
-  const [stateForm, setStateForm] = useState(stateFormDefolt);
+  const [stateForm, setStateForm] = useState(StateFormDefolt);
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event?.preventDefault();
 
-    setStateForm((stateForm) => {
-      return stateForm.map((item) => {
-        return item.value.length === 0 ? { ...item, isError: true, errorMessage: 'field must be filled' } : { ...item };
-      });
-    });
+    setStateForm((stateForm) =>
+      stateForm.map((item) =>
+        item.value?.length === 0 ? { ...item, isError: true, errorMessage: 'field must be filled' } : { ...item }
+      )
+    );
 
     // eslint-disable-next-line no-console
     console.log(stateForm.map((item) => `${item.name}: ${item.value}`));
   };
 
-  const handleStateForm = (currentIndex: number, currentItem: StateFormType, data: HandleStateFormType) => {
+  const handleStateForm = ([name, data]: [string, HandleStateFormType]) => {
+    const currentItem = stateForm.find((item) => item.name === name);
+    const currentIndex = stateForm.findIndex((item) => item.name === name);
+
     return setStateForm(
       stateForm
         .slice(0, currentIndex)
@@ -98,26 +36,45 @@ export const FormPage = () => {
     );
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.currentTarget.value;
+    const name = event.currentTarget.name;
+    const y = validationChange(value, name);
+    handleStateForm(y);
+  };
+
+  const handleFocus = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.currentTarget.name;
+    handleStateForm([name, { isError: false }]);
+  };
+
+  const handleBlur = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.currentTarget.value;
+    const name = event.currentTarget.name;
+    handleStateForm(validationBlur(value, name));
+  };
+
   return (
-    <FormContext.Provider
-      value={useMemo(
-        () => ({
-          stateForm,
-          handleStateForm
-        }),
-        [stateForm]
-      )}
-    >
-      <Wrapper>
-        <Form onSubmit={handleSubmit}>
-          {stateForm.map((elem) => (
-            <FormInput key={elem.label} label={elem.label} name={elem.name} type={elem.type} value={elem.value} />
-          ))}
-          <InputWrapper>
-            <Input type='submit' />
-          </InputWrapper>
-        </Form>
-      </Wrapper>
-    </FormContext.Provider>
+    <Wrapper>
+      <Form onSubmit={handleSubmit}>
+        {stateForm.map((elem) => (
+          <FormInput
+            key={elem.label}
+            label={elem.label}
+            name={elem.name}
+            type={elem.type}
+            value={elem.value}
+            isError={elem.isError}
+            errorMessage={elem.errorMessage}
+            handleChange={handleChange}
+            handleFocus={handleFocus}
+            handleBlur={handleBlur}
+          />
+        ))}
+        <InputWrapper>
+          <InputButton type='submit' />
+        </InputWrapper>
+      </Form>
+    </Wrapper>
   );
 };
