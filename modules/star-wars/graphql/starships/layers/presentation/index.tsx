@@ -14,13 +14,19 @@ const StarshipsPresentation = () => {
   const { starshipsList } = React.useContext(StarshipsBLContext);
   const [fetching, setFetching] = useState(true);
 
+  // starshipsList as dependency
+  // useEffect but not Use Memo
+
   useMemo(() => {
     setFetching(true);
   }, [starshipsList.length]);
 
+  // event shouldn't be any https://stackoverflow.com/questions/56164315/how-to-describe-type-scroll-events
   const handleScroll = (event: any) => {
     if (starshipsList.length === totalCount) return setFetching(false);
+    // should be in const
     if (event.currentTarget.scrollHeight - (event.currentTarget.scrollTop + window.innerHeight) < 170 && fetching) {
+      // use as async function
       addNewPositions();
       setFetching(false);
     }

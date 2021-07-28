@@ -9,6 +9,7 @@ import { GET_STARSHIPS_QUERY } from '@md-queries/starships';
 import { GetStarshipsResponse, GetStarshipsVariables, Starships } from '@md-queries/starships/types';
 import { ClientError } from '@md-utils/errors/custom';
 
+// shouldn't be void
 interface Context {
   starships: Starships;
   error?: ClientError<string>;
@@ -32,8 +33,11 @@ const StarshipsAPIContextProvider: React.FC = ({ children }) => {
     GET_STARSHIPS_QUERY,
     {
       variables: { after: '' }
+      // notifyOnNetworkStatusChange: true
     }
   );
+
+  // if (networkStatus === NetworkStatus.refetch) return 'Refetching!';
 
   const refetchStarships = async (variables?: GetStarshipsVariables) => {
     try {
@@ -44,8 +48,11 @@ const StarshipsAPIContextProvider: React.FC = ({ children }) => {
     }
   };
 
+  // we should pass variables
   const addNewPositions = () => {
     const endCursor = data?.allStarships.pageInfo.endCursor;
+    // async function
+    // try catch
 
     fetchMore({
       variables: {
@@ -56,6 +63,7 @@ const StarshipsAPIContextProvider: React.FC = ({ children }) => {
           ...prevResult.allStarships.starships,
           ...fetchMoreResult.allStarships.starships
         ];
+
         return fetchMoreResult;
       }
     });
