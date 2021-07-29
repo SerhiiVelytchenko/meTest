@@ -39,8 +39,7 @@ export const FormPage = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     const name = event.currentTarget.name;
-    const y = validationChange(value, name);
-    handleStateForm(y);
+    handleStateForm(validationChange(value, name));
   };
 
   const handleFocus = (event: React.ChangeEvent<HTMLInputElement>) => {
