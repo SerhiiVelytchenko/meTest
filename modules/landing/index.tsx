@@ -42,7 +42,7 @@ export const LandingPage = () => {
 
   // console.log(isRender)
 
-  const handleMouseMove = (event) => {
+  const handleMouseMove = (event: any) => {
     const parallaxWidth = event.currentTarget.offsetWidth;
     const parallaxHeight = event.currentTarget.offsetHeight;
 
