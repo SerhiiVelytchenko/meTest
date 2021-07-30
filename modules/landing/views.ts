@@ -6,32 +6,22 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   background-image: url(/static/images/cultum.png);
   background-size: 1500px 7200px;
-  /* background-color: ${({ theme }) => theme.colors.white}; */
+  background-color: ${({ theme }) => theme.colors.white};
   min-height: 100%;
 `;
 
 export const Parallax = styled.div`
   min-height: 100vh;
-  background: url('https://cultum.io/static/images/cultum/cultum.svg') top / cover no-repeat;
-
-  //background-image: url(/static/images/cultum.png);
+   //background-image: url(/static/images/cultum.png);
 `;
 
-export const ParallaxBody = styled.div``;
-export const ParalaxContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 1000px;
-  z-index: 2;
+export const ParallaxBody = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2vw;
 `;
-export const ParalaxWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-`;
+
 export const ParalaxLabel = styled.div`
   position: absolute;
   width: 11%;
@@ -43,7 +33,7 @@ export const ParalaxLabel = styled.div`
   left: 7%;
   background: url(/static/images/CultumHome/logo@3x.png) top / cover no-repeat;
 `;
-
+// /home/serko/myTest/myTest/pages/_document.tsx
 export const ParalaxMenu = styled.div`
   position: absolute;
   width: 2.5%;
@@ -55,6 +45,23 @@ export const ParalaxMenu = styled.div`
   left: 95%;
   background: url(/static/images/CultumHome/menu@3x.png) top / cover no-repeat;
 `;
+
+export const ParalaxContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* height: 1050px; */
+  /* z-index: 2; */
+  background-color: red;
+`;
+export const ParalaxWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+`;
+
 export const ParalaxImagest = styled.div`
   /* position: absolute; */
   width: 120%;
@@ -69,6 +76,10 @@ export const ParalaxImagestImg = styled.div`
   /* width:100%;
 height: 100%;
 left: 0%; */
+background-color: red;
+width: 100px;
+height: 100px;
+
 `;
 
 export const ParalaxImagestLeftPlanet = styled.div<{ transform?: string }>`
@@ -197,9 +208,9 @@ export const Button = styled.button`
   }
 `;
 export const Content = styled.div`
-  background-color: ${({ theme }) => theme.colors.red200};
+  /* background-color: ${({ theme }) => theme.colors.red200};
   position: relative;
-  z-index: 2;
+  z-index: 2; */
 `;
 
 export const ContentOne = styled.div`
