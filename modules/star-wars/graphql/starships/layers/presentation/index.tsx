@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 // view components
 import { Card } from '@md-sw/shared/components/card';
 import { ContentLoader } from '@md-ui/loaders/content-loader';
@@ -10,31 +10,29 @@ import { ContentWrapper, Wrapper, ContentItemsWrapper } from '@md-shared/views/c
 import { Loader } from '@md-modules/shared/components/ui/loaders/loader';
 
 const StarshipsPresentation = () => {
-  const { isLoading, error, addNewPositions, totalCount } = React.useContext(StarshipsAPIContext);
+  const { isLoading, isLoadingFetchMore, error, fetchMore, totalCount } = React.useContext(StarshipsAPIContext);
   const { starshipsList } = React.useContext(StarshipsBLContext);
-  const [fetching, setFetching] = useState(true);
 
-  // starshipsList as dependency
-  // useEffect but not Use Memo
-
-  useMemo(() => {
-    setFetching(true);
-  }, [starshipsList.length]);
-
-  // event shouldn't be any https://stackoverflow.com/questions/56164315/how-to-describe-type-scroll-events
-  const handleScroll = (event: any) => {
-    if (starshipsList.length === totalCount) return setFetching(false);
+  const handleScroll = (event: React.UIEvent<HTMLElement>) => {
+    // element height with regard to vertical scrolling
+    const scrollHeight: number = event.currentTarget.scrollHeight;
+    // the number of pixels scrolled from the top of the element
+    const scrollTop: number = event.currentTarget.scrollTop;
+    // browser window height
+    const workspaceHeight: number = window.innerHeight;
+    // fetchMore start mark px from the bottom edge
+    const heightStart = 170;
+    // the number of elements in the array
+    const numberItems: boolean = starshipsList.length < totalCount;
     // should be in const
-    if (event.currentTarget.scrollHeight - (event.currentTarget.scrollTop + window.innerHeight) < 170 && fetching) {
-      // use as async function
-      addNewPositions();
-      setFetching(false);
+    if (scrollHeight - (scrollTop + workspaceHeight) < heightStart && !isLoadingFetchMore && numberItems) {
+      fetchMore({ after: '' });
     }
   };
 
   return (
     <ContentWrapper>
-      <ContentLoader isLoading={isLoading} error={error}>
+      <ContentLoader isLoading={isLoading && !isLoadingFetchMore} error={error}>
         <Wrapper>
           <ContentItemsWrapper onScroll={handleScroll}>
             {starshipsList.map((starship) => (
@@ -45,7 +43,7 @@ const StarshipsPresentation = () => {
                 {...starship}
               />
             ))}
-            {totalCount > starshipsList.length ? <Loader /> : ''}
+            {isLoadingFetchMore ? <Loader /> : ''}
           </ContentItemsWrapper>
         </Wrapper>
       </ContentLoader>
