@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// Why not combine these three components?
+
 export const Wrapper = styled.div`
   display: grid;
   grid-gap: 30px;

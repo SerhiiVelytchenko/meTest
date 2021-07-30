@@ -17,6 +17,7 @@ interface Context {
   isLoadingFetchMore: boolean;
   totalCount: number;
   refetch: (variables?: GetStarshipsVariables) => Promise<ClientError<string> | Starships>;
+  // why undefined ?
   fetchMore: (variables?: GetStarshipsVariables) => Promise<ClientError<string> | Starships | undefined>;
 }
 
@@ -37,6 +38,7 @@ const StarshipsAPIContextProvider: React.FC = ({ children }) => {
   >(GET_STARSHIPS_QUERY, {
     variables: {
       first: 5,
+      // why ?
       after: ''
     },
     notifyOnNetworkStatusChange: true
@@ -55,7 +57,9 @@ const StarshipsAPIContextProvider: React.FC = ({ children }) => {
 
   const handlerFetchMore = async (variables?: GetStarshipsVariables) => {
     const endCursor = data?.allStarships.pageInfo.endCursor;
+
     try {
+      // So it does return the Starships after all?
       await fetchMore({
         variables: {
           ...variables,
