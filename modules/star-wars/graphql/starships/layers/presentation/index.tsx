@@ -2,13 +2,12 @@ import React from 'react';
 // view components
 import { Card } from '@md-sw/shared/components/card';
 import { ContentLoader } from '@md-ui/loaders/content-loader';
+import { Loader } from '@md-modules/shared/components/ui/loaders/loader';
 // context
 import { StarshipsAPIContext } from '@md-sw-starships/layers/api/starships';
 import { StarshipsBLContext } from '@md-sw-starships/layers/business';
 // views
-import { ContentWrapper, Wrapper, ContentItemsWrapper } from '@md-shared/views/common';
-// Should be under the comment "components".
-import { Loader } from '@md-modules/shared/components/ui/loaders/loader';
+import { ContentWrapper, WrapperStarship, ContentItemsWrapper } from '@md-shared/views/common';
 
 const StarshipsPresentation = () => {
   const { isLoading, isLoadingFetchMore, error, fetchMore, totalCount } = React.useContext(StarshipsAPIContext);
@@ -16,31 +15,26 @@ const StarshipsPresentation = () => {
 
   const handleScroll = (event: React.UIEvent<HTMLElement>) => {
     // element height with regard to vertical scrolling
-
-    // This does not have to be typed, the TypeScript itself understands that it will be a number.
-    const scrollHeight: number = event.currentTarget.scrollHeight;
+    const scrollHeight = event.currentTarget.scrollHeight;
     // the number of pixels scrolled from the top of the element
-    const scrollTop: number = event.currentTarget.scrollTop;
+    const scrollTop = event.currentTarget.scrollTop;
     // browser window height
-    const workspaceHeight: number = window.innerHeight;
+    const workspaceHeight = window.innerHeight;
     // fetchMore start mark px from the bottom edge
     const heightStart = 170;
     // the number of elements in the array
 
-    // It is too
-    const numberItems: boolean = starshipsList.length < totalCount;
-    // should be in const | (Neznayka: I agree :D)
+    const numberItems = starshipsList.length < totalCount;
+
     if (scrollHeight - (scrollTop + workspaceHeight) < heightStart && !isLoadingFetchMore && numberItems) {
-      // This parameter is not needed here at all. Moreover, at the api level you have already thrown it.
-      fetchMore({ after: '' });
+      fetchMore();
     }
   };
 
   return (
     <ContentWrapper>
       <ContentLoader isLoading={isLoading && !isLoadingFetchMore} error={error}>
-        {/* This Wrapper defines the display: grid. Why use it here? */}
-        <Wrapper>
+        <WrapperStarship>
           <ContentItemsWrapper onScroll={handleScroll}>
             {starshipsList.map((starship) => (
               <Card
@@ -50,10 +44,9 @@ const StarshipsPresentation = () => {
                 {...starship}
               />
             ))}
-            {/* can be written like this --> isLoadingFetchMore && <Loader /> */}
-            {isLoadingFetchMore ? <Loader /> : ''}
+            {isLoadingFetchMore && <Loader />}
           </ContentItemsWrapper>
-        </Wrapper>
+        </WrapperStarship>
       </ContentLoader>
     </ContentWrapper>
   );

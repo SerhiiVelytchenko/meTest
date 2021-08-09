@@ -17,8 +17,7 @@ interface Context {
   isLoadingFetchMore: boolean;
   totalCount: number;
   refetch: (variables?: GetStarshipsVariables) => Promise<ClientError<string> | Starships>;
-  // why undefined ?
-  fetchMore: (variables?: GetStarshipsVariables) => Promise<ClientError<string> | Starships | undefined>;
+  fetchMore: (variables?: GetStarshipsVariables) => Promise<ClientError<string> | Starships>;
 }
 
 const StarshipsAPIContext = React.createContext<Context>({
@@ -28,7 +27,7 @@ const StarshipsAPIContext = React.createContext<Context>({
   isLoadingFetchMore: false,
   totalCount: 0,
   refetch: () => Promise.resolve([] as Starships),
-  fetchMore: () => Promise.resolve([] as Starships)
+  fetchMore: () => Promise.resolve([])
 });
 
 const StarshipsAPIContextProvider: React.FC = ({ children }) => {
@@ -37,9 +36,7 @@ const StarshipsAPIContextProvider: React.FC = ({ children }) => {
     GetStarshipsVariables
   >(GET_STARSHIPS_QUERY, {
     variables: {
-      first: 5,
-      // why ?
-      after: ''
+      first: 5
     },
     notifyOnNetworkStatusChange: true
   });
@@ -50,7 +47,7 @@ const StarshipsAPIContextProvider: React.FC = ({ children }) => {
     try {
       const result = await refetch(variables);
       return result.data ? result.data.allStarships.starships : [];
-    } catch (error) {
+    } catch (error: any) {
       return U.errors.parseAndCreateClientError(error);
     }
   };
@@ -59,7 +56,6 @@ const StarshipsAPIContextProvider: React.FC = ({ children }) => {
     const endCursor = data?.allStarships.pageInfo.endCursor;
 
     try {
-      // So it does return the Starships after all?
       await fetchMore({
         variables: {
           ...variables,
@@ -74,7 +70,8 @@ const StarshipsAPIContextProvider: React.FC = ({ children }) => {
           return fetchMoreResult;
         }
       });
-    } catch (error) {
+      return [];
+    } catch (error: any) {
       return U.errors.parseAndCreateClientError(error);
     }
   };
