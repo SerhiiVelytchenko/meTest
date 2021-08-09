@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 // components
 import { ParallaxContainer } from './parallaxContainer';
 // views
@@ -22,7 +22,7 @@ export const WelcomePage = ({ isRender }: { isRender: boolean }) => {
   let coordXprocent = 0;
   let coordYprocent = 0;
 
-  const handleMouseMove = (event: any) => {
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
     const parallaxWidth = event.currentTarget.offsetWidth;
     const parallaxHeight = event.currentTarget.offsetHeight;
 
