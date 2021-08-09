@@ -1,228 +1,124 @@
+import { colors } from '@md-modules/shared/styles/styled/theme';
 import styled from 'styled-components';
-// import { colors } from '@md-modules/shared/styles/styled/theme';
-// import cultum from '/home/serko/myTest/test/test/cultum.png';
-// import cultumOne from './test/test/cultum.png';
 
 export const Wrapper = styled.div`
-  background-image: url(/static/images/cultum.png);
-  background-size: 1500px 7200px;
+  height: 91vh;
+  min-width: 440px;
+`;
+
+export const WrapperPages = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
-  min-height: 100%;
+  height: 91vh;
+  overflow: auto;
+  position: relative;
 `;
 
-export const Parallax = styled.div`
-  min-height: 100vh;
-   //background-image: url(/static/images/cultum.png);
+export const WrapperPage = styled.div<{
+  backgroundColorFirst?: keyof typeof colors;
+  backgroundColorSecond?: keyof typeof colors;
+}>`
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  z-index: 88;
+  background: linear-gradient(
+    45deg,
+    ${({ backgroundColorFirst, theme }) => (backgroundColorFirst ? theme.colors[backgroundColorFirst] : '')} 30%,
+    ${({ backgroundColorSecond, theme }) => (backgroundColorSecond ? theme.colors[backgroundColorSecond] : '')} 90%
+  );
 `;
 
-export const ParallaxBody = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2vw;
-`;
-
-export const ParalaxLabel = styled.div`
-  position: absolute;
-  width: 11%;
-  height: 5%;
-  margin: 0px;
-  top: 14.1%;
-  right: 0px;
-  bottom: 0px;
-  left: 7%;
-  background: url(/static/images/CultumHome/logo@3x.png) top / cover no-repeat;
-`;
-// /home/serko/myTest/myTest/pages/_document.tsx
-export const ParalaxMenu = styled.div`
-  position: absolute;
-  width: 2.5%;
-  height: 3%;
-  margin: 0px;
-  top: 16%;
-  right: 0px;
-  bottom: 0px;
-  left: 95%;
-  background: url(/static/images/CultumHome/menu@3x.png) top / cover no-repeat;
-`;
-
-export const ParalaxContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  /* height: 1050px; */
-  /* z-index: 2; */
-  background-color: red;
-`;
-export const ParalaxWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-`;
-
-export const ParalaxImagest = styled.div`
-  /* position: absolute; */
-  width: 120%;
-  height: 120%;
-  top: -10%;
-  left: -10%;
-  z-index: 1;
-`;
-
-export const ParalaxImagestImg = styled.div`
-  /* position: absolute; */
-  /* width:100%;
-height: 100%;
-left: 0%; */
-background-color: red;
-width: 100px;
-height: 100px;
-
-`;
-
-export const ParalaxImagestLeftPlanet = styled.div<{ transform?: string }>`
-  position: absolute;
-  background: url('https://cultum.io/static/images/cultum/left-planet.svg') top / cover no-repeat;
-  width: 45px;
-  height: 45px;
-  top: 30%;
-  right: 0px;
-  bottom: 0px;
-  left: 55%;
-  /* transform: translate(1.1563928280817641%, 0.7101500007332644%); */
-  transform: ${(props) => props.transform};
-  //translate(1.1563928280817641%, 0.7101500007332644%)
-`;
-
-export const ParalaxImagestRightPlanet = styled.div<{ transform?: string }>`
-  position: absolute;
-  background: url('https://cultum.io/static/images/cultum/right-planet.svg') top / cover no-repeat;
-  width: 120px;
+export const Label = styled.div`
+  min-width: 180px;
   height: 100px;
-  top: 65%;
-  right: 0px;
-  bottom: 0px;
-  left: 85%;
-  z-index: 2;
-  transform: ${(props) => props.transform ?? 'scale(0.5)'};
-`;
-
-export const ParalaxImagestCultum = styled.div<{ transform?: string }>`
-  position: absolute;
-  background: url('https://cultum.io/static/images/cultum/cultum.svg') top / cover no-repeat;
-  width: 550px;
-  height: 550px;
-  top: 45%;
-  right: 0px;
-  bottom: 0px;
-  left: 50%;
+  background-repeat: no-repeat;
   z-index: 1;
-  transform: ${(props) => props.transform ?? 'scale(0.5)'};
+  @media ${({ theme }) => theme.medias.tablet} {
+    height: 40px;
+  } ;
 `;
 
-export const TextTitle = styled.h4`
-  font-weight: 600;
-  font-size: 20px;
-  /* width: 100px; */
-  line-height: 1.68;
-  margin: 0;
-  padding: 0;
-  /* background-color: red;
-  display: flex;
-  width: 1000px;
-  color: ${({ theme }) => theme.colors.black};
-  font-family: Assistant, sans-serif;
-  font-weight: 600;
-  line-height: 1.28;
-  font-size: 80px;
-  margin: 0; 
-  padding: 0; */
-  /* &:active {
-    color: ${({ theme }) => theme.colors.blue400};
-  } */
-  /* @media (max-width: 570px) {
-    font-size: 14px;
-  } */
+export const WrapperText = styled.div<{
+  width: string;
+  height: string;
+}>`
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
 `;
+
 export const Text = styled.h4`
-  font-weight: 400;
-  font-size: 16px;
-  /* width: 100px; */
+  font-family: Assistant, sans-serif;
   line-height: 1.48;
-  color: ${({ theme }) => theme.colors.gray500};
-  margin: 0;
   padding: 0;
-  /* background-color: red;
-  display: flex;
-  width: 1000px;
-  color: ${({ theme }) => theme.colors.black};
-  font-family: Assistant, sans-serif;
-  font-weight: 600;
-  line-height: 1.28;
-  font-size: 80px;
-  margin: 0; 
-  padding: 0; */
-  /* &:active {
-    color: ${({ theme }) => theme.colors.blue400};
-  } */
-  /* @media (max-width: 570px) {
-    font-size: 14px;
-  } */
-`;
-
-export const ParalaxTitle = styled.div`
-  /* background-color: red;
-  display: flex;
-  width: 1000px;
-  color: ${({ theme }) => theme.colors.black};
-  font-family: Assistant, sans-serif;
-  font-weight: 600;
-  line-height: 1.28;
-  font-size: 80px;
-  margin: 0; 
-  padding: 0; */
-  /* &:active {
-    color: ${({ theme }) => theme.colors.blue400};
-  } */
-  /* @media (max-width: 570px) {
-    font-size: 14px;
-  } */
 `;
 
 export const Button = styled.button`
   text-transform: capitalize;
-  padding: 3px 10px;
-  width: 310px;
-  height: 110px;
-  background-color: transparent;
-  border-radius: 3px;
-  border: 1px solid ${({ theme }) => theme.colors.green200};
+  padding: 0px 0px;
+  width: 130px;
+  height: 35px;
+  background: rgb(255, 176, 132);
+  border-radius: 25px;
+  border: 1px solid ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.white};
+  font-size: 10px;
   outline: none;
-  transition: background-color 0.2s linear;
-  cursor: pointer;
+  background: linear-gradient(99deg, rgb(254, 104, 105), rgb(255, 176, 132));
+  transition: background-color, 2s ease-out, color 1s ease-out;
   &:hover {
-    background-color: rgba(135, 204, 67, 0.8);
+    background: none;
+    color: ${({ theme }) => theme.colors.white};
+    background-color: rgb(254, 104, 105);
   }
 `;
-export const Content = styled.div`
-  /* background-color: ${({ theme }) => theme.colors.red200};
-  position: relative;
-  z-index: 2; */
+
+export const Picture = styled.div.attrs<{
+  transform?: string;
+}>(({ transform }) => ({
+  style: {
+    transform: transform
+  }
+}))<{
+  transform?: string;
+}>`
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
 `;
 
-export const ContentOne = styled.div`
-  max-width: 1000px;
-  margin: 0px auto;
-  padding: 50px 20p;
+export const WrapperGrid = styled.div`
+  display: grid;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const ContentTwo = styled.h4`
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 1.48;
-  color: ${({ theme }) => theme.colors.black};
-  background-color: ${({ theme }) => theme.colors.red200};
+export const Planet = styled.div<{
+  transform: number;
+  transition?: string;
+}>`
+  background: url('https://cultum.io/static/images/planet.svg') no-repeat;
+  transform: rotate(${({ transform }) => -transform + 360}deg);
+  transition: 2s cubic-bezier(0.65, 0.05, 0.36, 1) 0s;
+`;
+
+export const ButtonArrow = styled.button`
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 50px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  height: 20px;
+  padding: 0 0 0 60px;
+  font-size: 12px;
+  color: ${({ theme }) => theme.colors.yellow500};
+`;
+
+export const Quotes = styled.div`
+  background-repeat: no-repeat;
+  background-size: 10px;
+  height: 10px;
+  margin: 0px;
 `;
