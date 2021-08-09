@@ -10,7 +10,7 @@ export const WrapperFooterPageFlex = styled.div`
   height: 100vh;
   background: url('/static/images/CultumHome/moon@3x.png') no-repeat;
   background-position: center bottom;
-  background-size: 100vh auto;
+  background-size: 120vh;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
@@ -19,13 +19,14 @@ export const WrapperFooterPageFlex = styled.div`
 export const PictureFooterPage = styled(Picture)`
   position: absolute;
   background-image: url('/static/images/CultumHome/astronaut-flag@3x.png');
-  background-size: 130px;
+  background-size: 140px;
   width: 143px;
-  height: 105px;
-  top: 41%;
+  height: 100vh;
+  top: -10%;
   right: 0px;
   bottom: 0px;
   left: 47%;
+  z-index: 2;
 `;
 
 export const WrapperFooterInfo = styled.div`

@@ -15,35 +15,31 @@ import {
   WrapperWelcomePageGrid
 } from './views';
 
-export const WelcomePage = ({ isRender }: { isRender: boolean }) => {
+export const WelcomePage = () => {
   const [positionX, setPositionX] = useState(0);
   const [positionY, setPositionY] = useState(0);
 
-  let coordXprocent = 0;
-  let coordYprocent = 0;
-
   const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
+    // browser window dimensions
     const parallaxWidth = event.currentTarget.offsetWidth;
     const parallaxHeight = event.currentTarget.offsetHeight;
-
+    // mouse arrow coordinates
     const coordX = event.pageX / 2;
     const coordY = event.pageY / 2;
 
-    coordXprocent = (coordX / parallaxWidth) * 100;
-    coordYprocent = (coordY / parallaxHeight) * 100;
+    const coordXprocent = (coordX / parallaxWidth) * 100;
+    const coordYprocent = (coordY / parallaxHeight) * 100;
 
-    if (isRender) {
-      const speed = 0.8;
+    const speed = 0.8;
 
-      const setMouseParallaxStyle = () => {
-        const distX = coordXprocent - positionX;
-        const distY = coordYprocent - positionY;
+    const setMouseParallaxStyle = () => {
+      const distX = coordXprocent - positionX;
+      const distY = coordYprocent - positionY;
 
-        setPositionX(positionX + distX * speed);
-        setPositionY(positionY + distY * speed);
-      };
-      setMouseParallaxStyle();
-    }
+      setPositionX(positionX + distX * speed);
+      setPositionY(positionY + distY * speed);
+    };
+    setMouseParallaxStyle();
   };
 
   const textTitle = 'Digital experiences that make you shine';
@@ -62,7 +58,7 @@ export const WelcomePage = ({ isRender }: { isRender: boolean }) => {
               <ButtonWelcomePage>{textButton}</ButtonWelcomePage>
             </WrapperButton>
           </ContainerWelcomePage>
-          <ParallaxContainer isRender positionX={positionX} positionY={positionY} />
+          <ParallaxContainer positionX={positionX} positionY={positionY} />
         </WrapperWelcomePageGrid>
       </Parallax>
     </WrapperWelcomePage>

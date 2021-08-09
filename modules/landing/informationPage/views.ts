@@ -17,14 +17,15 @@ export const WrapperTitlePageGrid = styled(WrapperGrid)`
 `;
 
 export const ContainerTitleInformationPage = styled.div`
+  position: relative;
   grid-area: leftContainer;
 `;
 
 export const ButtonArrowTitlePage = styled(ButtonArrow)`
   background-image: url(/static/images/CultumHome/shape_2@3x.png);
   margin: 20px 0 0 0;
-  top: 70%;
-  left: 12%;
+  top: 120%;
+  left: 18%;
   @media ${({ theme }) => theme.medias.tablet} {
     top: 90%;
     left: 20%;
@@ -70,11 +71,12 @@ export const WrapperOpportunitiesPageGrid = styled(WrapperGrid)`
 
 export const ContainerOpportunitiesPage = styled.div`
   position: relative;
-
-  height: 480px;
+  width: 350px;
+  height: 600px;
+  margin: 0 0 0 -30px;
   background: url('/static/images/CultumHome/devices@3x.png') no-repeat;
   background-position: center left;
-  background-size: 50vh auto;
+  background-size: 90%;
   z-index: 3;
 
   @media ${({ theme }) => theme.medias.tablet} {
@@ -144,12 +146,13 @@ export const PictureInformationPageReact = styled(Picture)`
 export const WrapperContentOpportunitiesPageGrid = styled(WrapperGrid)`
   height: 70%;
   min-width: 350px;
+  margin: auto;
   grid-template-areas:
     'title title'
     '1i 2i'
     '3i 4i';
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(120px, 450px));
+  grid-template-rows: repeat(3, minmax(120px, 200px));
   grid-gap: 10px;
   z-index: 3;
   @media ${({ theme }) => theme.medias.tablet} {
@@ -176,6 +179,7 @@ export const TextTitleOpportunitiesPage = styled(Text)`
   font-size: 35px;
   color: ${({ theme }) => theme.colors.black};
   margin: 0 0 0 20px;
+  text-align: center;
   @media ${({ theme }) => theme.medias.tablet} {
     font-size: 30px;
     margin: -20px -40px 30px 0px;
@@ -223,4 +227,5 @@ export const TextItemOpportunitiesPage = styled(Text)`
   font-size: 12px;
   color: ${({ theme }) => theme.colors.gray350};
   margin: 10px 0 0 0;
+  opacity: 0.5;
 `;

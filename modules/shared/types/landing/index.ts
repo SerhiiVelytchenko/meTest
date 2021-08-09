@@ -30,7 +30,6 @@ export interface CommentsType {
 }
 
 export interface ParallaxContainerType {
-  isRender: boolean;
   positionX: number;
   positionY: number;
 }

@@ -12,8 +12,8 @@ export interface GetStarshipsResponse {
   };
 }
 export interface GetStarshipsVariables {
-  after?: string | undefined;
-  before?: string | undefined;
-  first?: number | undefined;
-  last?: number | undefined;
+  after?: string;
+  before?: string;
+  first?: number;
+  last?: number;
 }

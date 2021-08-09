@@ -2,14 +2,13 @@ import { colors } from '@md-modules/shared/styles/styled/theme';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 91vh;
+  height: 100%;
   min-width: 440px;
 `;
 
 export const WrapperPages = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
-  height: 91vh;
-  overflow: auto;
+  height: 100vh;
   position: relative;
 `;
 
@@ -19,7 +18,7 @@ export const WrapperPage = styled.div<{
 }>`
   overflow: hidden;
   position: relative;
-  height: 100vh;
+  height: 100%;
   z-index: 88;
   background: linear-gradient(
     45deg,
@@ -98,7 +97,7 @@ export const Planet = styled.div<{
 }>`
   background: url('https://cultum.io/static/images/planet.svg') no-repeat;
   transform: rotate(${({ transform }) => -transform + 360}deg);
-  transition: 2s cubic-bezier(0.65, 0.05, 0.36, 1) 0s;
+  transition: 1s cubic-bezier(0.65, 0.05, 0.36, 1) 0s;
 `;
 
 export const ButtonArrow = styled.button`

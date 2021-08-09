@@ -15,8 +15,13 @@ export const ContentWrapper = styled.div`
 `;
 
 export const ContentItemsWrapper = styled.div`
-  height: 680px;
+  height: 610px;
   overflow: auto;
   margin: 0;
   max-width: ${({ theme }) => theme.dimensions.pageMaxWidth}px;
+`;
+
+export const WrapperStarship = styled.div`
+  width: 300px;
+  margin: auto;
 `;

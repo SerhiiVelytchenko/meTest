@@ -15,17 +15,16 @@ export const LandingPage = () => {
 
   useEffect(() => {
     setIsRender(true);
-  }, []);
-
-  const handleScroll = (event: React.UIEvent<HTMLElement>) => {
-    setScroll(event.currentTarget.scrollTop || 1);
+    window.onscroll = () => {
+      setScroll(window.pageYOffset || 1);
+    };
     setWorkspaceHeight(window.innerHeight);
-  };
+  }, []);
 
   return (
     <Wrapper>
-      <WrapperPages onScroll={handleScroll}>
-        <WelcomePage isRender={isRender} />
+      <WrapperPages>
+        <WelcomePage />
         <ContentPage scroll={scroll} workspaceHeight={workspaceHeight} isRender={isRender} />
         <InformationPage />
         <ReviewsPage />

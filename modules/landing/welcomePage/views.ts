@@ -12,7 +12,7 @@ export const Parallax = styled.div`
     left: 70%;
     width: 30%;
     height: 100vh;
-    background: #f6eeef;
+    background: ${({ theme }) => theme.colors.red100};
     transform: skew(40deg);
     z-index: -100;
   }

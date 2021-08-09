@@ -8,8 +8,8 @@ export const GalaxyLeft = ({ scroll, workspaceHeight, isRender }: GalaxyLeftType
     transform: number;
     radius?: number;
   }[] = [];
-
-  let transform = planets[0]?.transform;
+  const numberOfPlanets = 3;
+  let transform = 180 / numberOfPlanets / 2;
 
   if (isRender) {
     const numberPlanets = (amount: number) => {
@@ -32,15 +32,19 @@ export const GalaxyLeft = ({ scroll, workspaceHeight, isRender }: GalaxyLeftType
     numberPlanets(numberOfPlanets);
 
     let compensator = 60;
-    const y = Math.trunc((scroll - compensator) / workspaceHeight - 0.5);
-    if (planets.length > y) {
-      transform = planets[y]?.transform;
+    const numberScroll = Math.trunc((scroll - compensator) / workspaceHeight - 0.5);
+
+    if (planets.length > numberScroll) {
+      transform = planets[numberScroll]?.transform;
     }
-    if (planets.length === y) {
-      transform = planets[y - 1]?.transform;
+    if (planets.length === numberScroll) {
+      transform = planets[numberScroll - 1]?.transform;
     }
-    if (y === 1) {
+    if (numberScroll === 1) {
       compensator = 0;
+    }
+    if (planets.length < numberScroll) {
+      transform = planets[planets.length - 1]?.transform;
     }
   }
 

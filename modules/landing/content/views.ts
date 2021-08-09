@@ -17,6 +17,7 @@ export const WrapperContentPageGrid = styled(WrapperGrid)`
 `;
 
 export const ContainerContentPage = styled.div`
+  position: relative;
   grid-area: centerContainer;
   margin: -150px 0 0 0;
 `;
@@ -45,7 +46,8 @@ export const TextOneContentPage = styled(Text)`
 export const TextTwoContentPage = styled(Text)`
   font-size: 20px;
   margin: 10px 0 0 0;
-  color: ${({ theme }) => theme.colors.gray350};
+  color: ${({ theme }) => theme.colors.black};
+  opacity: 0.5;
   @media ${({ theme }) => theme.medias.tablet} {
     font-size: 18px;
     text-align: center;
@@ -56,12 +58,8 @@ export const TextTwoContentPage = styled(Text)`
 export const ButtonArrowContentPage = styled(ButtonArrow)`
   background-image: url(/static/images/CultumHome/shape_2@3x.png);
   margin: 20px 0 0 0;
-  top: 70%;
-  left: 30%;
-  @media ${({ theme }) => theme.medias.tablet} {
-    top: 85%;
-    left: 45%;
-  } ;
+  top: 130%;
+  left: 0%;
 `;
 
 export const RightContainer = styled.div<{ background: string }>`
@@ -110,7 +108,7 @@ export const WrapperPlanet = styled.div<{
   bottom: 50%;
   transform-origin: 0% 100%;
   transform: rotate(${({ transform }) => transform}deg);
-  transition: 2s cubic-bezier(0.65, 0.05, 0.36, 1) 0s;
+  transition: 1s cubic-bezier(0.65, 0.05, 0.36, 1) 0s;
   padding-bottom: 50%;
 `;
 
