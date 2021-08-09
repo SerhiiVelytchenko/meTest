@@ -1,14 +1,7 @@
 // type
 import { GalaxyLeftType } from '@md-modules/shared/types/landing';
 // views
-import {
-  PlanetSmall,
-  PlanetBig,
-  ImgGalaxyLeft,
-  WrapperContainerGalaxyLeft,
-  WrapperGalaxyLeft,
-  WrapperPlanet
-} from '../views';
+import { PlanetSmall, PlanetBig, WrapperContainerGalaxyLeft, WrapperGalaxyLeft, WrapperPlanet } from '../views';
 
 export const GalaxyLeft = ({ scroll, workspaceHeight, isRender }: GalaxyLeftType) => {
   const planets: {
@@ -54,7 +47,6 @@ export const GalaxyLeft = ({ scroll, workspaceHeight, isRender }: GalaxyLeftType
   return (
     <WrapperContainerGalaxyLeft>
       <WrapperGalaxyLeft>
-        <ImgGalaxyLeft />
         {planets.map((planet, index) => {
           return (
             <WrapperPlanet key={index} transform={planet.transform}>

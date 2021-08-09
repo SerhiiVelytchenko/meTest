@@ -15,7 +15,7 @@ import {
   QuotesLeft,
   QuotesRight,
   WrapperSlider,
-  WrapperContainer
+  WrapperContainerReviewsPage
 } from './views';
 
 export const ReviewsPage = () => {
@@ -44,14 +44,14 @@ export const ReviewsPage = () => {
           <Slider {...settings}>
             {Comments.map((item) => {
               return (
-                <WrapperContainer key={item.id}>
+                <WrapperContainerReviewsPage key={item.id}>
                   <QuotesLeft />
                   <TextQuotesReviewsPage>{item.text}</TextQuotesReviewsPage>
                   <QuotesRight />
                   <User backgroundImage={item.user.imgUrl}>
                     <TextUserReviewsPage key={item.id}>{item.user.name}</TextUserReviewsPage>
                   </User>
-                </WrapperContainer>
+                </WrapperContainerReviewsPage>
               );
             })}
           </Slider>

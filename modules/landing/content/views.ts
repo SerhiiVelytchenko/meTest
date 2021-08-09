@@ -66,6 +66,7 @@ export const ButtonArrowContentPage = styled(ButtonArrow)`
 
 export const RightContainer = styled.div<{ background: string }>`
   min-width: 200px;
+  max-width: 490px;
   height: 400px;
   background-image: url(${({ background }) => background});
   background-position: center;
@@ -75,35 +76,30 @@ export const RightContainer = styled.div<{ background: string }>`
   @media ${({ theme }) => theme.medias.tablet} {
     background-size: 80%;
   }
-  @media ${({ theme }) => theme.medias.laptop} {
-    background-size: 80%;
-  } ;
 `;
 
 export const WrapperContainerGalaxyLeft = styled.div`
+  background-image: url('https://cultum.io/static/images/saturn.svg');
+  background-position: center left;
+  background-repeat: no-repeat;
+  background-size: 90px;
+  position: relative;
   position: relative;
   width: 200px;
   grid-area: leftContainer;
 `;
 
 export const WrapperGalaxyLeft = styled.div`
-  position: relative;
-  top: 50%auto;
-  left: 115px;
+  top: 50%;
+  left: 116px;
   border: 1px solid ${({ theme }) => theme.colors.white};
   width: 500px;
   height: 500px;
   border-radius: 250px;
-  transform: translate(-85%, 0%);
-`;
-
-export const ImgGalaxyLeft = styled.div`
-  width: 20vh;
-  height: 20vh;
-  margin: 30vh 0 0 43vh;
-  background: url('https://cultum.io/static/images/saturn.svg') no-repeat;
-  background-size: 90px;
-  background-position: center;
+  transform: translate(-58%, 0%);
+  @media screen and (min-height: 900px) {
+    background-size: 80%;
+  } ;
 `;
 
 export const WrapperPlanet = styled.div<{

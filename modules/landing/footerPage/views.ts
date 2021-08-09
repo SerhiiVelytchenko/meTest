@@ -22,7 +22,7 @@ export const PictureFooterPage = styled(Picture)`
   background-size: 130px;
   width: 143px;
   height: 105px;
-  top: 40%;
+  top: 41%;
   right: 0px;
   bottom: 0px;
   left: 47%;

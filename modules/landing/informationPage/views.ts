@@ -45,6 +45,7 @@ export const TextTitleTitlePage = styled(Text)`
 export const RightContainer = styled.div`
   margin: 0;
   min-width: 200px;
+  max-width: 600px;
   height: 500px;
   background: url(/static/images/CultumHome/spaceship-illustration@3x.png) no-repeat;
   background-size: 80%;

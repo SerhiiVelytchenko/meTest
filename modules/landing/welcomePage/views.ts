@@ -96,7 +96,7 @@ export const WrapperParallaxContainer = styled.div`
   position: relative;
   min-width: 480px;
   max-width: 560px;
-  height: 70vh;
+  height: 500px;
   grid-area: parallax;
   @media ${({ theme }) => theme.medias.tablet} {
     background-size: 60%;

@@ -14,7 +14,7 @@ export const WrapperReviewsPageGrid = styled(WrapperGrid)`
   @media ${({ theme }) => theme.medias.tablet} {
     grid-template-areas: 'leftContainer' 'rightContainer';
     grid-template-columns: 1fr;
-    grid-template-rows: 0.1fr 0.1fr;
+    grid-template-rows: 0.1fr 8fr;
   } ;
 `;
 
@@ -26,13 +26,17 @@ export const TextTitleReviewsPage = styled(Text)`
 `;
 
 export const WrapperSlider = styled.div`
-  min-width: 20vh;
+  min-width: 200px;
+  max-height: 60px;
   width: 60vh;
   margin: 10em auto;
   grid-area: rightContainer;
+  @media ${({ theme }) => theme.medias.tablet} {
+    margin: -400px auto 0 auto;
+  } ;
 `;
 
-export const WrapperContainer = styled.div``;
+export const WrapperContainerReviewsPage = styled.div``;
 
 export const QuotesLeft = styled(Quotes)`
   background-image: url('https://w7.pngwing.com/pngs/683/436/png-transparent-quotation-marks-in-english-punctuation-wikimedia-foundation-quotation-monochrome-author-black.png');
