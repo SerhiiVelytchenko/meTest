@@ -3,7 +3,8 @@ export const graphqlMenuItems = [
   { l: 'Planets (SSR)', h: '/graphql/planets' },
   { l: 'Starships (SSG)', h: '/graphql/starships' },
   { l: 'Vehicles (SSR)', h: '/graphql/vehicles' },
-  { l: 'Landing (SSG)', h: '/landing' }
+  { l: 'Landing', h: '/landing' },
+  { l: 'Chat', h: '/chat' }
 ];
 
 export const reduxMenuItems = [

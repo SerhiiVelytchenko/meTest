@@ -28,7 +28,6 @@ export const GalaxyLeft = ({ scroll, workspaceHeight, isRender }: GalaxyLeftType
       }
     };
 
-    const numberOfPlanets = 3;
     numberPlanets(numberOfPlanets);
 
     let compensator = 60;
