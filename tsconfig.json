@@ -16,6 +16,7 @@
     "jsx": "preserve",
     "paths": {
       "@md-modules/*": ["./modules/*"],
+      "@md-chat/*": ["./modules/chat/*"],
       "@md-sw/*": ["./modules/star-wars/*"],
       "@md-form/*": ["./modules/form/*"],
       "@md-landing/*": ["./modules/landing/*"],
