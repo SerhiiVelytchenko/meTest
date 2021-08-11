@@ -3,50 +3,116 @@
 // components
 
 // views
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RightContent } from './components/rightContent';
 import { LeftContent } from './components/leftContent';
 import { WrapperChatPage } from './views';
-import { ContextChat, StateChatType } from '@md-modules/shared/types/chat';
+import { ContextChat, StateChatType, CorrespondenceType } from '@md-modules/shared/types/chat';
 import { User } from './constants/users';
+import { CenterContent } from './components/centerContent';
 
 export const ChatContext = React.createContext<ContextChat>({
-  stateChat: [],
-  handleStateChat: () => {}
+  stateUser: [],
+  inputValue: '',
+  handleStateUser: () => {},
+  correspondence: [],
+  handleCorrespondence: () => {},
+  handleChange: () => {},
+  handleSubmit: () => {}
 });
 
 export const ChatPage = () => {
-  const [stateChat, setStateChat] = useState<StateChatType[]>(User);
+  const [stateUser, setStateUser] = useState<StateChatType[]>(User);
+  const [correspondence, setCorrespondence] = useState<CorrespondenceType[]>([]);
+  const [inputValue, setInputValue] = useState('');
 
-  // console.log(stateChat);
-
-  const handleStateChat = (id: string) => {
-    const currentItem = stateChat.find((item) => item.id === id);
-    const currentIndex = stateChat.findIndex((item) => item.id === id);
-    // const ItemisActive = stateChat.find((item) => item.isActive === true);
-    // const IndexItemisActive = stateChat.find((item) => item.isActive === true);
-
-    // console.log(id);
-    // console.log(currentIndex);
-    // console.log(currentItem);
-
-    return setStateChat(
-      stateChat
-        .slice(0, currentIndex)
-        .concat({ ...currentItem, isActive: true })
-        .concat(stateChat.slice(currentIndex + 1))
+  useEffect(() => {
+    setCorrespondence(
+      stateUser.map((user, index) => {
+        return {
+          id: `${index}c`,
+          isActive: false,
+          users: {
+            firstId: '',
+            secondId: user.id
+          },
+          message: [
+            {
+              id: user.id,
+              message: 'no messages'
+            }
+          ]
+        };
+      })
     );
+  }, []);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.currentTarget.value;
+
+    setInputValue(value);
+  };
+
+  const handleCorrespondence = (id: string) => {
+    const idIndexItemIsActive = correspondence.find((item) => item.isActive === true)?.id;
+
+    return setCorrespondence(
+      correspondence.map((el) =>
+        el.id === id ? { ...el, isActive: true } : el.id === idIndexItemIsActive ? { ...el, isActive: false } : el
+      )
+    );
+  };
+
+  const handleStateUser = (id: string) => {
+    const idIndexItemIsActive = stateUser.find((item) => item.isActive === true)?.id;
+
+    return setStateUser(
+      stateUser.map((el) =>
+        el.id === id ? { ...el, isActive: true } : el.id === idIndexItemIsActive ? { ...el, isActive: false } : el
+      )
+    );
+  };
+
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event?.preventDefault();
+
+    setCorrespondence(
+      correspondence.map((dialog, index) =>
+        dialog.isActive === true
+          ? { ...dialog, message: [...dialog.message, { id: `${index + 1}u`, message: `${inputValue}` }] }
+          : dialog
+      )
+    );
+    setInputValue('');
+
+    // const currentItem = correspondence[0];
+    // const currentIndex = 0;
+    // setCorrespondence(
+    //   correspondence
+    //     .slice(0, currentIndex)
+    //     .concat({ ...currentItem, message: [...currentItem.message, { id: '1u', message: inputValue }] })
+    //     .concat(correspondence.slice(currentIndex + 1))
+    // );
+    setInputValue('');
+    // console.log(correspondence);
+    // const submitValue = event.currentTarget.children[0].value;
   };
 
   return (
     <ChatContext.Provider
       value={{
-        stateChat,
-        handleStateChat
+        stateUser,
+        correspondence,
+        inputValue,
+        handleStateUser,
+        handleCorrespondence,
+        handleChange,
+        handleSubmit
       }}
     >
       <WrapperChatPage>
-        <LeftContent stateChat={stateChat} />
+        <LeftContent />
+        <CenterContent />
         <RightContent />
       </WrapperChatPage>
     </ChatContext.Provider>

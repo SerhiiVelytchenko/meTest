@@ -5,7 +5,7 @@ export const User: StateChatType[] = [
     id: '1u',
     name: 'Sirina',
     urlImg: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRruswCQe0gTfTAXE3__0MnfHy4D7zUWI8A4g&usqp=CAU',
-    isActive: false
+    isActive: true
   },
   {
     id: '2u',

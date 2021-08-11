@@ -3,10 +3,8 @@ import styled from 'styled-components';
 
 export const WrapperChatPage = styled.div`
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 300px 3fr;
   grid-template-rows: 100%;
-
-  height: 100%;
 `;
 
 // export const Form = styled.form`

@@ -4,19 +4,19 @@ import styled from 'styled-components';
 export const WrapperLeftContent = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.colors.gray300};
-  height: 100%;
+  height: 110%;
+  width: 300px;
 `;
 
 export const WrapperUsersChoice = styled.div`
-  display: grid;
+  display: flex;
+  align-items: center;
   position: fixed;
-  overflow: auto;
-  max-width: 24%;
-  height: 95px;
   top: 85%;
   left: 0.5%;
-  display: flex;
+  overflow: auto;
+  width: 290px;
+  height: 95px;
   background-color: ${({ theme }) => theme.colors.gray300};
-  align-items: center;
   box-shadow: 0 0 15px 10px;
 `;
