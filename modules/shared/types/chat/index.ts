@@ -7,6 +7,7 @@ export interface StateChatType {
 }
 
 export interface ContextChat {
+  filesDropzone: any;
   stateUser: StateChatType[];
   inputValue: string;
   correspondence: CorrespondenceType[];
@@ -14,6 +15,8 @@ export interface ContextChat {
   handleCorrespondence: (id: string) => void;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (event: { preventDefault: () => void }) => void;
+  handleClickButtonReverse: () => void;
+  handleFilesDropzone: <T extends File>(acceptedFiles: T[]) => void;
 }
 
 export interface CorrespondenceType {
@@ -26,5 +29,6 @@ export interface CorrespondenceType {
   message: {
     id: string;
     message: string;
+    messageImg: string[];
   }[];
 }

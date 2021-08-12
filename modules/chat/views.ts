@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const WrapperChatPage = styled.div`
   display: grid;
   grid-template-columns: 300px 3fr;
-  grid-template-rows: 100%;
+  grid-template-rows: 100vh;
 `;
 
 // export const Form = styled.form`

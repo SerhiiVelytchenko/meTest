@@ -34,7 +34,8 @@ export const Input = styled.input`
   padding: 5px;
   box-sizing: border-box;
   outline: none;
-  width: 60%;
+  max-width: 1000px;
+  min-width: 200px;
   &:hover {
     background-color: ${({ theme }) => theme.colors.white};
     border-radius: 8px;
@@ -46,7 +47,7 @@ export const Input = styled.input`
 `;
 
 export const Content = styled.div`
-  margin: 0 auto;
+  position: relative;
 `;
 
 export const UserAvatar = styled.div<{
@@ -85,9 +86,33 @@ export const Button = styled.button`
   }
 `;
 
-// export const Message = styled.div`
-//   margin: 0 auto;
-// `;
+export const ButtonS = styled.button`
+  position: fixed;
+  top: 93%;
+  left: 90%;
+  margin: 0px;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 1px solid ${({ theme }) => theme.colors.green200};
+  color: ${({ theme }) => theme.colors.white};
+  outline: none;
+  background-color: ${({ theme }) => theme.colors.green200};
+  transition: background-color 0.2s linear;
+  cursor: pointer;
+  width: 75px;
+  height: 40px;
+  background: url('https://w7.pngwing.com/pngs/310/241/png-transparent-paper-clip-computer-icons-trombone-miscellaneous-text-pin.png')
+    center no-repeat;
+  background-size: 80%auto;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.green300};
+  }
+`;
+
+export const WrapperMessageCard = styled.div`
+  margin: 0 auto;
+`;
 
 // export const InputButton = styled.input`
 //   margin: 5px 0px 5px 0px;

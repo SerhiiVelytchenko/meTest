@@ -12,19 +12,26 @@ import { User } from './constants/users';
 import { CenterContent } from './components/centerContent';
 
 export const ChatContext = React.createContext<ContextChat>({
+  filesDropzone: [],
   stateUser: [],
   inputValue: '',
   handleStateUser: () => {},
   correspondence: [],
   handleCorrespondence: () => {},
   handleChange: () => {},
-  handleSubmit: () => {}
+  handleSubmit: () => {},
+  handleClickButtonReverse: () => {},
+  handleFilesDropzone: () => {}
 });
 
 export const ChatPage = () => {
+  const [filesDropzone, setFilesDropzone] = useState([]);
   const [stateUser, setStateUser] = useState<StateChatType[]>(User);
   const [correspondence, setCorrespondence] = useState<CorrespondenceType[]>([]);
   const [inputValue, setInputValue] = useState('');
+
+  const isActiveUser = stateUser.find((user) => user.isActive === true);
+  const isActiveCorrespondence = correspondence.find((dialog) => dialog.isActive === true);
 
   useEffect(() => {
     setCorrespondence(
@@ -39,7 +46,8 @@ export const ChatPage = () => {
           message: [
             {
               id: user.id,
-              message: 'no messages'
+              message: 'no messages',
+              messageImg: []
             }
           ]
         };
@@ -54,7 +62,7 @@ export const ChatPage = () => {
   };
 
   const handleCorrespondence = (id: string) => {
-    const idIndexItemIsActive = correspondence.find((item) => item.isActive === true)?.id;
+    const idIndexItemIsActive = isActiveCorrespondence?.id;
 
     return setCorrespondence(
       correspondence.map((el) =>
@@ -64,7 +72,7 @@ export const ChatPage = () => {
   };
 
   const handleStateUser = (id: string) => {
-    const idIndexItemIsActive = stateUser.find((item) => item.isActive === true)?.id;
+    const idIndexItemIsActive = isActiveUser?.id;
 
     return setStateUser(
       stateUser.map((el) =>
@@ -75,39 +83,62 @@ export const ChatPage = () => {
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event?.preventDefault();
+    const isActiveUserId = isActiveUser?.id;
+    const isfirstId = isActiveCorrespondence?.users.firstId.length;
+
+    const firstId = isfirstId || 0 > 1 ? isActiveCorrespondence?.users.firstId : isActiveUserId;
+
+    // filesDropzone.map(el => console.log(el))
+
+    // const arrMessageImg = filesDropzone.map(el => el.preview) || [];
+    const arrMessageImg: never[] = [];
 
     setCorrespondence(
-      correspondence.map((dialog, index) =>
+      correspondence.map((dialog) =>
         dialog.isActive === true
-          ? { ...dialog, message: [...dialog.message, { id: `${index + 1}u`, message: `${inputValue}` }] }
+          ? {
+              ...dialog,
+              message: [
+                ...dialog.message,
+                { id: isActiveUserId || 'no Id', message: `${inputValue}`, messageImg: arrMessageImg }
+              ],
+              users: { ...dialog.users, firstId: firstId || 'no Id' }
+            }
           : dialog
       )
     );
     setInputValue('');
-
-    // const currentItem = correspondence[0];
-    // const currentIndex = 0;
-    // setCorrespondence(
-    //   correspondence
-    //     .slice(0, currentIndex)
-    //     .concat({ ...currentItem, message: [...currentItem.message, { id: '1u', message: inputValue }] })
-    //     .concat(correspondence.slice(currentIndex + 1))
-    // );
-    setInputValue('');
-    // console.log(correspondence);
-    // const submitValue = event.currentTarget.children[0].value;
+    setFilesDropzone([]);
   };
 
+  const handleClickButtonReverse = () => {
+    return setCorrespondence(
+      correspondence.map((el) =>
+        el.isActive === true
+          ? { ...el, users: { ...el.users, firstId: el.users.secondId, secondId: el.users.firstId } }
+          : el
+      )
+    );
+  };
+
+  const handleFilesDropzone = (acceptedFiles: any) => {
+    return setFilesDropzone(
+      acceptedFiles.map((file: any) => Object.assign(file, { preview: URL.createObjectURL(file) }))
+    );
+  };
   return (
     <ChatContext.Provider
       value={{
+        filesDropzone,
         stateUser,
         correspondence,
         inputValue,
         handleStateUser,
         handleCorrespondence,
         handleChange,
-        handleSubmit
+        handleSubmit,
+        handleClickButtonReverse,
+        handleFilesDropzone
       }}
     >
       <WrapperChatPage>
