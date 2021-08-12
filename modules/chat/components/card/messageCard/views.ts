@@ -1,52 +1,29 @@
 import styled from 'styled-components';
 // import { colors } from '@md-modules/shared/styles/styled/theme';
 
-export const WrapperMessageCard = styled.div`
-  position: relative;
+export const WrapperMessageCard = styled.div<{
+  justifyContent: string;
+}>`
+  /* position: absolute; */
   display: grid;
-  grid-template-columns: 1fr 3fr;
+
+  justify-content: ${({ justifyContent }) => justifyContent};
+  margin: 0;
+`;
+
+export const MessageCardContainer = styled.div`
+  /* position: absolute; */
+  display: grid;
+  min-width: 300px;
+  max-width: 600px;
+  grid-template-columns: 50px 3fr;
   grid-template-rows: 50px;
 
   background-color: ${({ theme }) => theme.colors.blue300};
   border: 2px solid blue;
-`;
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 50%;
-  @media (${({ theme }) => theme.medias.tablet}) {
-    width: 95%;
-  }
-`;
-
-export const Input = styled.input`
-  position: fixed;
-  top: 93%;
-  background-color: ${({ theme }) => theme.colors.gray300};
-  color: ${({ theme }) => theme.colors.black};
-  border: 2px solid ${({ theme }) => theme.colors.gray400};
-  border-radius: 8px;
-  line-height: 1.28;
-  font-size: 20px;
-  margin: 0px 0px 0px 10px;
-  padding: 5px;
-  box-sizing: border-box;
-  outline: none;
-  width: 73%;
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.white};
-    border-radius: 8px;
-  }
-  &:active {
-    color: ${({ theme }) => theme.colors.blue400};
-    border-radius: 8px;
-  }
-`;
-
-export const Content = styled.div`
-  margin: 0 auto;
+  border-radius: 5px;
+  align-items: flex-end;
+  margin: 2px;
 `;
 
 export const UserAvatar = styled.div<{
@@ -73,6 +50,37 @@ export const TextMessage = styled.h1`
   margin: 0px 0px 10px 10px;
   padding: 0px;
   box-sizing: border-box;
+`;
+
+export const ThumbsContainer = styled.aside`
+  display: 'flex';
+  flex-direction: 'row';
+  flex-wrap: 'wrap';
+  margin-top: 16;
+`;
+
+export const Thumb = styled.div`
+  display: 'inline-flex';
+  border-radius: 2;
+  border: '1px solid #eaeaea';
+  margin-bottom: 8;
+  margin-right: 8;
+  width: 100;
+  height: 100;
+  padding: 4;
+  box-sizing: 'border-box';
+`;
+
+export const ThumbInner = styled.div`
+  position: relative;
+  display: 'flex';
+  min-width: 0;
+  overflow: 'hidden';
+`;
+
+export const Img = styled.img`
+  width: 300%;
+  height: 'auto';
 `;
 
 // export const InputButton = styled.input`
