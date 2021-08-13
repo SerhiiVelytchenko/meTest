@@ -2,11 +2,9 @@ import styled from 'styled-components';
 // import { colors } from '@md-modules/shared/styles/styled/theme';
 
 export const WrapperCenterContent = styled.div`
-  position: relative;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 200px;
-  height: 110%;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 100px;
   background-color: ${({ theme }) => theme.colors.blue300};
 `;
 
@@ -21,9 +19,6 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  position: fixed;
-  top: 93%;
-  left: 35%;
   background-color: ${({ theme }) => theme.colors.gray300};
   color: ${({ theme }) => theme.colors.black};
   border: 2px solid ${({ theme }) => theme.colors.gray400};
@@ -46,9 +41,12 @@ export const Input = styled.input`
   }
 `;
 
-export const Content = styled.div`
-  position: relative;
+export const ContentCenter = styled.div`
+  overflow: auto;
+  height: 75vh;
 `;
+
+export const ContentBottom = styled.div``;
 
 export const UserAvatar = styled.div<{
   url: string;
@@ -67,9 +65,6 @@ export const UserAvatar = styled.div<{
 `;
 
 export const Button = styled.button`
-  position: fixed;
-  top: 93%;
-  left: 26%;
   margin: 5px 0px 5px 0px;
   padding: 5px 10px;
   background-color: transparent;
@@ -80,16 +75,13 @@ export const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.green200};
   /* transition: background-color 0.2s linear; */
   cursor: pointer;
-  width: 100px;
+  width: 90px;
   &:hover {
     background-color: ${({ theme }) => theme.colors.green300};
   }
 `;
 
 export const ButtonS = styled.button`
-  position: fixed;
-  top: 93%;
-  left: 90%;
   margin: 0px;
   padding: 0;
   background-color: transparent;

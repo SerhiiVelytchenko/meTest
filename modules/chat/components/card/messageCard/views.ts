@@ -16,14 +16,19 @@ export const MessageCardContainer = styled.div`
   display: grid;
   min-width: 300px;
   max-width: 600px;
+  grid-template-areas: 'avatar message' 'messageImg messageImg';
   grid-template-columns: 50px 3fr;
-  grid-template-rows: 50px;
-
+  grid-template-rows: 50px 1fr;
   background-color: ${({ theme }) => theme.colors.blue300};
   border: 2px solid blue;
   border-radius: 5px;
   align-items: flex-end;
   margin: 2px;
+`;
+
+export const WrapperMessageImg = styled.div`
+  display: flex;
+  grid-area: messageImg;
 `;
 
 export const UserAvatar = styled.div<{
@@ -36,6 +41,7 @@ export const UserAvatar = styled.div<{
   border: 2px solid ${({ theme }) => theme.colors.blue400};
   border-radius: 25px;
   background-color: ${({ theme }) => theme.colors.white};
+  grid-area: avatar;
   &:active {
     border: 5px solid ${({ theme }) => theme.colors.blue400};
     box-shadow: 0 0 5px 2px blue;
@@ -50,16 +56,44 @@ export const TextMessage = styled.h1`
   margin: 0px 0px 10px 10px;
   padding: 0px;
   box-sizing: border-box;
-`;
-
-export const ThumbsContainer = styled.aside`
-  display: 'flex';
-  flex-direction: 'row';
-  flex-wrap: 'wrap';
-  margin-top: 16;
+  grid-area: message;
 `;
 
 export const Thumb = styled.div`
+  overflow: 'hidden';
+  width: 100;
+  height: 100;
+`;
+
+// display: grid;
+//   grid-gap: 5px;
+//   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//   grid-template-rows: repeat(2, 300px);
+//   margin: 5px;
+
+export const ThumbInner = styled.div`
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-rows: 100%;
+  margin: 5px;
+`;
+
+export const Img = styled.img`
+  width: 100px;
+  height: 'auto';
+`;
+
+export const ContentModal = styled.div`
+  top: '50%';
+  left: '50%';
+  right: 'auto';
+  bottom: 'auto';
+  margin-right: '-50%';
+  transform: 'translate(-50%, -50%)';
+`;
+
+export const Thumb11 = styled.div`
   display: 'inline-flex';
   border-radius: 2;
   border: '1px solid #eaeaea';
@@ -71,18 +105,17 @@ export const Thumb = styled.div`
   box-sizing: 'border-box';
 `;
 
-export const ThumbInner = styled.div`
+export const ThumbInner11 = styled.div`
   position: relative;
   display: 'flex';
   min-width: 0;
   overflow: 'hidden';
 `;
 
-export const Img = styled.img`
-  width: 300%;
-  height: 'auto';
+export const Img11 = styled.img`
+  width: 200px;
+  height: auto;
 `;
-
 // export const InputButton = styled.input`
 //   margin: 5px 0px 5px 0px;
 //   padding: 5px 10px;

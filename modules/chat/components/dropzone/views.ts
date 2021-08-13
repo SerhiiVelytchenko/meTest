@@ -53,9 +53,7 @@ export const WrapperContainer = styled.div``;
 export const Container = styled.div`
   height: 100%;
   width: 100%;
-  flex-direction: column;
-  align-items: center;
-  padding: 1px;
+  padding: 2px;
   border: 2px solid ${(props) => getColor(props)};
   background-color: #fafafa;
   transition: border 0.24s ease-in-out;
