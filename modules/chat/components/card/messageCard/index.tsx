@@ -8,10 +8,11 @@ import {
   MessageCardContainer,
   TextMessage,
   UserAvatar,
-  Thumb,
-  ThumbInner,
+  WrapperImg,
+  WrapperImgInner,
   Img,
-  WrapperMessageImg
+  WrapperMessageImg,
+  WrapperTopContent
 } from './views';
 
 export const MessageCard = ({
@@ -26,26 +27,22 @@ export const MessageCard = ({
   firstId: string;
 }) => {
   const { stateUser } = React.useContext(ChatContext);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const urlUserAvatar = stateUser.find((item) => item.id === id)?.urlImg || '';
   const justifyContent = id === firstId ? 'flex-end' : 'flex-start';
 
   const customStyles = {
     content: {
+      height: '75vh',
       top: '50%',
       left: '50%',
-      right: 'auto',
-      bottom: 'auto',
       marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      width: '700px',
-      height: '700px'
+      transform: 'translate(-50%, -45%)'
     }
   };
 
   Modal.setAppElement('#__next');
-
-  const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -58,22 +55,27 @@ export const MessageCard = ({
   return (
     <WrapperMessageCard justifyContent={justifyContent}>
       <MessageCardContainer>
-        <UserAvatar url={urlUserAvatar} />
-        <TextMessage>{message}</TextMessage>
+        <WrapperTopContent>
+          <UserAvatar url={urlUserAvatar} />
+          <TextMessage>{message}</TextMessage>
+        </WrapperTopContent>
         <WrapperMessageImg>
           {messageImg.length > 0
             ? messageImg.map((el: string, index: number) => (
-                <Thumb key={index}>
-                  <ThumbInner onClick={openModal}>
+                <WrapperImg key={index}>
+                  <WrapperImgInner
+                    onClick={() => {
+                      openModal();
+                    }}
+                  >
                     <Img src={el} />
-                  </ThumbInner>
-                </Thumb>
+                  </WrapperImgInner>
+                </WrapperImg>
               ))
             : ''}
         </WrapperMessageImg>
       </MessageCardContainer>
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel='Example Modal'>
-        <button onClick={closeModal}>close</button>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
         <SliderContainer messageImg={messageImg} />
       </Modal>
     </WrapperMessageCard>

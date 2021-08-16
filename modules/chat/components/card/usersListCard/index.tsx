@@ -25,6 +25,7 @@ export const UsersListCard = ({
   message: string;
 }) => {
   const { handleCorrespondence } = React.useContext(ChatContext);
+  const userMassage = message.length > 18 ? `${message.slice(0, 14)}...` : message;
 
   return (
     <WrapperUsersListCard
@@ -36,7 +37,7 @@ export const UsersListCard = ({
       <UserAvatar url={urlImg} />
       <CenterContainer>
         <TextUserName>{name}</TextUserName>
-        <TextUserMassage>{message}</TextUserMassage>
+        <TextUserMassage>{userMassage}</TextUserMassage>
       </CenterContainer>
       <InfoContainer>
         <ArrivalTimeMassage>11:20</ArrivalTimeMassage>

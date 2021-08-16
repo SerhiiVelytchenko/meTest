@@ -29,6 +29,7 @@ export const ChatPage = () => {
   const [stateUser, setStateUser] = useState<StateChatType[]>(User);
   const [correspondence, setCorrespondence] = useState<CorrespondenceType[]>([]);
   const [inputValue, setInputValue] = useState('');
+  // const [scrollCenterContent, setScrollCenterContent] = useState(0);
 
   const isActiveUser = stateUser.find((user) => user.isActive === true);
   const isActiveDialog = correspondence.find((dialog) => dialog.isActive === true);
@@ -56,7 +57,7 @@ export const ChatPage = () => {
     );
   }, []);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = event.currentTarget.value;
 
     setInputValue(value);
@@ -91,46 +92,55 @@ export const ChatPage = () => {
 
     const arrMessageImg = filesDropzone.map((el: { preview: string }) => el.preview) || [];
 
-    setCorrespondence(
-      correspondence.map((dialog) =>
-        dialog.isActive === true
-          ? {
-              ...dialog,
-              message: [
-                ...dialog.message,
-                { id: isActiveUserId || 'no Id', message: `${inputValue}`, messageImg: arrMessageImg }
-              ],
-              users: { ...dialog.users, firstId: firstId || 'no Id' }
-            }
-          : dialog
-      )
-    );
-    setInputValue('');
-    setFilesDropzone([]);
+    if (inputValue.length > 0 || filesDropzone.length > 0) {
+      setCorrespondence(
+        correspondence.map((dialog) =>
+          dialog.isActive === true
+            ? {
+                ...dialog,
+                message: [
+                  ...dialog.message,
+                  { id: isActiveUserId || 'no Id', message: `${inputValue}`, messageImg: arrMessageImg }
+                ],
+                users: { ...dialog.users, firstId: firstId || 'no Id' }
+              }
+            : dialog
+        )
+      );
+      setInputValue('');
+      setFilesDropzone([]);
+      // setScrollCenterContent();
+    }
   };
 
   const handleClickButtonReverse = () => {
-    setCorrespondence(
-      correspondence.map((el) =>
-        el.isActive === true
-          ? { ...el, users: { ...el.users, firstId: el.users.secondId, secondId: el.users.firstId } }
-          : el
-      )
-    );
     setStateUser((stateUser) => {
       return stateUser.map((user) =>
         user.isActive === true
           ? { ...user, isActive: false }
-          : user.id === isActiveDialog?.users.firstId
+          : user.id === isActiveDialog?.users.secondId
           ? { ...user, isActive: true }
           : user
       );
     });
+
+    setCorrespondence(
+      correspondence.map((dialog, index) =>
+        index === 0
+          ? { ...dialog, users: { ...dialog.users, secondId: isActiveDialog?.users.secondId || '' } }
+          : dialog.isActive === true
+          ? { ...dialog, users: { ...dialog.users, firstId: dialog.users.secondId, secondId: dialog.users.firstId } }
+          : dialog
+      )
+    );
   };
 
   const handleFilesDropzone = <T extends File>(acceptedFiles: T[]) => {
     return setFilesDropzone(acceptedFiles.map((file) => Object.assign(file, { preview: URL.createObjectURL(file) })));
   };
+
+  // const handleScrollCenterContent = () => {};
+
   return (
     <ChatContext.Provider
       value={{
@@ -144,6 +154,7 @@ export const ChatPage = () => {
         handleSubmit,
         handleClickButtonReverse,
         handleFilesDropzone
+        // handleScrollCenterContent
       }}
     >
       <WrapperChatPage>
