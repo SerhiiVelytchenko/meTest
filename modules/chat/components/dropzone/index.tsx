@@ -19,7 +19,6 @@ export const Dropzone = ({ children }: { children: ReactChild | ReactChildren })
     <WrapperContainer>
       <Container {...getRootProps({ isDragActive, isDragAccept, isDragReject })}>
         <input {...getInputProps()} />
-
         {children}
         <ButtonS type='button' onClick={open}></ButtonS>
       </Container>

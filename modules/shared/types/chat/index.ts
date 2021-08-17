@@ -7,7 +7,7 @@ export interface StateChatType {
 }
 
 export interface ContextChat {
-  filesDropzone: any;
+  filesDropzone: [];
   stateUser: StateChatType[];
   inputValue: string;
   correspondence: CorrespondenceType[];
