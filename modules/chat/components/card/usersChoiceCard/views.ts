@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { colors } from '@md-modules/shared/styles/styled/theme';
 
 export const WrapperUsersChoice = styled.div`
   display: flex;
@@ -35,10 +34,4 @@ export const TextUserName = styled.h1`
   padding: 0px;
   box-sizing: border-box;
   text-align: center;
-  /* &:active {
-    color: ${({ theme }) => theme.colors.blue400};
-  } */
-  /* @media (max-width: 570px) {
-    font-size: 14px;
-  } */
 `;

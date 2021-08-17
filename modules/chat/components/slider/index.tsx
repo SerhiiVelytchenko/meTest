@@ -1,7 +1,14 @@
 import React from 'react';
 import Slider, { CustomArrowProps } from 'react-slick';
 // views
-import { ButtonPrevArrowReviewsPage, ButtonNextArrowReviewsPage, WrapperSlider, Img } from './views';
+import {
+  ButtonPrevArrowReviewsPage,
+  WrapperImg,
+  WrapperWrapperImg,
+  ButtonNextArrowReviewsPage,
+  WrapperSlider,
+  Img
+} from './views';
 
 export const SliderContainer = ({ messageImg }: { messageImg: string[] }) => {
   const NextArrow = ({ onClick }: CustomArrowProps) => {
@@ -23,7 +30,13 @@ export const SliderContainer = ({ messageImg }: { messageImg: string[] }) => {
     <WrapperSlider>
       <Slider {...settings}>
         {messageImg.map((item: string | undefined, index: React.Key | null | undefined) => {
-          return <Img key={index} src={item} />;
+          return (
+            <WrapperWrapperImg key={index}>
+              <WrapperImg>
+                <Img src={item} />
+              </WrapperImg>
+            </WrapperWrapperImg>
+          );
         })}
       </Slider>
     </WrapperSlider>

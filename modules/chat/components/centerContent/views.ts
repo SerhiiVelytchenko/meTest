@@ -2,51 +2,54 @@ import styled from 'styled-components';
 // import { colors } from '@md-modules/shared/styles/styled/theme';
 
 export const WrapperCenterContent = styled.div`
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 1fr 100px;
+  display: flex;
+  flex-direction: column;
   background-color: ${({ theme }) => theme.colors.blue300};
+  height: 89vh;
 `;
 
 export const Form = styled.form`
   display: flex;
-  flex-direction: column;
   margin: 0 auto;
-  width: 50%;
+  width: 90%;
+  align-items: center;
   @media (${({ theme }) => theme.medias.tablet}) {
     width: 95%;
   }
 `;
 
-export const Input = styled.input`
+export const Textarea = styled.textarea`
+  flex: 2;
+  min-height: 50px;
   background-color: ${({ theme }) => theme.colors.gray300};
   color: ${({ theme }) => theme.colors.black};
   border: 2px solid ${({ theme }) => theme.colors.gray400};
-  border-radius: 8px;
+  border-radius: 25px;
   line-height: 1.28;
-  font-size: 20px;
+  font-size: 16px;
   margin: 0px 0px 0px 10px;
-  padding: 5px;
+  padding: 16px 60px 0 30px;
   box-sizing: border-box;
   outline: none;
-  max-width: 1000px;
-  min-width: 200px;
   &:hover {
     background-color: ${({ theme }) => theme.colors.white};
-    border-radius: 8px;
+    border-radius: 25px;
   }
   &:active {
     color: ${({ theme }) => theme.colors.blue400};
-    border-radius: 8px;
+    border-radius: 25px;
   }
 `;
 
 export const ContentCenter = styled.div`
   overflow: auto;
-  height: 75vh;
+  height: 85vh;
 `;
 
-export const ContentBottom = styled.div``;
+export const ContentBottom = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const UserAvatar = styled.div<{
   url: string;
@@ -76,34 +79,46 @@ export const Button = styled.button`
   /* transition: background-color 0.2s linear; */
   cursor: pointer;
   width: 90px;
+  height: 40px;
   &:hover {
     background-color: ${({ theme }) => theme.colors.green300};
   }
 `;
 
 export const ButtonS = styled.button`
-  margin: 0px;
-  padding: 0;
-  background-color: transparent;
-  border-radius: 3px;
-  border: 1px solid ${({ theme }) => theme.colors.green200};
-  color: ${({ theme }) => theme.colors.white};
-  outline: none;
-  background-color: ${({ theme }) => theme.colors.green200};
-  transition: background-color 0.2s linear;
-  cursor: pointer;
-  width: 75px;
+  width: 50px;
   height: 40px;
-  background: url('https://w7.pngwing.com/pngs/310/241/png-transparent-paper-clip-computer-icons-trombone-miscellaneous-text-pin.png')
-    center no-repeat;
-  background-size: 80%auto;
-  &:hover {
+
+  margin: 0 0 0 -60px;
+  padding: 0;
+  background-image: url('https://pngicon.ru/file/uploads/skrepka.png');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  z-index: 2;
+  /* &:hover {
     background-color: ${({ theme }) => theme.colors.green300};
-  }
+  } */
 `;
 
 export const WrapperMessageCard = styled.div`
   margin: 0 auto;
+`;
+
+export const InputSubmit = styled.input`
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  margin: 0 0 0 20px;
+  background-image: url('https://w1.pngwing.com/pngs/312/809/png-transparent-arrow-icon-interface-icon-send-icon-upload-icon-uploading-icon-pink-line-sign-symbol.png');
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 // export const InputButton = styled.input`

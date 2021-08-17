@@ -37,12 +37,6 @@ export const TextUserName = styled.h1`
   margin: 0px 0px 0px 0px;
   padding: 0px;
   box-sizing: border-box;
-  /* &:active {
-    color: ${({ theme }) => theme.colors.blue400};
-  } */
-  /* @media (max-width: 570px) {
-    font-size: 14px;
-  } */
 `;
 
 export const TextUserMassage = styled.h1`
@@ -53,12 +47,6 @@ export const TextUserMassage = styled.h1`
   margin: 0px 0px 0px 0px;
   padding: 0px;
   box-sizing: border-box;
-  /* &:active {
-    color: ${({ theme }) => theme.colors.blue400};
-  } */
-  /* @media (max-width: 570px) {
-    font-size: 14px;
-  } */
 `;
 
 export const InfoContainer = styled(CenterContainer)``;
@@ -71,12 +59,6 @@ export const ArrivalTimeMassage = styled.h1`
   margin: 0px 0px 0px 0px;
   padding: 0px;
   box-sizing: border-box;
-  /* &:active {
-    color: ${({ theme }) => theme.colors.blue400};
-  } */
-  /* @media (max-width: 570px) {
-    font-size: 14px;
-  } */
 `;
 
 export const UnreadMassage = styled.h1`
@@ -87,12 +69,6 @@ export const UnreadMassage = styled.h1`
   margin: 0px 0px 0px 0px;
   padding: 0px;
   box-sizing: border-box;
-  /* &:active {
-    color: ${({ theme }) => theme.colors.blue400};
-  } */
-  /* @media (max-width: 570px) {
-    font-size: 14px;
-  } */
 `;
 
 export const Form = styled.form`
