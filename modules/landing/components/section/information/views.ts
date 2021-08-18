@@ -1,24 +1,25 @@
 import styled from 'styled-components';
-import { WrapperPage, Text, ButtonArrow, Picture, WrapperGrid } from '../views';
+import { WrapperPage, Text, ButtonArrow, Picture, WrapperGrid } from '@md-modules/landing/views';
 
-export const WrapperPageBackgroundWhite = styled(WrapperPage)`
+export const WrapperBackgroundWhite = styled(WrapperPage)`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-export const WrapperTitlePageGrid = styled(WrapperGrid)`
-  grid-template-areas: 'leftContainer rightContainer';
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100vh;
+export const WrapperTitle = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media ${({ theme }) => theme.medias.tablet} {
-    grid-template-areas: 'rightContainer' 'leftContainer';
-    grid-template-columns: 100vh;
-    grid-template-rows: 60vh 40vh;
+    flex-direction: column-reverse;
   } ;
 `;
 
 export const ContainerTitleInformationPage = styled.div`
   position: relative;
-  grid-area: leftContainer;
+  max-width: 500px;
+  @media ${({ theme }) => theme.medias.tablet} {
+  } ;
 `;
 
 export const ButtonArrowTitlePage = styled(ButtonArrow)`
@@ -27,7 +28,7 @@ export const ButtonArrowTitlePage = styled(ButtonArrow)`
   top: 120%;
   left: 18%;
   @media ${({ theme }) => theme.medias.tablet} {
-    top: 90%;
+    top: 80%;
     left: 20%;
   } ;
 `;
@@ -35,37 +36,32 @@ export const ButtonArrowTitlePage = styled(ButtonArrow)`
 export const TextTitleTitlePage = styled(Text)`
   padding: 0 0 0 100px;
   font-size: 25px;
-
   color: ${({ theme }) => theme.colors.black};
   @media ${({ theme }) => theme.medias.tablet} {
-    font-size: 20px;
-    padding: 0 150px 0 150px;
+    font-size: 16px;
+    padding: 0 10px;
+    margin: -100px 0 0 0;
   } ;
 `;
 
 export const RightContainer = styled.div`
   margin: 0;
-  min-width: 200px;
-  max-width: 600px;
-  height: 500px;
+  width: 600px;
+  height: 100%;
   background: url(/static/images/CultumHome/spaceship-illustration@3x.png) no-repeat;
   background-size: 80%;
   background-position: center;
-  grid-area: rightContainer;
   @media ${({ theme }) => theme.medias.tablet} {
     width: 100vh;
-    background-size: 60%;
+    background-size: 50%;
+    margin: -150px 0 0 0;
   } ;
 `;
 
-export const WrapperOpportunitiesPageGrid = styled(WrapperGrid)`
-  height: 100vh;
-  grid-template-areas: 1fr 2fr;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 100vh;
+export const WrapperOpportunities = styled.div`
+  display: flex;
   z-index: 3;
   @media ${({ theme }) => theme.medias.tablet} {
-    grid-template-columns: 150px 1fr;
   } ;
 `;
 
@@ -78,9 +74,8 @@ export const ContainerOpportunitiesPage = styled.div`
   background-position: center left;
   background-size: 90%;
   z-index: 3;
-
   @media ${({ theme }) => theme.medias.tablet} {
-    margin: 0 0 0 -160px;
+    background: none;
   } ;
 `;
 
@@ -98,10 +93,7 @@ export const PictureInformationPageNode = styled(Picture)`
   border-radius: 15px;
   z-index: 0;
   @media ${({ theme }) => theme.medias.tablet} {
-    width: 130px;
-    height: 80px;
-    top: 23%;
-    left: 60%;
+    background: none;
   } ;
 `;
 
@@ -119,8 +111,7 @@ export const PictureInformationPageRails = styled(Picture)`
   border-radius: 7px;
   z-index: 0;
   @media ${({ theme }) => theme.medias.tablet} {
-    top: -4%;
-    left: 60%;
+    background: none;
   } ;
 `;
 
@@ -138,12 +129,11 @@ export const PictureInformationPageReact = styled(Picture)`
   border-radius: 7px;
   z-index: 0;
   @media ${({ theme }) => theme.medias.tablet} {
-    top: 9%;
-    left: 64%;
+    background: none;
   } ;
 `;
 
-export const WrapperContentOpportunitiesPageGrid = styled(WrapperGrid)`
+export const WrapperContentOpportunities = styled(WrapperGrid)`
   height: 70%;
   min-width: 350px;
   margin: auto;
@@ -164,15 +154,18 @@ export const WrapperContentOpportunitiesPageGrid = styled(WrapperGrid)`
       '4i';
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
+    margin: 0 0 0 25px;
   } ;
 `;
 
-export const ContentOpportunitiesPageGrid = styled(WrapperGrid)<{
+export const ContentOpportunities = styled(WrapperGrid)<{
   gridArea: string;
 }>`
   grid-template-columns: 4fr 1fr;
   grid-template-rows: 1fr;
   grid-area: ${({ gridArea }) => gridArea};
+  @media ${({ theme }) => theme.medias.tablet} {
+  }
 `;
 
 export const TextTitleOpportunitiesPage = styled(Text)`
@@ -181,23 +174,24 @@ export const TextTitleOpportunitiesPage = styled(Text)`
   margin: 0 0 0 20px;
   text-align: center;
   @media ${({ theme }) => theme.medias.tablet} {
-    font-size: 30px;
-    margin: -20px -40px 30px 0px;
+    font-size: 20px;
+    margin: 0 30px;
   } ;
 `;
 
 export const ButtonArrowOpportunitiesPage = styled(ButtonArrow)`
   background-image: url(/static/images/CultumHome/shape_2@3x.png);
+  width: 10px;
   margin: 20px 0 0 0;
-  top: 33%;
+  top: 15%;
   left: 80%;
   @media ${({ theme }) => theme.medias.tablet} {
-    top: 25%;
-    left: 65%;
+    top: 10%;
+    left: 60%;
   }
 `;
 
-export const ItemContentOpportunitiesPageGrid = styled(WrapperGrid)<{
+export const ItemContentOpportunities = styled(WrapperGrid)<{
   gridArea: string;
 }>`
   grid-template-columns: 1fr 4fr;

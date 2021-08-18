@@ -1,20 +1,18 @@
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { WrapperPage, Text, ButtonArrow, WrapperGrid, Quotes } from '../views';
+import { WrapperPage, Text, ButtonArrow, Quotes } from '@md-modules/landing/views';
 
 export const WrapperPageBackgroundWhite = styled(WrapperPage)`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-export const WrapperReviewsPageGrid = styled(WrapperGrid)`
-  grid-template-areas: 'leftContainer rightContainer';
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+export const WrapperReviews = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media ${({ theme }) => theme.medias.tablet} {
-    grid-template-areas: 'leftContainer' 'rightContainer';
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.1fr 8fr;
+    flex-direction: column;
   } ;
 `;
 
@@ -22,7 +20,10 @@ export const TextTitleReviewsPage = styled(Text)`
   font-size: 40px;
   margin: 0 0 0 100px;
   color: ${({ theme }) => theme.colors.black};
-  grid-area: leftContainer;
+  @media ${({ theme }) => theme.medias.tablet} {
+    font-size: 20px;
+    margin: 0 0 0 0px;
+  } ;
 `;
 
 export const WrapperSlider = styled.div`
@@ -32,11 +33,16 @@ export const WrapperSlider = styled.div`
   margin: 10em auto;
   grid-area: rightContainer;
   @media ${({ theme }) => theme.medias.tablet} {
-    margin: -400px auto 0 auto;
+    margin: 30px;
   } ;
 `;
 
-export const WrapperContainerReviewsPage = styled.div``;
+export const WrapperContainerReviewsPage = styled.div`
+  @media ${({ theme }) => theme.medias.tablet} {
+    margin: 0 0 0 25px;
+    font-size: 14px;
+  } ;
+`;
 
 export const QuotesLeft = styled(Quotes)`
   background-image: url('https://w7.pngwing.com/pngs/683/436/png-transparent-quotation-marks-in-english-punctuation-wikimedia-foundation-quotation-monochrome-author-black.png');
@@ -52,6 +58,11 @@ export const TextQuotesReviewsPage = styled(Text)`
   font-size: 12x;
   margin: 0 15px 0 15px;
   color: ${({ theme }) => theme.colors.black};
+  @media ${({ theme }) => theme.medias.tablet} {
+    margin: 0 0 0 30px;
+    font-size: 14px;
+    width: 250px;
+  } ;
 `;
 
 export const User = styled.div<{
