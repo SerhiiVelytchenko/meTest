@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { WrapperPage, Picture, Text, Button } from '../views';
+import { WrapperPage, Picture, Text, Button } from '@md-modules/landing/views';
 
-export const WrapperPageBackgroundWhite = styled(WrapperPage)`
+export const WrapperBackgroundWhite = styled(WrapperPage)`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
-export const WrapperFooterPageFlex = styled.div`
+export const WrapperFooter = styled.div`
   display: flex;
   height: 100vh;
   background: url('/static/images/CultumHome/moon@3x.png') no-repeat;
@@ -16,17 +16,20 @@ export const WrapperFooterPageFlex = styled.div`
   align-items: center;
 `;
 
-export const PictureFooterPage = styled(Picture)`
+export const PictureFooter = styled(Picture)`
   position: absolute;
   background-image: url('/static/images/CultumHome/astronaut-flag@3x.png');
   background-size: 140px;
   width: 143px;
-  height: 100vh;
-  top: -10%;
+  height: 300px;
+  top: 15%;
   right: 0px;
   bottom: 0px;
   left: 47%;
   z-index: 2;
+  @media ${({ theme }) => theme.medias.tablet} {
+    top: 10%;
+  }
 `;
 
 export const WrapperFooterInfo = styled.div`
@@ -48,9 +51,12 @@ export const TextTitleFooterInfo = styled(Text)`
   color: ${({ theme }) => theme.colors.white};
   margin: 20px 0 0 0;
   text-align: center;
+  @media ${({ theme }) => theme.medias.tablet} {
+    margin: 0;
+  }
 `;
 
-export const ButtonFooterPage = styled(Button)`
+export const ButtonFooter = styled(Button)`
   margin: 0;
 `;
 

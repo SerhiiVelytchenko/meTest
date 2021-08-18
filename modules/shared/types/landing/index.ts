@@ -30,12 +30,16 @@ export interface CommentsType {
 }
 
 export interface ParallaxContainerType {
-  positionX: number;
-  positionY: number;
+  axisX: number;
+  axisY: number;
 }
 
 export interface GalaxyLeftType {
   scroll: number;
   workspaceHeight: number;
-  isRender: boolean;
+}
+
+export interface PlanetsType {
+  transform: number;
+  radius?: number;
 }

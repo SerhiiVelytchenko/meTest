@@ -22,7 +22,7 @@ export const Dropzone = ({ children }: { children: ReactChild | ReactChildren })
   });
 
   const thumbs = filesDropzone
-    .filter((_file, index) => index <= 11)
+    .filter((_file, index) => index <= 8)
     .map((file: any) => (
       <Thumb key={file.name}>
         <div style={thumbInner}>

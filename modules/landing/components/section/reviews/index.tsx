@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider, { CustomArrowProps } from 'react-slick';
 // components
-import { Comments } from '../constants';
+import { Comments } from '../../constants';
 // views
 import {
   ButtonPrevArrowReviewsPage,
@@ -10,7 +10,7 @@ import {
   User,
   TextUserReviewsPage,
   TextTitleReviewsPage,
-  WrapperReviewsPageGrid,
+  WrapperReviews,
   WrapperPageBackgroundWhite,
   QuotesLeft,
   QuotesRight,
@@ -18,7 +18,7 @@ import {
   WrapperContainerReviewsPage
 } from './views';
 
-export const ReviewsPage = () => {
+export const Reviews = () => {
   const NextArrow = ({ onClick }: CustomArrowProps) => {
     return <ButtonNextArrowReviewsPage onClick={onClick} />;
   };
@@ -38,7 +38,7 @@ export const ReviewsPage = () => {
 
   return (
     <WrapperPageBackgroundWhite>
-      <WrapperReviewsPageGrid>
+      <WrapperReviews>
         <TextTitleReviewsPage>{textTitle}</TextTitleReviewsPage>
         <WrapperSlider>
           <Slider {...settings}>
@@ -56,7 +56,7 @@ export const ReviewsPage = () => {
             })}
           </Slider>
         </WrapperSlider>
-      </WrapperReviewsPageGrid>
+      </WrapperReviews>
     </WrapperPageBackgroundWhite>
   );
 };

@@ -1,11 +1,6 @@
 import { colors } from '@md-modules/shared/styles/styled/theme';
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  height: 100%;
-  min-width: 440px;
-`;
-
 export const WrapperPages = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   height: 100vh;
@@ -18,8 +13,8 @@ export const WrapperPage = styled.div<{
 }>`
   overflow: hidden;
   position: relative;
-  height: 100%;
-  z-index: 88;
+  height: 100vh;
+  z-index: 4;
   background: linear-gradient(
     45deg,
     ${({ backgroundColorFirst, theme }) => (backgroundColorFirst ? theme.colors[backgroundColorFirst] : '')} 30%,
@@ -56,18 +51,18 @@ export const Button = styled.button`
   padding: 0px 0px;
   width: 130px;
   height: 35px;
-  background: rgb(255, 176, 132);
+  background: ${({ theme }) => theme.colors.yellow500};
   border-radius: 25px;
   border: 1px solid ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.white};
   font-size: 10px;
   outline: none;
-  background: linear-gradient(99deg, rgb(254, 104, 105), rgb(255, 176, 132));
   transition: background-color, 2s ease-out, color 1s ease-out;
+  cursor: pointer;
   &:hover {
     background: none;
     color: ${({ theme }) => theme.colors.white};
-    background-color: rgb(254, 104, 105);
+    background-color: ${({ theme }) => theme.colors.red650};
   }
 `;
 

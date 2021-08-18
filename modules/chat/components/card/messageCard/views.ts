@@ -53,9 +53,9 @@ export const TextMessage = styled.h1`
 
 export const WrapperMessageImg = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   flex-wrap: wrap;
-  max-height: 300px;
+  /* max-height: 300px; */
 `;
 
 export const WrapperImg = styled.div``;
@@ -63,6 +63,6 @@ export const WrapperImg = styled.div``;
 export const WrapperImgInner = styled.div``;
 
 export const Img = styled.img`
-  width: 100px;
-  height: 'auto';
+  width: 'auto';
+  height: 50px;
 `;

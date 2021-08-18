@@ -15,7 +15,7 @@ const getColor = (props: any) => {
 
 export const ThumbsContainer = styled.aside`
   position: absolute;
-  top: 80%;
+  top: 75%;
   left: 30%;
   width: 100%auto;
   display: 'flex';

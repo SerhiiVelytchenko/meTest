@@ -1,5 +1,5 @@
 import { ChatContext } from '@md-modules/chat';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Modal from 'react-modal';
 import { SliderContainer } from '../../slider';
 
@@ -42,6 +42,16 @@ export const MessageCard = ({
     }
   };
 
+  const messagesEndRef = useRef<HTMLHeadingElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [message, messageImg]);
+
   Modal.setAppElement('#__next');
 
   function openModal() {
@@ -59,6 +69,7 @@ export const MessageCard = ({
           <UserAvatar url={urlUserAvatar} />
           <TextMessage>{message}</TextMessage>
         </WrapperTopContent>
+
         <WrapperMessageImg>
           {messageImg.length > 0
             ? messageImg.map((el: string, index: number) => (
@@ -74,6 +85,7 @@ export const MessageCard = ({
               ))
             : ''}
         </WrapperMessageImg>
+        <div ref={messagesEndRef} />
       </MessageCardContainer>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
         <SliderContainer messageImg={messageImg} />

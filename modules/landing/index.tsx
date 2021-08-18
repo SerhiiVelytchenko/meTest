@@ -1,35 +1,37 @@
 import React, { useEffect, useState } from 'react';
 // components
-import { WelcomePage } from './welcomePage';
-import { ContentPage } from './content';
-import { InformationPage } from './informationPage';
-import { ReviewsPage } from './reviewsPage';
-import { FooterPage } from './footerPage';
+import { Welcome } from './components/section/welcome';
+import { Content } from './components/section/content-galaxy';
+import { Information } from './components/section/information';
+import { Reviews } from './components/section/reviews';
+import { Footer } from './components/section/footer';
 // views
-import { Wrapper, WrapperPages } from './views';
+import { WrapperPages } from './views';
 
 export const LandingPage = () => {
-  const [isRender, setIsRender] = useState(false);
-  const [scroll, setScroll] = useState(1);
-  const [workspaceHeight, setWorkspaceHeight] = useState(1);
+  const [scrollFactor, setScrollFactor] = useState(0);
 
   useEffect(() => {
-    setIsRender(true);
     window.onscroll = () => {
-      setScroll(window.pageYOffset || 1);
+      setScrollFactor(() => {
+        return Math.trunc((window.pageYOffset - 60) / window.innerHeight - 0.5);
+      });
     };
-    setWorkspaceHeight(window.innerHeight);
+    return () =>
+      window.removeEventListener('scroll', () =>
+        setScrollFactor(() => {
+          return Math.trunc((window.pageYOffset - 60) / window.innerHeight - 0.5);
+        })
+      );
   }, []);
 
   return (
-    <Wrapper>
-      <WrapperPages>
-        <WelcomePage />
-        <ContentPage scroll={scroll} workspaceHeight={workspaceHeight} isRender={isRender} />
-        <InformationPage />
-        <ReviewsPage />
-        <FooterPage />
-      </WrapperPages>
-    </Wrapper>
+    <WrapperPages>
+      <Welcome />
+      <Content scrollFactor={scrollFactor} />
+      <Information />
+      <Reviews />
+      <Footer />
+    </WrapperPages>
   );
 };
