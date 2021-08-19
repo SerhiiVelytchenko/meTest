@@ -1,14 +1,18 @@
 import React, { ReactChild, ReactChildren } from 'react';
+// components
 import { ChatContext } from '@md-modules/chat';
-
 import { useDropzone } from 'react-dropzone';
-import { WrapperContainer, ButtonS, Container, ThumbsContainer, Thumb, Img } from './views';
-
-const thumbInner = {
-  display: 'flex',
-  minWidth: 0,
-  overflow: 'hidden'
-};
+// views
+import {
+  InputDropzone,
+  ThumbInner,
+  WrapperContainer,
+  ButtonOpenModal,
+  Container,
+  ThumbsContainer,
+  Thumb,
+  Img
+} from './views';
 
 export const Dropzone = ({ children }: { children: ReactChild | ReactChildren }) => {
   const { filesDropzone, handleFilesDropzone } = React.useContext(ChatContext);
@@ -25,19 +29,19 @@ export const Dropzone = ({ children }: { children: ReactChild | ReactChildren })
     .filter((_file, index) => index <= 8)
     .map((file: any) => (
       <Thumb key={file.name}>
-        <div style={thumbInner}>
+        <ThumbInner>
           <Img src={file.preview} />
-        </div>
+        </ThumbInner>
       </Thumb>
     ));
 
   return (
     <WrapperContainer>
       <Container {...getRootProps({ isDragActive, isDragAccept, isDragReject })}>
-        <input {...getInputProps()} />
+        <InputDropzone {...getInputProps()} />
         {children}
         <ThumbsContainer>{thumbs}</ThumbsContainer>
-        <ButtonS type='button' onClick={open} />
+        <ButtonOpenModal type='button' onClick={open} />
       </Container>
     </WrapperContainer>
   );

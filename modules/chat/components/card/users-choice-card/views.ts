@@ -16,7 +16,7 @@ export const UserAvatar = styled.div<{
   width: 50px;
   height: 50px;
   background-size: 100%;
-  border: ${({ border }) => border} solid ${({ theme }) => theme.colors.blue400};
+  border: ${({ border }) => border} solid ${({ theme }) => theme.colors.gray400};
   border-radius: 25px;
   background-color: ${({ theme }) => theme.colors.white};
   &:active {

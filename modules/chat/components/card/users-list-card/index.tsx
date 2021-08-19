@@ -1,5 +1,9 @@
 import React from 'react';
+// type
+import { PropsUsersListCardType } from '@md-modules/shared/types/chat';
+// components
 import { ChatContext } from '@md-modules/chat';
+// views
 import {
   UnreadMassage,
   ArrivalTimeMassage,
@@ -11,19 +15,7 @@ import {
   TextUserMassage
 } from './views';
 
-export const UsersListCard = ({
-  name,
-  urlImg,
-  id,
-  isActive,
-  message
-}: {
-  name: string;
-  urlImg: string;
-  id: string;
-  isActive: boolean;
-  message: string;
-}) => {
+export const UsersListCard = ({ name, urlImg, id, isActive, message }: PropsUsersListCardType) => {
   const { handleCorrespondence } = React.useContext(ChatContext);
   const userMassage = message.length > 18 ? `${message.slice(0, 14)}...` : message;
 

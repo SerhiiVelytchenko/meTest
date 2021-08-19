@@ -7,9 +7,10 @@ export const WrapperUsersListCard = styled.div<{
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: 80px;
-  border: ${({ border }) => border} solid ${({ theme }) => theme.colors.blue400};
+  border: ${({ border }) => border} solid ${({ theme }) => theme.colors.gray400};
   margin: 10px;
   align-items: center;
+  border-radius: 20px;
 `;
 
 export const UserAvatar = styled.div<{
@@ -19,7 +20,7 @@ export const UserAvatar = styled.div<{
   width: 50px;
   height: 50px;
   background-size: 100%;
-  border: 2px solid ${({ theme }) => theme.colors.blue400};
+  border: 2px solid ${({ theme }) => theme.colors.gray400};
   border-radius: 25px;
 `;
 

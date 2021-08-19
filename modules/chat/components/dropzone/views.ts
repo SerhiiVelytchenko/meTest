@@ -27,7 +27,7 @@ export const ThumbsContainer = styled.aside`
 export const Thumb = styled.div`
   display: inline-flex;
   border-radius: 2px;
-  border: 1px solid #eaeaea;
+  border: 1px solid ${({ theme }) => theme.colors.gray500};
   margin-bottom: 8px;
   margin-right: 8px;
   width: 100px;
@@ -37,9 +37,9 @@ export const Thumb = styled.div`
 `;
 
 export const ThumbInner = styled.div`
-  display: 'flex';
-  min-width: 0;
-  overflow: 'hidden';
+  display: flex;
+  min-width: 0px;
+  overflow: hidden;
 `;
 
 export const Img = styled.img`
@@ -55,7 +55,7 @@ export const Container = styled.div`
   width: 100%;
   padding: 2px;
   border: 2px solid ${(props) => getColor(props)};
-  background-color: #fafafa;
+  background-color: ${({ theme }) => theme.colors.white};
   transition: border 0.24s ease-in-out;
 `;
 
@@ -64,11 +64,11 @@ export const A1 = styled.div`
   width: 100px;
 `;
 
-export const ButtonS = styled.button`
+export const ButtonOpenModal = styled.button`
   width: 50px;
   height: 40px;
   position: fixed;
-  top: 91%;
+  top: 92.5%;
   right: 100px;
   margin: 0px;
   padding: 0;
@@ -79,4 +79,10 @@ export const ButtonS = styled.button`
   background-color: transparent;
   outline: none;
   cursor: pointer;
+`;
+
+export const InputDropzone = styled.input`
+  display: flex;
+  min-width: 0px;
+  overflow: hidden;
 `;

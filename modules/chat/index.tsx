@@ -1,22 +1,19 @@
-// type
-
-// components
-
-// views
 import React, { useState, useEffect } from 'react';
-// import { RightContent } from './components/rightContent';
-import { LeftContent } from './components/leftContent';
-import { WrapperChatPage } from './views';
+// type
 import { ContextChat, StateChatType, CorrespondenceType } from '@md-modules/shared/types/chat';
+// components
+import { LeftContent } from './components/leftc-content';
+import { CenterContent } from './components/center-content';
 import { User } from './constants/users';
-import { CenterContent } from './components/centerContent';
+// views
+import { WrapperChatPage } from './views';
 
 export const ChatContext = React.createContext<ContextChat>({
   filesDropzone: [],
   stateUser: [],
   inputValue: '',
-  handleStateUser: () => {},
   correspondence: [],
+  handleStateUser: () => {},
   handleCorrespondence: () => {},
   handleChange: () => {},
   handleSubmit: () => {},
@@ -29,7 +26,6 @@ export const ChatPage = () => {
   const [stateUser, setStateUser] = useState<StateChatType[]>(User);
   const [correspondence, setCorrespondence] = useState<CorrespondenceType[]>([]);
   const [inputValue, setInputValue] = useState('');
-  // const [scrollCenterContent, setScrollCenterContent] = useState(0);
 
   const isActiveUser = stateUser.find((user) => user.isActive === true);
   const isActiveDialog = correspondence.find((dialog) => dialog.isActive === true);
@@ -109,7 +105,6 @@ export const ChatPage = () => {
       );
       setInputValue('');
       setFilesDropzone([]);
-      // setScrollCenterContent();
     }
   };
 
@@ -139,8 +134,6 @@ export const ChatPage = () => {
     return setFilesDropzone(acceptedFiles.map((file) => Object.assign(file, { preview: URL.createObjectURL(file) })));
   };
 
-  // const handleScrollCenterContent = () => {};
-
   return (
     <ChatContext.Provider
       value={{
@@ -154,13 +147,11 @@ export const ChatPage = () => {
         handleSubmit,
         handleClickButtonReverse,
         handleFilesDropzone
-        // handleScrollCenterContent
       }}
     >
       <WrapperChatPage>
         <LeftContent />
         <CenterContent />
-        {/* <RightContent /> */}
       </WrapperChatPage>
     </ChatContext.Provider>
   );
