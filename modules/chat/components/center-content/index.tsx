@@ -7,14 +7,9 @@ import { Dropzone } from '../dropzone';
 import { WrapperCenterContent, Form, Textarea, InputSubmit, ContentCenter, Button, ContentBottom } from './views';
 
 export const CenterContent = () => {
-  const {
-    handleChange,
-    handleSubmit,
-    inputValue,
-    correspondence,
-    handleClickButtonReverse,
-    handleClickAddImage
-  } = React.useContext(ChatContext);
+  const { handleChange, handleSubmit, inputValue, correspondence, handleClickButtonReverse } = React.useContext(
+    ChatContext
+  );
 
   const isActiveCorrespondence = correspondence.find((dialog) => dialog.isActive === true);
 
@@ -44,8 +39,7 @@ export const CenterContent = () => {
           <Button onClick={() => handleClickButtonReverse()}> change user </Button>
 
           <Form onSubmit={handleSubmit}>
-            <Textarea onChange={handleChange} value={inputValue} onKeyDown={handleKeydown} />
-            <Button onClick={() => handleClickAddImage()}> </Button>
+            <Textarea onChange={handleChange} value={inputValue} onKeyDown={handleKeydown} />{' '}
             <InputSubmit type={'submit'} value={''}></InputSubmit>
           </Form>
         </ContentBottom>
