@@ -11,12 +11,14 @@ export interface ContextChat {
   stateUser: StateChatType[];
   inputValue: string;
   correspondence: CorrespondenceType[];
+  indexActiveImage: number;
   handleStateUser: (id: string) => void;
   handleCorrespondence: (id: string) => void;
   handleChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   handleSubmit: (event: { preventDefault: () => void }) => void;
   handleClickButtonReverse: () => void;
   handleFilesDropzone: <T extends File>(acceptedFiles: T[]) => void;
+  handleClickImage: (index: number) => void;
 }
 
 export interface CorrespondenceType {

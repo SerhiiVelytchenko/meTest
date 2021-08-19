@@ -35,12 +35,11 @@ export const CenterContent = () => {
             );
           })}
         </ContentCenter>
-
         <ContentBottom>
           <Button onClick={() => handleClickButtonReverse()}> change user </Button>
 
           <Form onSubmit={handleSubmit}>
-            <Textarea onChange={handleChange} value={inputValue} onKeyDown={handleKeydown} />
+            <Textarea onChange={handleChange} value={inputValue} onKeyDown={handleKeydown} />{' '}
             <InputSubmit type={'submit'} value={''}></InputSubmit>
           </Form>
         </ContentBottom>

@@ -6,7 +6,10 @@ export const WrapperCenterContent = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.blue300};
   height: 100%;
-  width: calc(100vw - 300px);
+  width: auto;
+  @media ${({ theme }) => theme.medias.tablet} {
+    margin: 0px;
+  } ;
 `;
 
 export const Form = styled.form`
@@ -14,9 +17,9 @@ export const Form = styled.form`
   margin: 0 auto;
   width: 90%;
   align-items: center;
-  @media (${({ theme }) => theme.medias.tablet}) {
-    width: 95%;
-  }
+  @media ${({ theme }) => theme.medias.tablet} {
+    width: 80vw;
+  } ;
 `;
 
 export const Textarea = styled.textarea`

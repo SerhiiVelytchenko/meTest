@@ -5,6 +5,9 @@ export const WrapperLeftContent = styled.div`
   background-color: ${({ theme }) => theme.colors.gray300};
   width: 300px;
   overflow: hidden;
+  @media ${({ theme }) => theme.medias.tablet} {
+    margin: 0 0 0 -300px;
+  }
 `;
 
 export const WrapperUsersChoice = styled.div`
@@ -19,4 +22,7 @@ export const WrapperUsersChoice = styled.div`
   background-color: ${({ theme }) => theme.colors.gray300};
   box-shadow: 0 0 15px 5px;
   border-radius: 20px;
+  @media ${({ theme }) => theme.medias.tablet} {
+    margin: 0 0 0 -300px;
+  } ;
 `;

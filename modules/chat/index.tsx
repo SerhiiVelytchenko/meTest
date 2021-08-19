@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 // type
 import { ContextChat, StateChatType, CorrespondenceType } from '@md-modules/shared/types/chat';
 // components
-import { LeftContent } from './components/leftc-content';
-import { CenterContent } from './components/center-content';
+import { LeftContent } from './components/left-content';
 import { User } from './constants/users';
+import { CenterContent } from './components/center-content';
 // views
 import { WrapperChatPage } from './views';
 
@@ -12,13 +12,15 @@ export const ChatContext = React.createContext<ContextChat>({
   filesDropzone: [],
   stateUser: [],
   inputValue: '',
+  indexActiveImage: 0,
   correspondence: [],
   handleStateUser: () => {},
   handleCorrespondence: () => {},
   handleChange: () => {},
   handleSubmit: () => {},
   handleClickButtonReverse: () => {},
-  handleFilesDropzone: () => {}
+  handleFilesDropzone: () => {},
+  handleClickImage: () => {}
 });
 
 export const ChatPage = () => {
@@ -26,6 +28,7 @@ export const ChatPage = () => {
   const [stateUser, setStateUser] = useState<StateChatType[]>(User);
   const [correspondence, setCorrespondence] = useState<CorrespondenceType[]>([]);
   const [inputValue, setInputValue] = useState('');
+  const [indexActiveImage, setIndexActiveImage] = useState(0);
 
   const isActiveUser = stateUser.find((user) => user.isActive === true);
   const isActiveDialog = correspondence.find((dialog) => dialog.isActive === true);
@@ -134,6 +137,10 @@ export const ChatPage = () => {
     return setFilesDropzone(acceptedFiles.map((file) => Object.assign(file, { preview: URL.createObjectURL(file) })));
   };
 
+  const handleClickImage = (index: number) => {
+    setIndexActiveImage(index);
+  };
+
   return (
     <ChatContext.Provider
       value={{
@@ -141,12 +148,14 @@ export const ChatPage = () => {
         stateUser,
         correspondence,
         inputValue,
+        indexActiveImage,
         handleStateUser,
         handleCorrespondence,
         handleChange,
         handleSubmit,
         handleClickButtonReverse,
-        handleFilesDropzone
+        handleFilesDropzone,
+        handleClickImage
       }}
     >
       <WrapperChatPage>
