@@ -10,7 +10,13 @@ import {
   Img
 } from './views';
 
-export const SliderContainer = ({ messageImg }: { messageImg: string[] }) => {
+export const SliderContainer = ({
+  messageImg,
+  indexActiveImage
+}: {
+  messageImg: string[];
+  indexActiveImage: number;
+}) => {
   const NextArrow = ({ onClick }: CustomArrowProps) => {
     return <ButtonNextArrowReviewsPage onClick={onClick} />;
   };
@@ -23,7 +29,8 @@ export const SliderContainer = ({ messageImg }: { messageImg: string[] }) => {
     speed: 600,
     slidesToShow: 1,
     nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />
+    prevArrow: <PrevArrow />,
+    initialSlide: indexActiveImage
   };
 
   return (

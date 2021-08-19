@@ -19,7 +19,7 @@ import {
 } from './views';
 
 export const MessageCard = ({ id, message, messageImg, firstId }: PropsMessageCardType) => {
-  const { stateUser } = React.useContext(ChatContext);
+  const { stateUser, handleClickImage, indexActiveImage } = React.useContext(ChatContext);
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const urlUserAvatar = stateUser.find((item) => item.id === id)?.urlImg || '';
@@ -62,7 +62,6 @@ export const MessageCard = ({ id, message, messageImg, firstId }: PropsMessageCa
           <UserAvatar url={urlUserAvatar} />
           <TextMessage>{message}</TextMessage>
         </WrapperTopContent>
-
         <WrapperMessageImg>
           {messageImg.length > 0
             ? messageImg.map((el: string, index: number) => (
@@ -70,6 +69,7 @@ export const MessageCard = ({ id, message, messageImg, firstId }: PropsMessageCa
                   <WrapperImgInner
                     onClick={() => {
                       openModal();
+                      handleClickImage(index);
                     }}
                   >
                     <Img src={el} />
@@ -81,7 +81,7 @@ export const MessageCard = ({ id, message, messageImg, firstId }: PropsMessageCa
         <Ref ref={messagesEndRef} />
       </MessageCardContainer>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
-        <SliderContainer messageImg={messageImg} />
+        <SliderContainer messageImg={messageImg} indexActiveImage={indexActiveImage} />
       </Modal>
     </WrapperMessageCard>
   );

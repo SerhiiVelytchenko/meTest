@@ -35,7 +35,6 @@ export const CenterContent = () => {
             );
           })}
         </ContentCenter>
-
         <ContentBottom>
           <Button onClick={() => handleClickButtonReverse()}> change user </Button>
 

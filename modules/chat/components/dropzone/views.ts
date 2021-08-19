@@ -13,9 +13,16 @@ const getColor = (props: any) => {
   return '#eeeeee';
 };
 
+export const WrapperContainer = styled.div`
+  width: calc(100vw - 300px);
+  @media ${({ theme }) => theme.medias.tablet} {
+    width: 100%;
+  } ;
+`;
+
 export const ThumbsContainer = styled.aside`
   position: absolute;
-  top: 75%;
+  top: 80%;
   left: 30%;
   width: 100%auto;
   display: 'flex';
@@ -30,8 +37,8 @@ export const Thumb = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray500};
   margin-bottom: 8px;
   margin-right: 8px;
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   padding: 4px;
   box-sizing: border-box;
 `;
@@ -43,12 +50,10 @@ export const ThumbInner = styled.div`
 `;
 
 export const Img = styled.img`
-  display: 'block';
-  width: 'auto';
-  height: '100%';
+  display: block;
+  width: auto;
+  height: 100%;
 `;
-
-export const WrapperContainer = styled.div``;
 
 export const Container = styled.div`
   height: 100%;

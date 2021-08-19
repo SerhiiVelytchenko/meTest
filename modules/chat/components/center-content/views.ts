@@ -6,7 +6,10 @@ export const WrapperCenterContent = styled.div`
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.blue300};
   height: 100%;
-  width: calc(100vw - 300px);
+  width: auto;
+  @media ${({ theme }) => theme.medias.tablet} {
+    margin: 0px;
+  } ;
 `;
 
 export const Form = styled.form`
