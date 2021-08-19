@@ -32,3 +32,25 @@ export interface CorrespondenceType {
     messageImg: string[];
   }[];
 }
+
+export interface PropsMessageCardType {
+  id: string;
+  message: string;
+  messageImg: string[];
+  firstId: string;
+}
+
+export interface PropsUsersChoiceCardType {
+  id: string;
+  name: string;
+  urlImg: string;
+  isActive: boolean;
+}
+
+export interface PropsUsersListCardType {
+  name: string;
+  urlImg: string;
+  id: string;
+  isActive: boolean;
+  message: string;
+}

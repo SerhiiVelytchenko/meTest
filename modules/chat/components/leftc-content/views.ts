@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-// import { colors } from '@md-modules/shared/styles/styled/theme';
 
 export const WrapperLeftContent = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.colors.gray300};
-
   width: 300px;
+  overflow: hidden;
 `;
 
 export const WrapperUsersChoice = styled.div`
@@ -15,8 +14,9 @@ export const WrapperUsersChoice = styled.div`
   top: 85%;
   left: 0.5%;
   overflow: auto;
-  width: 290px;
+  width: 280px;
   height: 95px;
   background-color: ${({ theme }) => theme.colors.gray300};
-  box-shadow: 0 0 15px 10px;
+  box-shadow: 0 0 15px 5px;
+  border-radius: 20px;
 `;

@@ -1,7 +1,9 @@
 import React from 'react';
-import { UsersListCard } from '../card/usersListCard';
-import { UsersChoiceCard } from '../card/usersChoiceCard';
+// components
+import { UsersListCard } from '../card/users-list-card';
+import { UsersChoiceCard } from '../card/users-choice-card';
 import { ChatContext } from '@md-modules/chat';
+// views
 import { WrapperLeftContent, WrapperUsersChoice } from './views';
 
 export const LeftContent = () => {

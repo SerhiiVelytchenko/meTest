@@ -4,10 +4,6 @@ import 'slick-carousel/slick/slick-theme.css';
 
 export const WrapperSlider = styled.div`
   height: 500px;
-
-  /* @media ${({ theme }) => theme.medias.tablet} {
-    margin: -400px auto 0 auto;
-  } ; */
 `;
 
 export const WrapperContainerReviewsPage = styled.div``;
@@ -42,11 +38,7 @@ export const ButtonPrevArrowReviewsPage = styled(ButtonArrow)`
   left: 0%;
 `;
 
-export const WrapperWrapperImg = styled.div`
-  /* width: 300px;
-    height: 300px;
-    border: 5px solid #515151; */
-`;
+export const WrapperWrapperImg = styled.div``;
 
 export const WrapperImg = styled.div`
   width: 80vw;

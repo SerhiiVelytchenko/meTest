@@ -1,8 +1,10 @@
-import { ChatContext } from '@md-modules/chat';
 import React, { useEffect, useRef } from 'react';
+// components
 import Modal from 'react-modal';
+import { ChatContext } from '@md-modules/chat';
+import { PropsMessageCardType } from '@md-modules/shared/types/chat';
 import { SliderContainer } from '../../slider';
-
+// views
 import {
   WrapperMessageCard,
   MessageCardContainer,
@@ -12,20 +14,11 @@ import {
   WrapperImgInner,
   Img,
   WrapperMessageImg,
-  WrapperTopContent
+  WrapperTopContent,
+  Ref
 } from './views';
 
-export const MessageCard = ({
-  id,
-  message,
-  messageImg,
-  firstId
-}: {
-  id: string;
-  message: string;
-  messageImg: string[];
-  firstId: string;
-}) => {
+export const MessageCard = ({ id, message, messageImg, firstId }: PropsMessageCardType) => {
   const { stateUser } = React.useContext(ChatContext);
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -85,7 +78,7 @@ export const MessageCard = ({
               ))
             : ''}
         </WrapperMessageImg>
-        <div ref={messagesEndRef} />
+        <Ref ref={messagesEndRef} />
       </MessageCardContainer>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
         <SliderContainer messageImg={messageImg} />

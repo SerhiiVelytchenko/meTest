@@ -66,3 +66,5 @@ export const Img = styled.img`
   width: 'auto';
   height: 50px;
 `;
+
+export const Ref = styled.div``;

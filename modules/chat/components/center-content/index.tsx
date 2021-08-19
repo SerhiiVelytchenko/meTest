@@ -1,7 +1,9 @@
-import { ChatContext } from '@md-modules/chat';
 import React, { KeyboardEvent } from 'react';
-import { MessageCard } from '../card/messageCard';
+// components
+import { ChatContext } from '@md-modules/chat';
+import { MessageCard } from '../card/message-card';
 import { Dropzone } from '../dropzone';
+// views
 import { WrapperCenterContent, Form, Textarea, InputSubmit, ContentCenter, Button, ContentBottom } from './views';
 
 export const CenterContent = () => {
@@ -35,11 +37,10 @@ export const CenterContent = () => {
         </ContentCenter>
 
         <ContentBottom>
-          <Button onClick={() => handleClickButtonReverse()}> Da </Button>
+          <Button onClick={() => handleClickButtonReverse()}> change user </Button>
 
           <Form onSubmit={handleSubmit}>
             <Textarea onChange={handleChange} value={inputValue} onKeyDown={handleKeydown} />
-            {/* <ButtonS onClick={}></ButtonS> */}
             <InputSubmit type={'submit'} value={''}></InputSubmit>
           </Form>
         </ContentBottom>
