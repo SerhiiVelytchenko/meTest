@@ -14,7 +14,7 @@ const getColor = (props: any) => {
 };
 
 export const WrapperContainer = styled.div`
-  width: calc(100vw - 300px);
+  flex: 1;
   @media ${({ theme }) => theme.medias.tablet} {
     width: 100%;
   } ;
@@ -84,6 +84,9 @@ export const ButtonOpenModal = styled.button`
   background-color: transparent;
   outline: none;
   cursor: pointer;
+  @media ${({ theme }) => theme.medias.tablet} {
+    top: 90%;
+  } ;
 `;
 
 export const InputDropzone = styled.input`

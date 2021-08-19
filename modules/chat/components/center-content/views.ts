@@ -17,9 +17,9 @@ export const Form = styled.form`
   margin: 0 auto;
   width: 90%;
   align-items: center;
-  @media (${({ theme }) => theme.medias.tablet}) {
-    width: 95%;
-  }
+  @media ${({ theme }) => theme.medias.tablet} {
+    width: 80vw;
+  } ;
 `;
 
 export const Textarea = styled.textarea`
