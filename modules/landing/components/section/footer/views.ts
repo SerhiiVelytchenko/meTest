@@ -21,12 +21,14 @@ export const PictureFooter = styled(Picture)`
   background-image: url('/static/images/CultumHome/astronaut-flag@3x.png');
   background-size: 140px;
   width: 143px;
-  height: 300px;
-  top: 15%;
+  height: 320px;
+  top: 0%;
   right: 0px;
   bottom: 0px;
   left: 47%;
   z-index: 2;
+  background-color: red;
+  background-position: center bottom;
   @media ${({ theme }) => theme.medias.tablet} {
     top: 10%;
   }

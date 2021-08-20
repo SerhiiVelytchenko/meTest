@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // components
 import Modal from 'react-modal';
-import { ChatContext } from '@md-modules/chat';
-import { PropsMessageCardType } from '@md-modules/shared/types/chat';
+import { MessageCardPropsType } from '@md-modules/shared/types/chat';
 import { SliderContainer } from '../../slider';
 // views
 import {
@@ -18,22 +17,25 @@ import {
   Ref
 } from './views';
 
-export const MessageCard = ({ id, message, messageImg, firstId }: PropsMessageCardType) => {
-  const { stateUser, handleClickImage, indexActiveImage } = React.useContext(ChatContext);
+Modal.setAppElement('#__next');
+
+const customStyles = {
+  content: {
+    height: '75vh',
+    top: '50%',
+    left: '50%',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -45%)'
+  }
+};
+
+export const MessageCard = ({ id, message, messageImg, firstId, stateUserChat }: MessageCardPropsType) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [indexActiveImage, setIndexActiveImage] = useState(0);
 
-  const urlUserAvatar = stateUser.find((item) => item.id === id)?.urlImg || '';
+  const urlImgActiveUser = stateUserChat.find((item) => item.id === id)?.urlImg;
+
   const justifyContent = id === firstId ? 'flex-end' : 'flex-start';
-
-  const customStyles = {
-    content: {
-      height: '75vh',
-      top: '50%',
-      left: '50%',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -45%)'
-    }
-  };
 
   const messagesEndRef = useRef<HTMLHeadingElement>(null);
 
@@ -45,8 +47,6 @@ export const MessageCard = ({ id, message, messageImg, firstId }: PropsMessageCa
     scrollToBottom();
   }, [message, messageImg]);
 
-  Modal.setAppElement('#__next');
-
   function openModal() {
     setIsOpen(true);
   }
@@ -55,29 +55,27 @@ export const MessageCard = ({ id, message, messageImg, firstId }: PropsMessageCa
     setIsOpen(false);
   }
 
+  const messageImgContainer = messageImg.map((el: string, index: number) => (
+    <WrapperImg key={index}>
+      <WrapperImgInner
+        onClick={() => {
+          openModal();
+          setIndexActiveImage(index);
+        }}
+      >
+        <Img src={el} />
+      </WrapperImgInner>
+    </WrapperImg>
+  ));
+
   return (
     <WrapperMessageCard justifyContent={justifyContent}>
       <MessageCardContainer>
         <WrapperTopContent>
-          <UserAvatar url={urlUserAvatar} />
+          <UserAvatar url={urlImgActiveUser} />
           <TextMessage>{message}</TextMessage>
         </WrapperTopContent>
-        <WrapperMessageImg>
-          {messageImg.length > 0
-            ? messageImg.map((el: string, index: number) => (
-                <WrapperImg key={index}>
-                  <WrapperImgInner
-                    onClick={() => {
-                      openModal();
-                      handleClickImage(index);
-                    }}
-                  >
-                    <Img src={el} />
-                  </WrapperImgInner>
-                </WrapperImg>
-              ))
-            : ''}
-        </WrapperMessageImg>
+        <WrapperMessageImg>{messageImg.length > 0 ? messageImgContainer : ''}</WrapperMessageImg>
         <Ref ref={messagesEndRef} />
       </MessageCardContainer>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>

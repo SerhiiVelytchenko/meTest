@@ -19,6 +19,7 @@ export const UserAvatar = styled.div<{
   background: url(${({ url }) => url}) center no-repeat;
   width: 50px;
   height: 50px;
+  margin: 0 10px 0 10px;
   background-size: 100%;
   border: 2px solid ${({ theme }) => theme.colors.gray400};
   border-radius: 25px;
@@ -50,14 +51,12 @@ export const TextUserMassage = styled.h1`
   box-sizing: border-box;
 `;
 
-export const InfoContainer = styled(CenterContainer)``;
-
 export const ArrivalTimeMassage = styled.h1`
   color: ${({ theme }) => theme.colors.black};
   height: 25px;
   line-height: 1.28;
   font-size: 16px;
-  margin: 0px 0px 0px 0px;
+  margin: 0px 10px 0px 10px;
   padding: 0px;
   box-sizing: border-box;
 `;
