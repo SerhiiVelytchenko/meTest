@@ -1,5 +1,7 @@
 import React from 'react';
 import Slider, { CustomArrowProps } from 'react-slick';
+// type
+import { SliderContainerPropsType } from '@md-modules/shared/types/chat';
 // views
 import {
   ButtonPrevArrowReviewsPage,
@@ -10,13 +12,7 @@ import {
   Img
 } from './views';
 
-export const SliderContainer = ({
-  messageImg,
-  indexActiveImage
-}: {
-  messageImg: string[];
-  indexActiveImage: number;
-}) => {
+export const SliderContainer = ({ messageImg, indexActiveImage }: SliderContainerPropsType) => {
   const NextArrow = ({ onClick }: CustomArrowProps) => {
     return <ButtonNextArrowReviewsPage onClick={onClick} />;
   };

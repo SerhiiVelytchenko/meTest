@@ -1,21 +1,27 @@
-import React, { ReactChild, ReactChildren } from 'react';
+import { useEffect } from 'react';
+// type
+import { DropzonePropsType } from '@md-modules/shared/types/chat';
 // components
-import { ChatContext } from '@md-modules/chat';
 import { useDropzone } from 'react-dropzone';
 // views
 import {
+  ButtonRemoveFile,
   InputDropzone,
   ThumbInner,
   WrapperContainer,
-  ButtonOpenModal,
   Container,
   ThumbsContainer,
   Thumb,
   Img
 } from './views';
 
-export const Dropzone = ({ children }: { children: ReactChild | ReactChildren }) => {
-  const { filesDropzone, handleFilesDropzone } = React.useContext(ChatContext);
+export const Dropzone = ({
+  handleRemoveFile,
+  children,
+  filesDropzone,
+  handleFilesDropzone,
+  isOpenWindowAddFiles
+}: DropzonePropsType) => {
   const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject, open } = useDropzone({
     accept: 'image/*',
     noClick: true,
@@ -25,10 +31,21 @@ export const Dropzone = ({ children }: { children: ReactChild | ReactChildren })
     }
   });
 
+  useEffect(() => {
+    if (isOpenWindowAddFiles) {
+      open();
+    }
+  }, [isOpenWindowAddFiles, open]);
+
   const thumbs = filesDropzone
     .filter((_file, index) => index <= 8)
-    .map((file: any) => (
+    .map((file: any, index) => (
       <Thumb key={file.name}>
+        <ButtonRemoveFile
+          onClick={() => {
+            handleRemoveFile(index);
+          }}
+        />
         <ThumbInner>
           <Img src={file.preview} />
         </ThumbInner>
@@ -41,7 +58,6 @@ export const Dropzone = ({ children }: { children: ReactChild | ReactChildren })
         <InputDropzone {...getInputProps()} />
         {children}
         <ThumbsContainer>{thumbs}</ThumbsContainer>
-        <ButtonOpenModal type='button' onClick={open} />
       </Container>
     </WrapperContainer>
   );

@@ -1,6 +1,6 @@
-import { StateChatType } from '@md-modules/shared/types/chat';
+import { StateUserChatType } from '@md-modules/shared/types/chat';
 
-export const User: StateChatType[] = [
+export const User: StateUserChatType[] = [
   {
     id: '1u',
     name: 'Sirina',

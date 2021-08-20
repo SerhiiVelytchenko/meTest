@@ -1,18 +1,13 @@
 import React from 'react';
 // type
-import { PropsUsersChoiceCardType } from '@md-modules/shared/types/chat';
-// components
-import { ChatContext } from '@md-modules/chat';
+import { UsersChoiceCardPropsType } from '@md-modules/shared/types/chat';
 // views
 import { WrapperUsersChoice, UserAvatar, TextUserName } from './views';
 
-export const UsersChoiceCard = ({ id, name, urlImg, isActive }: PropsUsersChoiceCardType) => {
-  const { handleStateUser } = React.useContext(ChatContext);
-
+export const UsersChoiceCard = ({ id, name, urlImg, isActive, handleStateUser }: UsersChoiceCardPropsType) => {
   return (
     <WrapperUsersChoice
       onClick={() => {
-        isActive = true;
         handleStateUser(id);
       }}
     >
