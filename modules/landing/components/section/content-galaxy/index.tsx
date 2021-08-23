@@ -14,14 +14,12 @@ import {
   ContainerContent
 } from './views';
 
-export const Content = ({ scrollFactor }: { scrollFactor: number | undefined }) => {
+export const Content = () => {
   const textButtonArrow = 'VIEW PROJECT';
-  // number of planets in orbit
-  const numberOfSections = 3;
 
   return (
     <WrapperContainer>
-      <LeftContainer scrollFactor={scrollFactor} numberOfSections={numberOfSections} />
+      <LeftContainer />
 
       {Pages.map((page) => {
         return (

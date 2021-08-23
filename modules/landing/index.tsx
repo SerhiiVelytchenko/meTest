@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 // components
 import { Welcome } from './components/section/welcome';
 import { Content } from './components/section/content-galaxy';
@@ -9,26 +9,10 @@ import { Footer } from './components/section/footer';
 import { WrapperPages } from './views';
 
 export const LandingPage = () => {
-  const [scrollFactor, setScrollFactor] = useState(0);
-
-  useEffect(() => {
-    window.onscroll = () => {
-      setScrollFactor(() => {
-        return Math.trunc((window.pageYOffset - 60) / window.innerHeight - 0.5);
-      });
-    };
-    return () =>
-      window.removeEventListener('scroll', () =>
-        setScrollFactor(() => {
-          return Math.trunc((window.pageYOffset - 60) / window.innerHeight - 0.5);
-        })
-      );
-  }, []);
-
   return (
     <WrapperPages>
       <Welcome />
-      <Content scrollFactor={scrollFactor} />
+      <Content />
       <Information />
       <Reviews />
       <Footer />

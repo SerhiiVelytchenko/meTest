@@ -19,23 +19,21 @@ export const WrapperFooter = styled.div`
 export const PictureFooter = styled(Picture)`
   position: absolute;
   background-image: url('/static/images/CultumHome/astronaut-flag@3x.png');
-  background-size: 140px;
-  width: 143px;
-  height: 320px;
-  top: 0%;
-  right: 0px;
-  bottom: 0px;
-  left: 47%;
-  z-index: 2;
-  background-color: red;
-  background-position: center bottom;
-  @media ${({ theme }) => theme.medias.tablet} {
-    top: 10%;
+  background-size: 80%;
+  width: 15%;
+  height: 100%;
+  top: -10%;
+  left: 45%;
+  z-index: 1;
+  @media ${({ theme }) => theme.medias.phone} {
+    width: 30%;
+    top: -8%;
+    left: 40%;
   }
 `;
 
 export const WrapperFooterInfo = styled.div`
-  height: 25vh;
+  height: 30vh;
   margin: 50px;
   display: flex;
   flex-direction: column;
@@ -44,18 +42,15 @@ export const WrapperFooterInfo = styled.div`
 `;
 
 export const WrapperTextFooterInfo = styled.div`
-  width: 300px;
+  width: 270px;
   height: 50px;
 `;
 
 export const TextTitleFooterInfo = styled(Text)`
   font-size: 22px;
   color: ${({ theme }) => theme.colors.white};
-  margin: 20px 0 0 0;
+  margin: 0;
   text-align: center;
-  @media ${({ theme }) => theme.medias.tablet} {
-    margin: 0;
-  }
 `;
 
 export const ButtonFooter = styled(Button)`
@@ -65,5 +60,5 @@ export const ButtonFooter = styled(Button)`
 export const TextFooterInfo = styled(Text)`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.gray300};
-  margin: 0 0 -20px 0;
+  margin-bottom: 10px;
 `;

@@ -6,16 +6,16 @@ import { Comments } from '../../constants';
 import {
   ButtonPrevArrowReviewsPage,
   ButtonNextArrowReviewsPage,
-  TextQuotesReviewsPage,
+  TextQuotesReviews,
   User,
-  TextUserReviewsPage,
-  TextTitleReviewsPage,
+  TextUserReviews,
+  TextTitleReviews,
   WrapperReviews,
-  WrapperPageBackgroundWhite,
+  WrapperBackgroundWhite,
   QuotesLeft,
   QuotesRight,
   WrapperSlider,
-  WrapperContainerReviewsPage
+  WrapperContainerReviews
 } from './views';
 
 export const Reviews = () => {
@@ -37,26 +37,26 @@ export const Reviews = () => {
   const textTitle = 'Seems like our clients love us...';
 
   return (
-    <WrapperPageBackgroundWhite>
+    <WrapperBackgroundWhite>
       <WrapperReviews>
-        <TextTitleReviewsPage>{textTitle}</TextTitleReviewsPage>
+        <TextTitleReviews>{textTitle}</TextTitleReviews>
         <WrapperSlider>
           <Slider {...settings}>
             {Comments.map((item) => {
               return (
-                <WrapperContainerReviewsPage key={item.id}>
+                <WrapperContainerReviews key={item.id}>
                   <QuotesLeft />
-                  <TextQuotesReviewsPage>{item.text}</TextQuotesReviewsPage>
+                  <TextQuotesReviews>{item.text}</TextQuotesReviews>
                   <QuotesRight />
                   <User backgroundImage={item.user.imgUrl}>
-                    <TextUserReviewsPage key={item.id}>{item.user.name}</TextUserReviewsPage>
+                    <TextUserReviews key={item.id}>{item.user.name}</TextUserReviews>
                   </User>
-                </WrapperContainerReviewsPage>
+                </WrapperContainerReviews>
               );
             })}
           </Slider>
         </WrapperSlider>
       </WrapperReviews>
-    </WrapperPageBackgroundWhite>
+    </WrapperBackgroundWhite>
   );
 };

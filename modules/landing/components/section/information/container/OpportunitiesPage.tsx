@@ -4,50 +4,52 @@ import { InformationInInformationPage } from '../../../constants';
 import {
   WrapperBackgroundWhite,
   WrapperOpportunities,
-  WrapperContentOpportunities,
+  ContentOpportunities,
   ImgOpportunitiesPage,
-  ContainerOpportunitiesPage,
-  PictureInformationPageNode,
-  PictureInformationPageRails,
-  PictureInformationPageReact,
+  WrapperLeftContainer,
+  PictureNode,
+  PictureRails,
+  PictureReact,
   ItemContentOpportunities,
   TextTitleOpportunitiesPage,
   TextItemOpportunitiesPage,
   TextTitleItemOpportunitiesPage,
   ButtonArrowOpportunitiesPage,
   ItemContainerOpportunitiesPage,
-  ContentOpportunities
+  TitleContentOpportunities,
+  WrapperRightContainer
 } from '../views';
 
 export const Opportunities = () => {
   const textTitle = 'There are a couple of things we do really well';
   const textButtonArrowTwo = 'ALL SERVICES';
 
+  const information = InformationInInformationPage.map((item) => {
+    return (
+      <ItemContentOpportunities key={item.id} gridArea={item.id}>
+        <ImgOpportunitiesPage backgroundImage={item.imgUrl} />
+        <ItemContainerOpportunitiesPage>
+          <TextTitleItemOpportunitiesPage>{item.textTitle}</TextTitleItemOpportunitiesPage>
+          <TextItemOpportunitiesPage>{item.text}</TextItemOpportunitiesPage>
+        </ItemContainerOpportunitiesPage>
+      </ItemContentOpportunities>
+    );
+  });
   return (
     <WrapperBackgroundWhite>
       <WrapperOpportunities>
-        <ContainerOpportunitiesPage>
-          <PictureInformationPageNode />
-          <PictureInformationPageRails />
-          <PictureInformationPageReact />
-        </ContainerOpportunitiesPage>
-        <WrapperContentOpportunities>
-          <ContentOpportunities gridArea={'title'}>
+        <WrapperLeftContainer>
+          <PictureNode />
+          <PictureRails />
+          <PictureReact />
+        </WrapperLeftContainer>
+        <WrapperRightContainer>
+          <TitleContentOpportunities>
             <TextTitleOpportunitiesPage>{textTitle}</TextTitleOpportunitiesPage>
             <ButtonArrowOpportunitiesPage>{textButtonArrowTwo}</ButtonArrowOpportunitiesPage>
-          </ContentOpportunities>
-          {InformationInInformationPage.map((item) => {
-            return (
-              <ItemContentOpportunities key={item.id} gridArea={item.id}>
-                <ImgOpportunitiesPage backgroundImage={item.imgUrl} />
-                <ItemContainerOpportunitiesPage>
-                  <TextTitleItemOpportunitiesPage>{item.textTitle}</TextTitleItemOpportunitiesPage>
-                  <TextItemOpportunitiesPage>{item.text}</TextItemOpportunitiesPage>
-                </ItemContainerOpportunitiesPage>
-              </ItemContentOpportunities>
-            );
-          })}
-        </WrapperContentOpportunities>
+          </TitleContentOpportunities>
+          <ContentOpportunities>{information}</ContentOpportunities>
+        </WrapperRightContainer>
       </WrapperOpportunities>
     </WrapperBackgroundWhite>
   );

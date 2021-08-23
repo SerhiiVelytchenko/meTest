@@ -7,9 +7,8 @@ import {
   TextTitleWelcomeContainer,
   TextWelcomeContainer,
   ButtonWelcomeContainer,
-  WrapperLabel,
-  LabelCompany,
-  LabelMenu
+  WrapperBlok,
+  BlokWelcomeContainer
 } from '../../views';
 
 export const WelcomeContainer = () => {
@@ -20,17 +19,17 @@ export const WelcomeContainer = () => {
   return React.useMemo(
     () => (
       <WrapperWelcomeContainer>
-        <WrapperLabel>
-          <LabelCompany />
-          <LabelMenu />
-        </WrapperLabel>
-        <WrapperContainer>
-          <TextTitleWelcomeContainer>{textTitle}</TextTitleWelcomeContainer>
-          <TextWelcomeContainer>{text}</TextWelcomeContainer>
-          <WrapperButton>
-            <ButtonWelcomeContainer>{textButton}</ButtonWelcomeContainer>
-          </WrapperButton>
-        </WrapperContainer>
+        <WrapperBlok>
+          <BlokWelcomeContainer>
+            <WrapperContainer>
+              <TextTitleWelcomeContainer>{textTitle}</TextTitleWelcomeContainer>
+              <TextWelcomeContainer>{text}</TextWelcomeContainer>
+              <WrapperButton>
+                <ButtonWelcomeContainer>{textButton}</ButtonWelcomeContainer>
+              </WrapperButton>
+            </WrapperContainer>
+          </BlokWelcomeContainer>
+        </WrapperBlok>
       </WrapperWelcomeContainer>
     ),
     []

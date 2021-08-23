@@ -3,15 +3,13 @@ import styled from 'styled-components';
 
 export const WrapperContainer = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 export const WrapperLeftContainerFirst = styled.div`
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
   visibility: hidden;
-  transform: translate(0, 140px);
+  transform: translate(0, calc(50vh - 250px));
   z-index: 5;
   @media ${({ theme }) => theme.medias.tablet} {
     z-index: -5;
@@ -20,11 +18,10 @@ export const WrapperLeftContainerFirst = styled.div`
 
 export const WrapperLeftContainerSecond = styled.div`
   position: sticky;
-  top: 0;
   visibility: visible;
   width: 300px;
   height: 300px;
-  margin: 0 0 450px 0;
+  margin-bottom: calc(100vh - 250px);
 `;
 
 export const WrapperContent = styled(WrapperPage)``;
@@ -32,11 +29,11 @@ export const WrapperContent = styled(WrapperPage)``;
 export const WrapperContainerContent = styled.div`
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: space-around;
   height: 100%;
-  margin: 0 0 0 250px;
+  margin: 10px 10px 10px 260px;
   @media ${({ theme }) => theme.medias.tablet} {
-    margin: 0 0 0 0px;
+    margin: 0px;
     flex-direction: column-reverse;
   } ;
 `;
@@ -53,7 +50,7 @@ export const TextTitleContent = styled(Text)`
 
 export const TextOneContent = styled(Text)`
   font-size: 20px;
-  margin: 25px 0 0 0;
+  margin-top: 25px;
   color: ${({ theme }) => theme.colors.white};
   @media ${({ theme }) => theme.medias.tablet} {
     font-size: 18px;
@@ -64,7 +61,7 @@ export const TextOneContent = styled(Text)`
 
 export const TextTwoContent = styled(Text)`
   font-size: 20px;
-  margin: 10px 0 0 0;
+  margin-top: 10px;
   color: ${({ theme }) => theme.colors.black};
   opacity: 0.5;
   @media ${({ theme }) => theme.medias.tablet} {
@@ -76,48 +73,41 @@ export const TextTwoContent = styled(Text)`
 
 export const ButtonArrowContent = styled(ButtonArrow)`
   background-image: url('/static/images/CultumHome/shape_2@3x.png');
-  margin: 20px 0 0 0;
+  margin: 20px 10px 10px 20px;
   top: 120%;
-  left: 23%;
 `;
 
 export const ContainerContent = styled.div`
   min-width: 300px;
   position: relative;
-  grid-area: centerContainer;
-  margin: -150px 0 0 0;
+  margin-top: -150px;
   @media ${({ theme }) => theme.medias.tablet} {
-    margin: 0px 0 100px 0;
+    margin-bottom: 130px;
   } ;
 `;
 
 export const RightContent = styled.div<{ background: string }>`
-  width: 500px;
+  width: 600px;
   height: 100%;
   background-image: url(${({ background }) => background});
   background-position: center;
   background-repeat: no-repeat;
   background-size: 120%;
   @media ${({ theme }) => theme.medias.tablet} {
+    width: 500px;
     background-size: 70%;
-    margin: 0;
+    margin-bottom: -50px;
   }
 `;
 
 export const WrapperContainerLeftContainer = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
   background-image: url('https://cultum.io/static/images/saturn.svg');
   background-position: center left;
   background-repeat: no-repeat;
   background-size: 90px;
   width: 200px;
-  grid-area: leftContainer;
   z-index: 6;
-  @media screen and (min-height: 900px) {
-    z-index: -3;
-  } ;
 `;
 
 export const WrapperLeftContainer = styled.div`
