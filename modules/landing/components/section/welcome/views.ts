@@ -2,123 +2,173 @@ import styled from 'styled-components';
 import { Text, Button, Picture } from '@md-modules/landing/views';
 
 export const WrapperWelcome = styled.div`
-  display: flex;
-  overflow: hidden;
-  position: relative;
   height: 100%;
-`;
-
-export const WrapperWelcomeContainer = styled.div`
-  overflow: hidden;
   position: relative;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
+  overflow: hidden;
   &::before {
     content: '';
     position: absolute;
-    top: 0%;
     left: 70%;
-    width: 30%;
-    height: 100vh;
+    width: 300px;
+    height: 120%;
     background: ${({ theme }) => theme.colors.red100};
     transform: skew(40deg);
-    z-index: -1;
   }
 `;
 
 export const WrapperLabel = styled.div`
   display: flex;
+  height: 100px;
   justify-content: space-between;
 `;
 
 export const Label = styled.div`
-  min-width: 180px;
-  height: 100px;
+  width: 280px;
+  height: 150px;
   background-repeat: no-repeat;
   z-index: 2;
-  @media ${({ theme }) => theme.medias.tablet} {
-    height: 40px;
-    width: 50px;
+
+  @media ${({ theme }) => theme.medias.laptop} {
+    width: 240px;
+    height: 120px;
+  }
+
+  @media ${({ theme }) => theme.medias.phone} {
+    height: 150px;
+    width: 110px;
+    margin: 0px 10px 0 10px;
   } ;
 `;
 
 export const LabelCompany = styled(Label)`
   background-image: url('/static/images/CultumHome/logo@3x.png');
   background-size: 100px;
-  background-position: center left;
-  margin: 0 0 0 50px;
-
-  @media ${({ theme }) => theme.medias.tablet} {
-    margin: 0 0 0 10px;
-  } ;
+  background-position: center;
 `;
 
 export const LabelMenu = styled(Label)`
   background-image: url('/static/images/CultumHome/menu@3x.png');
-  background-size: 40px;
+  background-size: 35px;
   background-position: center;
-  margin: 0 50px 0 0;
-  @media ${({ theme }) => theme.medias.tablet} {
-    margin: 0;
+`;
+
+export const WrapperWelcomeContainers = styled.div`
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  @media ${({ theme }) => theme.medias.laptop} {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+`;
+
+export const WrapperWelcomeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  z-index: 1;
+`;
+
+export const WrapperParallaxContainer = styled.div`
+  height: 100%;
+  display: flex;
+`;
+
+export const WrapperBlok = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  @media ${({ theme }) => theme.medias.laptop} {
+    height: auto;
+  }
+`;
+
+export const BlokWelcomeContainer = styled.div`
+  padding-left: 100px;
+  width: 600px;
+  @media ${({ theme }) => theme.medias.laptop} {
+    padding: 0;
+    padding-bottom: 10px;
+    width: 500px;
+  }
+
+  @media ${({ theme }) => theme.medias.phone} {
+    width: 280px;
+    padding: 10px;
   } ;
 `;
 
 export const WrapperContainer = styled.div`
-  padding: 0 450px 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  @media ${({ theme }) => theme.medias.laptop} {
+    width: 500px;
+  }
 
-  @media ${({ theme }) => theme.medias.tablet} {
-    padding: 360px 0 0 0;
+  @media ${({ theme }) => theme.medias.phone} {
+    max-width: 280px;
   } ;
 `;
 
 export const TextTitleWelcomeContainer = styled(Text)`
-  max-width: 700px;
+  padding: 5px;
   font-size: 40px;
+  text-align: center;
   color: ${({ theme }) => theme.colors.black};
-  @media ${({ theme }) => theme.medias.tablet} {
+  @media ${({ theme }) => theme.medias.laptop} {
     font-size: 20px;
-    text-align: center;
     margin: 0;
   } ;
 `;
 
 export const TextWelcomeContainer = styled(Text)`
-  max-width: 700px;
+  padding: 5px;
   font-size: 1.5em;
   font-weight: 300;
+  text-align: center;
   opacity: 0.5;
   color: ${({ theme }) => theme.colors.gray400};
-  @media ${({ theme }) => theme.medias.tablet} {
+  @media ${({ theme }) => theme.medias.laptop} {
     font-size: 16px;
     text-align: center;
     margin: 10px 0 10px 0;
   } ;
 `;
 
+export const WrapperButton = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const ButtonWelcomeContainer = styled(Button)`
   margin: 0;
 `;
 
-export const WrapperParallaxContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 0px;
-  transform: translate(0%, -50%);
+export const BlokParallax = styled.div`
+  width: 600px;
+  height: 660px;
+  position: relative;
+  background-color: transparent;
   background-image: url('https://cultum.io/static/images/cultum/cultum.svg');
-  background-size: 80%;
+  background-size: 90%;
   background-repeat: no-repeat;
   background-position: center;
-  width: 500px;
-  height: 100%;
-  grid-area: parallax;
   z-index: 2;
-  @media ${({ theme }) => theme.medias.tablet} {
-    top: 5%;
-    right: 50%;
-    transform: translate(50%, 0%);
-    width: 380px;
-    height: 380px;
+  @media ${({ theme }) => theme.medias.laptop} {
+    width: 450px;
+    height: 460px;
+  }
+  @media ${({ theme }) => theme.medias.phone} {
+    width: 55vw;
+    height: 30vh;
   } ;
 `;
 
@@ -128,35 +178,34 @@ export const PictureTopPlanet = styled(Picture)`
   background-size: 40px;
   width: 45px;
   height: 45px;
-  top: 10%;
-  right: 0px;
-  bottom: 0px;
-  left: 20%;
+  left: 10%;
   z-index: 3;
-  @media ${({ theme }) => theme.medias.tablet} {
-    left: 40%;
-    top: -5%;
+  @media ${({ theme }) => theme.medias.laptop} {
+    left: 10%;
+    top: 5%;
+  }
+  @media ${({ theme }) => theme.medias.phone} {
+    width: 0;
+    height: 0;
   } ;
 `;
 
 export const PictureRightPlanet = styled(Picture)`
-  position: absolute;
-  background-image: url('https://cultum.io/static/images/cultum/right-planet.svg');
-  background-size: 90px;
   width: 100px;
   height: 90px;
-  top: 27%;
-  right: 0px;
-  bottom: 0px;
-  left: 65%;
+  position: absolute;
+  top: 30%;
+  right: 20%;
+  transform: translate(50%, 50%);
+  background-image: url('https://cultum.io/static/images/cultum/right-planet.svg');
+  background-size: 90px;
   z-index: 3;
-  @media ${({ theme }) => theme.medias.tablet} {
-    left: 65%;
-    background-size: 80px;
+  @media ${({ theme }) => theme.medias.laptop} {
+    top: 30%;
+    right: 10%;
+  }
+  @media ${({ theme }) => theme.medias.phone} {
+    width: 0;
+    height: 0;
   } ;
-`;
-
-export const WrapperButton = styled.div`
-  display: flex;
-  justify-content: center;
 `;

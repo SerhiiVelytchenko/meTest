@@ -2,6 +2,7 @@ import { DefaultTheme, css } from 'styled-components';
 
 export const colors = {
   // yellow
+  yellow300: '#fae7b5',
   yellow400: '#e3ce0e',
   yellow500: '#FF8E53',
   // blue
@@ -56,14 +57,14 @@ export const templates = {
 };
 
 export const dimensions = {
-  pageMaxWidth: 1071,
-  pageMinWidth: 320
+  pageMaxWidth: '2071px',
+  pageMinWidth: '320px'
 };
 
 export const medias = {
-  phone: 'max-width: 480px',
+  phone: 'screen and (max-width: 480px)',
   tablet: 'screen and (max-width: 768px)',
-  laptop: 'screen and (min-width: 1280px)'
+  laptop: 'screen and (max-width: 1280px)'
 };
 
 export const theme: DefaultTheme = {

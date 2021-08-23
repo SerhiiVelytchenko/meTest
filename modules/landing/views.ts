@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const WrapperPages = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   height: 100vh;
+  width: 100%;
   position: relative;
 `;
 
@@ -14,6 +15,7 @@ export const WrapperPage = styled.div<{
   overflow: hidden;
   position: relative;
   height: 100vh;
+  width: 100%;
   z-index: 4;
   background: linear-gradient(
     45deg,
@@ -48,7 +50,6 @@ export const Text = styled.h4`
 
 export const Button = styled.button`
   text-transform: capitalize;
-  padding: 0px 0px;
   width: 130px;
   height: 35px;
   background: ${({ theme }) => theme.colors.yellow500};
@@ -105,7 +106,7 @@ export const ButtonArrow = styled.button`
   cursor: pointer;
   z-index: 10;
   height: 20px;
-  padding: 0 0 0 60px;
+  padding-left: 60px;
   font-size: 12px;
   color: ${({ theme }) => theme.colors.yellow500};
 `;
@@ -114,5 +115,4 @@ export const Quotes = styled.div`
   background-repeat: no-repeat;
   background-size: 10px;
   height: 10px;
-  margin: 0px;
 `;

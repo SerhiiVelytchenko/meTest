@@ -4,7 +4,7 @@ import { ParallaxContainerType } from '@md-modules/shared/types/landing';
 import { ParallaxContainer } from './components/parallax-container';
 import { WelcomeContainer } from './components/welcome-container';
 // views
-import { WrapperWelcome } from './views';
+import { WrapperWelcomeContainers, WrapperWelcome, WrapperLabel, LabelCompany, LabelMenu } from './views';
 
 export const Welcome = () => {
   const [position, setPosition] = useState<ParallaxContainerType>({ axisX: 0, axisY: 0 });
@@ -29,9 +29,20 @@ export const Welcome = () => {
   };
 
   return (
-    <WrapperWelcome onMouseMove={handleMouseMove}>
-      <ParallaxContainer position={position} />
-      <WelcomeContainer />
+    <WrapperWelcome>
+      {React.useMemo(
+        () => (
+          <WrapperLabel>
+            <LabelCompany />
+            <LabelMenu />
+          </WrapperLabel>
+        ),
+        []
+      )}
+      <WrapperWelcomeContainers onMouseMove={handleMouseMove}>
+        <WelcomeContainer />
+        <ParallaxContainer position={position} />
+      </WrapperWelcomeContainers>
     </WrapperWelcome>
   );
 };

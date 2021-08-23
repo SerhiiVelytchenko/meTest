@@ -12,22 +12,31 @@ import {
   WrapperLeftContainerSecond
 } from '../views';
 
-export const LeftContainer = ({
-  scrollFactor: scroll,
-  numberOfSections
-}: {
-  scrollFactor: number | undefined;
-  numberOfSections: number;
-}) => {
+export const LeftContainer = () => {
   const [transformPlanet, setTransformPlanet] = useState(0);
+  const [scrollFactor, setScrollFactor] = useState(0);
+
+  const numberOfSections = 3;
+
+  useEffect(() => {
+    window.onscroll = () => {
+      setScrollFactor(() => {
+        return Math.trunc((window.pageYOffset - 60) / window.innerHeight - 0.5);
+      });
+    };
+    return () =>
+      window.removeEventListener('scroll', () =>
+        setScrollFactor(() => {
+          return Math.trunc((window.pageYOffset - 60) / window.innerHeight - 0.5);
+        })
+      );
+  }, []);
 
   const planets: PlanetsType[] = [...Array(numberOfSections)].map((planet, index) => {
     const degrees = 180 / numberOfSections;
     const firstPlanet = degrees / 2;
     return { ...planet, transform: firstPlanet + degrees * index };
   });
-
-  const scrollFactor = scroll || 0;
 
   useEffect(
     () =>
