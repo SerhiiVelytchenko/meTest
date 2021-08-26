@@ -65,7 +65,7 @@ export const performAPIGetStarship = (
     dispatch(setGetStarshipSuccessAction(data.result));
 
     return clientSuccess(data);
-  } catch (error) {
+  } catch (error: any) {
     const errorMap = getRequestError(error);
 
     dispatch(setGetStarshipErrorAction(error.message));

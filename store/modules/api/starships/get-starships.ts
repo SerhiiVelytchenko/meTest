@@ -63,7 +63,7 @@ export const performAPIGetStarships = (): ThunkAction<
     dispatch(setGetStarshipsSuccessAction(data));
 
     return clientSuccess(data);
-  } catch (error) {
+  } catch (error: any) {
     const errorMap = getRequestError(error);
 
     dispatch(setGetStarshipsErrorAction(error.message));

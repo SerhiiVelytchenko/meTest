@@ -63,7 +63,7 @@ export const performAPIGetPlanets = (): ThunkAction<
     dispatch(setGetPlanetsSuccessAction(data));
 
     return clientSuccess(data);
-  } catch (error) {
+  } catch (error: any) {
     const errorMap = getRequestError(error);
 
     dispatch(setGetPlanetsErrorAction(error.message));
