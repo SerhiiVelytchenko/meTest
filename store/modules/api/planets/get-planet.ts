@@ -63,9 +63,10 @@ export const performAPIGetPlanet = (
     const { data } = await api.getPlanet(id);
 
     dispatch(setGetPlanetSuccessAction(data?.result));
+    // console.log(`performAPIGetPlanet ${data.result}`);
 
     return clientSuccess(data);
-  } catch (error) {
+  } catch (error: any) {
     const errorMap = getRequestError(error);
 
     dispatch(setGetPlanetErrorAction(error.message));

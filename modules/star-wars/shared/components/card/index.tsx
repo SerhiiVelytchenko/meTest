@@ -13,21 +13,23 @@ interface Props extends LinkProps {
   image: string;
 }
 
-const Card: React.FC<Props> = ({ id, name, image, ...rest }) => (
-  <CardWrapper>
-    <CardImgWrapper>
-      <CardImg src={image} alt={`${name}-${id}`} />
-    </CardImgWrapper>
-    <CardFooter>
-      <Link {...rest}>
-        <CardFooterTitle>{name}</CardFooterTitle>
-      </Link>
-      <Link {...rest}>
-        <Button preset='details'>Details</Button>
-      </Link>
-    </CardFooter>
-  </CardWrapper>
-);
+const Card: React.FC<Props> = ({ id, name, image, ...rest }) => {
+  return (
+    <CardWrapper>
+      <CardImgWrapper>
+        <CardImg src={image} alt={`${name}-${id}`} />
+      </CardImgWrapper>
+      <CardFooter>
+        <Link {...rest}>
+          <CardFooterTitle>{name}</CardFooterTitle>
+        </Link>
+        <Link {...rest}>
+          <Button preset='details'>Details</Button>
+        </Link>
+      </CardFooter>
+    </CardWrapper>
+  );
+};
 
 const memoized = React.memo(Card);
 

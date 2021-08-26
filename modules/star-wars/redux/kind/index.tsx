@@ -16,28 +16,29 @@ interface PlanetInfoProps {
   value: string | number;
 }
 
-const PlanetContainer = () => {
+export const KindContainer = () => {
   // store
   const { data: planet, error, loading } = useSelector<
     RootStore,
-    Pick<RootStore['api']['planets']['getPlanet'], 'data' | 'error' | 'loading'>
+    Pick<RootStore['api']['species']['getKind'], 'data' | 'error' | 'loading'>
   >((state) => ({
-    data: state.api.planets.getPlanet.data,
-    error: state.api.planets.getPlanet.error,
-    loading: state.api.planets.getPlanet.loading
+    data: state.api.species.getKind.data,
+    error: state.api.species.getKind.error,
+    loading: state.api.species.getKind.loading
   }));
 
-  // data transformation
   const planetInfo = React.useMemo<PlanetInfoProps[]>(() => {
     if (!planet) {
       return [];
     }
 
     return [
-      { label: 'Name', value: planet.properties?.name ?? 'N/A' },
-      { label: 'Gravity', value: planet.properties?.gravity ?? 'N/A' },
-      { label: 'Orbital Period', value: planet.properties?.orbital_period ?? 'N/A' },
-      { label: 'Population', value: planet.properties?.population ?? 'N/A' }
+      { label: 'Name', value: planet?.name ?? 'N/A' },
+      { label: 'Average height', value: planet?.average_height ?? 'N/A' },
+      { label: 'Designation', value: planet?.designation ?? 'N/A' },
+      { label: 'Eye colors', value: planet?.eye_colors ?? 'N/A' },
+      { label: 'Language', value: planet?.language ?? 'N/A' },
+      { label: 'Skin colors', value: planet?.skin_colors ?? 'N/A' }
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [planet]);
@@ -50,7 +51,7 @@ const PlanetContainer = () => {
             <img src='/static/images/planet.png' alt='planet' />
           </ImgContainer>
           <DetailsContainer>
-            {planet && <Name>{planet.properties?.name}</Name>}
+            {planet && <Name>{planet?.name}</Name>}
             <InfoContainer>
               {planetInfo.map((i, idx) => (
                 <Info key={idx} {...i} />
@@ -62,5 +63,3 @@ const PlanetContainer = () => {
     </ContentWrapper>
   );
 };
-
-export { PlanetContainer };
