@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
+  width: 250px;
+  height: 300px;
+  margin: 10px;
   border-radius: 5px;
   overflow: hidden;
 `;
@@ -8,6 +11,7 @@ export const CardWrapper = styled.div`
 export const CardImgWrapper = styled.div`
   padding: 55% 0 0 0;
   position: relative;
+  height: 250px;
 `;
 
 export const CardImg = styled.img`

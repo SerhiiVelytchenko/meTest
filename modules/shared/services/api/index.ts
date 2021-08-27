@@ -9,12 +9,14 @@ export type APIVariables = {
   customHeaders?: CustomHeaders;
 };
 
-// const API_URL = process.env.NEXT_PUBLIC_API_URL;
-const API_SPECIES_URL = process.env.NEXT_PUBLIC_API_SPECIES_URL;
+// https://www.swapi.tech/api
+// const API_SPECIES_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const createAPI = ({ baseURL = API_SPECIES_URL, customHeaders = {}, token }: APIVariables = {}) => {
+// /api/rest
+const API_SPECIES = process.env.NEXT_PUBLIC_API;
+
+export const createAPI = ({ baseURL = API_SPECIES, customHeaders = {}, token }: APIVariables = {}) => {
   /* ------------- API instance ------------- */
-
   const api = axios.create({
     baseURL,
     headers: {
