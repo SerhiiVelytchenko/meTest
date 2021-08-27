@@ -32,12 +32,12 @@ export const SpeciesComponent = () => {
   }));
 
   // data transformation
-  const planetsList = React.useMemo<ListItem[] | undefined>(
+  const speciesList = React.useMemo<ListItem[] | undefined>(
     () =>
       data?.results?.map(({ name }, index) => ({
         name,
         id: `${index + 1}`,
-        image: '/static/images/planet.png'
+        image: '/static/images/species.jpg'
       })),
     [data]
   );
@@ -50,8 +50,8 @@ export const SpeciesComponent = () => {
     <ContentWrapper>
       <ContentLoader isLoading={loading} error={clientError(error)}>
         <Wrapper>
-          {planetsList?.map((planet) => (
-            <Card key={planet.id} href='/redux/species/[id]' as={`/redux/species/${planet.id}`} {...planet} />
+          {speciesList?.map((species) => (
+            <Card key={species.id} href='/redux/species/[id]' as={`/redux/species/${species.id}`} {...species} />
           ))}
         </Wrapper>
       </ContentLoader>
