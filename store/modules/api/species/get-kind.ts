@@ -5,7 +5,7 @@ import {
   ClientSuccess,
   clientSuccess,
   getRequestError
-} from '@md-shared/services/api/helpers';
+} from '@md-modules/shared/services/api/helpers';
 import { createAction, ThunkAction } from '@md-store/helpers';
 import { KindTechProperties } from '@md-shared/services/api/controllers/species';
 

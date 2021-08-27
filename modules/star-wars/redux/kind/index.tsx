@@ -3,11 +3,15 @@ import * as React from 'react';
 import { Info } from '@md-sw/shared/components/info';
 import { ContentLoader } from '@md-ui/loaders/content-loader';
 // hooks
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useRouter } from 'next/dist/client/router';
 // types
 import { RootStore } from '@md-store/index';
 // helpers
 import { clientError } from '@md-utils/errors';
+// store
+import * as API from '@md-store/modules/api';
+import { ThunkDispatch } from '@md-store/helpers';
 // views
 import { Name, Wrapper, ImgContainer, InfoContainer, ContentWrapper, DetailsContainer } from '@md-sw/shared/views';
 
@@ -17,6 +21,10 @@ interface PlanetInfoProps {
 }
 
 export const KindContainer = () => {
+  // hooks
+  const dispatch = useDispatch<ThunkDispatch>();
+  const { query } = useRouter();
+
   // store
   const { data: planet, error, loading } = useSelector<
     RootStore,
@@ -27,6 +35,7 @@ export const KindContainer = () => {
     loading: state.api.species.getKind.loading
   }));
 
+  // data transformation
   const planetInfo = React.useMemo<PlanetInfoProps[]>(() => {
     if (!planet) {
       return [];
@@ -42,6 +51,11 @@ export const KindContainer = () => {
     ];
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [planet]);
+
+  React.useEffect(() => {
+    if (!query.id) return;
+    dispatch(API.species.getKind.performAPIGetKind(query.id as string));
+  }, [dispatch, query.id]);
 
   return (
     <ContentWrapper>
